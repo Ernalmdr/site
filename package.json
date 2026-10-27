@@ -1,0 +1,20 @@
+{
+  "name": "findik-vadisi-organik-e-ticaret",
+  "version": "1.0.0",
+  "description": "Fındık Vadisi & Doğal Çiftlik - Giresun Taş Değirmen E-Ticaret ve İşletme Yönetim Platformu",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "e-commerce",
+    "organic",
+    "hazelnut",
+    "tailwind",
+    "artisanal",
+    "turkey"
+  ],
+  "author": "Fındık Vadisi Çiftliği",
+  "license": "MIT"
+}

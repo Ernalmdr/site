@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="tr"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><title>Fındık Vadisi - Yönetim Paneli</title><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"on-tertiary-container":"#ffbc87","tertiary-fixed-dim":"#ffb77d","primary-fixed":"#ffdcc6","surface-variant":"#f2dfd2","primary-container":"#6f4e37","error-container":"#ffdad6","on-surface-variant":"#50453e","on-surface":"#231a12","primary":"#553722","error":"#ba1a1a","on-tertiary-fixed":"#2f1500","on-error":"#ffffff","on-primary-fixed-variant":"#5f402a","surface":"#fff8f5","surface-container-lowest":"#ffffff","secondary":"#3c6843","tertiary":"#613200","primary-fixed-dim":"#eabda0","on-background":"#231a12","background":"#fff8f5","inverse-primary":"#eabda0","surface-container-high":"#f8e5d7","tertiary-fixed":"#ffdcc3","surface-container-highest":"#f2dfd2","inverse-on-surface":"#ffeee2","surface-container-low":"#fff1e8","surface-tint":"#79573f","on-secondary":"#ffffff","on-error-container":"#93000a","on-primary-fixed":"#2d1604","on-primary":"#ffffff","on-tertiary-fixed-variant":"#6e3900","surface-container":"#feeadd","tertiary-container":"#834500","secondary-fixed":"#bdefbf","on-primary-container":"#eec1a4","secondary-container":"#bdefbf","on-secondary-fixed":"#002109","surface-bright":"#fff8f5","on-tertiary":"#ffffff","surface-dim":"#ead6c9","inverse-surface":"#3a2e25","outline-variant":"#d4c3ba","outline":"#82746d","on-secondary-fixed-variant":"#24502d","secondary-fixed-dim":"#a2d2a5","on-secondary-container":"#426e48"},borderRadius:{DEFAULT:"0.25rem",lg:"0.5rem",xl:"0.75rem",full:"9999px"},spacing:{"space-sm":"0.5rem","space-xl":"2.5rem",gutter:"1.5rem","space-md":"1rem","space-xs":"0.25rem","space-lg":"1.5rem",margin:"3rem","gutter-sm":"1rem","margin-mobile":"1.25rem"},fontFamily:{"body-md":["Plus Jakarta Sans"],"display-hero":["Epilogue"],"label-tag":["Epilogue"],"body-lg":["Plus Jakarta Sans"],"display-hero-mobile":["Epilogue"],"label-md":["Plus Jakarta Sans"],"headline-xl-mobile":["Epilogue"],"headline-md":["Epilogue"],"headline-sm":["Epilogue"],"label-lg":["Plus Jakarta Sans"],"headline-xl":["Epilogue"],"title-md":["Plus Jakarta Sans"],"headline-lg":["Epilogue"],"body-sm":["Plus Jakarta Sans"]},fontSize:{"body-md":["15px",{lineHeight:"24px",fontWeight:"400"}],"display-hero":["56px",{lineHeight:"64px",letterSpacing:"-0.02em",fontWeight:"600"}],"label-tag":["11px",{lineHeight:"14px",letterSpacing:"0.05em",fontWeight:"700"}],"body-lg":["18px",{lineHeight:"28px",fontWeight:"400"}],"display-hero-mobile":["36px",{lineHeight:"44px",letterSpacing:"-0.01em",fontWeight:"600"}],"label-md":["12px",{lineHeight:"16px",letterSpacing:"0.02em",fontWeight:"600"}],"headline-xl-mobile":["28px",{lineHeight:"36px",letterSpacing:"-0.01em",fontWeight:"600"}],"headline-md":["24px",{lineHeight:"32px",fontWeight:"500"}],"headline-sm":["20px",{lineHeight:"28px",fontWeight:"500"}],"label-lg":["14px",{lineHeight:"20px",letterSpacing:"0.01em",fontWeight:"600"}],"headline-xl":["40px",{lineHeight:"48px",letterSpacing:"-0.02em",fontWeight:"600"}],"title-md":["18px",{lineHeight:"26px",fontWeight:"600"}],"headline-lg":["30px",{lineHeight:"38px",letterSpacing:"-0.01em",fontWeight:"600"}],"body-sm":["13px",{lineHeight:"20px",fontWeight:"400"}]}}}};</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-low z-50 flex flex-col justify-between py-space-lg px-space-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-space-lg"><div class="flex items-center gap-space-sm px-space-sm"><img alt="Fındık Vadisi Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnAYkCTfYsAERXuNNH1EwLB0g3BHh59Zw8T-iKriC4Vj4lbVG7afNfm0ILdXxZHzk1rA6tWwREcSnI8oxCoSqzYtCNsZgYrv5pBAWC6WFsT8mhrcvH0e1c0DWF24LwMd8xbVti_g-Fdd8FHo0lal9dtBjtBHJUdQeRoYGUwBdO-CzJnPcFp0K5C5DAOVJQk6qoa-z3BvG8hN9Um3NZLVFTuIDo7YgMQb20LB-UJcGTOA2lJz_FAWmdHw"/><div class="flex flex-col"><span class="font-headline-sm text-headline-sm text-primary tracking-tight font-semibold">Fındık Vadisi</span><span class="font-label-tag text-label-tag text-secondary uppercase tracking-widest">Çiftlik İşletmesi</span></div></div><div class="px-space-sm"><div class="p-space-sm rounded-lg bg-surface-container flex items-center justify-between"><div class="flex items-center gap-space-xs"><span class="w-2 h-2 rounded-full bg-secondary"></span><span class="font-label-md text-label-md text-on-surface">Hasat Sezonu 2024</span></div><span class="font-label-tag text-label-tag text-on-surface-variant font-medium">Aktif</span></div></div><nav class="flex flex-col gap-1" data-active-classes="bg-primary text-on-primary font-label-lg rounded-lg"><a aria-current="page" class="flex items-center px-space-md py-space-sm transition-colors bg-primary text-on-primary font-label-lg rounded-lg" data-path="yonetim-paneli-admin" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">space_dashboard</span>Genel Bakış</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-lg text-label-lg transition-colors" data-path="hasat-ve-stok-yonetimi" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">inventory_2</span>Hasat &amp; Stok Takibi</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-lg text-label-lg transition-colors" data-path="siparisler-ve-sevkiyat" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">local_shipping</span>Siparişler &amp; Sevkiyat</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-lg text-label-lg transition-colors" data-path="izlenebilirlik-ve-lot" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">qr_code_2</span>İzlenebilirlik &amp; Lot</a><a class="flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-lg text-label-lg transition-colors" data-path="ciftlik-ve-uretim-ayarlari" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">agriculture</span>Çiftlik Parametreleri</a></nav></div><div class="flex flex-col gap-space-sm px-space-sm pt-space-md"><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-md text-label-md transition-colors" data-path="anasayfa" href="#"><span class="material-symbols-outlined text-[18px] text-primary">storefront</span>Vitrine Geri Dön</a><div class="flex items-center gap-space-sm pt-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKcqpmyg8yL6yZ8cwVZlnon7DzuRpr747Kn-TnHNEmgeqPuVfCJkDjro3FqUvr132neRC7wVxYrLLnV2A9n1U2ykQ07ARwBTPyyPFhN2nsijYRIabEAT-rDU1OdL6Y_7wai9-nrwtlMk89jxStNvmaFI8nREOE_BtO8uJXI6XW9U5cAgvaGjpzoGc8xUmDCL8vnGHMZi6slg5_-KxPxCtd4LscR517Ug_RL3I9vC-EA4RG3aK3fJSFRg"/><div class="flex flex-col min-w-0 flex-1"><span class="font-label-md text-label-md text-on-surface truncate">Kemal Yılmaz</span><span class="font-body-sm text-[11px] text-outline">Baş Ziraatçi &amp; Yönetici</span></div><span class="material-symbols-outlined text-outline text-[18px] cursor-pointer hover:text-on-surface">logout</span></div></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-space-lg"><div class="flex items-center gap-space-md flex-1 max-w-lg"><div class="relative w-full"><input class="w-full pl-9 pr-space-md py-space-sm rounded-lg bg-surface-container-lowest font-body-sm text-body-sm text-on-surface placeholder:text-outline/70 focus:outline-none focus:ring-2 focus:ring-secondary/30 transition-all" placeholder="Parti no, sipariş kodu veya müşteri ara..." type="text"/><span class="material-symbols-outlined absolute left-2.5 top-1/2 -translate-y-1/2 text-outline text-[18px]">search</span></div></div><div class="flex items-center gap-space-md"><div class="hidden md:flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-secondary/10 text-secondary font-label-tag text-label-tag"><span class="material-symbols-outlined text-[16px]">cloud_done</span><span>Depolar Çevrimiçi</span></div><button aria-label="Bildirimler" class="p-space-sm rounded-full text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors relative"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error"></span></button><div class="flex items-center gap-space-sm pl-space-xs"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-2 ring-surface-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKcqpmyg8yL6yZ8cwVZlnon7DzuRpr747Kn-TnHNEmgeqPuVfCJkDjro3FqUvr132neRC7wVxYrLLnV2A9n1U2ykQ07ARwBTPyyPFhN2nsijYRIabEAT-rDU1OdL6Y_7wai9-nrwtlMk89jxStNvmaFI8nREOE_BtO8uJXI6XW9U5cAgvaGjpzoGc8xUmDCL8vnGHMZi6slg5_-KxPxCtd4LscR517Ug_RL3I9vC-EA4RG3aK3fJSFRg"/></div></div></header><main class="relative pt-20 bg-surface min-h-screen px-space-lg py-space-lg"><div class="flex flex-col w-full gap-space-lg pb-space-xl">
+<!-- Top Bar / Filter Ribbon -->
+<div class="flex flex-col xl:flex-row xl:items-center justify-between gap-space-md bg-surface-container-lowest p-space-md rounded-xl shadow-sm">
+<div class="flex flex-col gap-0.5">
+<div class="flex items-center gap-space-xs text-secondary font-label-tag text-label-tag uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+        Hasat Sezonu 2024 Analitiği
+      </div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface tracking-tight">Satış &amp; Operasyon Performansı</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Giresun Keşap Çiftliği • Gerçek zamanlı sipariş akışı ve hasat stok devir oranları</p>
+</div>
+<!-- Time Filter Pills & Action Group -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<div class="inline-flex p-1 bg-surface-container rounded-lg" id="period-selector">
+<button class="period-btn px-3 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-period="today" type="button">Bugün</button>
+<button class="period-btn px-3 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all" data-period="7days" type="button">Son 7 Gün</button>
+<button class="period-btn px-3 py-1.5 rounded-md font-label-md text-on-surface-variant hover:text-on-surface transition-all" data-period="month" type="button">Bu Ay</button>
+<button class="period-btn px-3 py-1.5 rounded-md font-label-md text-on-surface-variant hover:text-on-surface transition-all" data-period="year" type="button">Bu Yıl</button>
+<button class="period-btn px-3 py-1.5 rounded-md font-label-md text-label-md bg-primary text-on-primary shadow-sm font-semibold transition-all" data-period="season2024" type="button">Hasat 2024</button>
+</div>
+<div class="relative inline-block text-left" id="export-dropdown-wrapper">
+<button class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-variant text-primary font-label-lg text-label-lg transition-all" id="export-btn" type="button">
+<span class="material-symbols-outlined text-[18px]">download</span>
+<span>Dışa Aktar</span>
+<span class="material-symbols-outlined text-[16px]">expand_more</span>
+</button>
+<div class="hidden absolute right-0 mt-2 w-48 rounded-lg bg-surface-container-lowest shadow-xl p-1 z-30" id="export-menu">
+<button class="w-full text-left flex items-center gap-space-xs px-space-sm py-2 rounded-md hover:bg-surface-container text-on-surface font-body-sm text-body-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-secondary text-[18px]">table_chart</span>
+            Excel (.xlsx) Raporu
+          </button>
+<button class="w-full text-left flex items-center gap-space-xs px-space-sm py-2 rounded-md hover:bg-surface-container text-on-surface font-body-sm text-body-sm transition-colors" type="button">
+<span class="material-symbols-outlined text-error text-[18px]">picture_as_pdf</span>
+            Resmi Mali Özet (PDF)
+          </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary KPI Metrics Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-space-md">
+<!-- Card 1: Toplam Ciro -->
+<div class="relative overflow-hidden bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -top-4 w-24 h-24 rounded-full bg-primary-fixed/30 pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant tracking-wide uppercase">Toplam Ciro / Gelir</span>
+<span class="p-2 rounded-lg bg-surface-container text-primary">
+<span class="material-symbols-outlined text-[20px]">payments</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2 mb-space-xs">
+<span class="font-headline-xl text-headline-xl text-primary font-semibold tracking-tight">₺184.520</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center text-secondary font-label-md text-label-md bg-secondary-fixed/40 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[16px] mr-0.5">trending_up</span>
+          +%18.4
+        </span>
+<span class="font-body-sm text-body-sm text-outline">geçen döneme kıyasla</span>
+</div>
+</div>
+<!-- Card 2: Toplam Sipariş -->
+<div class="relative overflow-hidden bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -top-4 w-24 h-24 rounded-full bg-secondary-fixed/30 pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant tracking-wide uppercase">Toplam Sipariş</span>
+<span class="p-2 rounded-lg bg-surface-container text-secondary">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2 mb-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface font-semibold tracking-tight">428</span>
+<span class="font-body-sm text-body-sm text-outline">adet</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center text-secondary font-label-md text-label-md bg-secondary-fixed/40 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[16px] mr-0.5">trending_up</span>
+          +%12.1
+        </span>
+<span class="font-body-sm text-body-sm text-outline">382 teslimat tamamlandı</span>
+</div>
+</div>
+<!-- Card 3: Satılan Mahsul Miktarı -->
+<div class="relative overflow-hidden bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -top-4 w-24 h-24 rounded-full bg-tertiary-fixed/30 pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant tracking-wide uppercase">Satılan Fındık Miktarı</span>
+<span class="p-2 rounded-lg bg-surface-container text-tertiary">
+<span class="material-symbols-outlined text-[20px]">scale</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2 mb-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface font-semibold tracking-tight">1.840</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">kg</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center text-secondary font-label-md text-label-md bg-secondary-fixed/40 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[16px] mr-0.5">trending_up</span>
+          +%24.6
+        </span>
+<span class="font-body-sm text-body-sm text-outline">Sezon rekor hacmi</span>
+</div>
+</div>
+<!-- Card 4: Ortalama Sepet Tutarı -->
+<div class="relative overflow-hidden bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow">
+<div class="absolute -right-4 -top-4 w-24 h-24 rounded-full bg-primary-fixed-dim/20 pointer-events-none"></div>
+<div class="flex items-center justify-between mb-space-sm">
+<span class="font-label-md text-label-md text-on-surface-variant tracking-wide uppercase">Ortalama Sepet (AOV)</span>
+<span class="p-2 rounded-lg bg-surface-container text-primary-container">
+<span class="material-symbols-outlined text-[20px]">receipt_long</span>
+</span>
+</div>
+<div class="flex items-baseline gap-2 mb-space-xs">
+<span class="font-headline-xl text-headline-xl text-on-surface font-semibold tracking-tight">₺431</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center text-secondary font-label-md text-label-md bg-secondary-fixed/40 px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[16px] mr-0.5">north</span>
+          ₺51 artış
+        </span>
+<span class="font-body-sm text-body-sm text-outline">₺380 tabanından</span>
+</div>
+</div>
+</div>
+<!-- Bento Visual Analytics: Revenue Chart & Top Products -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg">
+<!-- Left: Satış ve Gelir Trend Grafiği (8 Cols) -->
+<div class="lg:col-span-8 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Ciro ve Kategori Dağılım Trendi</h2>
+<span class="material-symbols-outlined text-outline text-[18px]" title="Aylık brüt hacim ve fındık dışı organik yan ürün oranı">help_outline</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Hasat 2024 aylık gelişim • İşlenmiş Fındık vs Yan Ürünler</p>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary"></span>
+<span class="font-body-sm text-body-sm text-on-surface">Kavrulmuş/Çiğ Fındık</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary"></span>
+<span class="font-body-sm text-body-sm text-on-surface">Ezme &amp; Bal</span>
+</div>
+</div>
+</div>
+<!-- Custom SVG Area & Bar Interactive Chart -->
+<div class="w-full h-64 relative mt-space-md">
+<svg class="w-full h-full overflow-visible" fill="none" preserveaspectratio="none" viewbox="0 0 760 220">
+<defs>
+<lineargradient id="primaryAreaGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#553722" stop-opacity="0.28"></stop>
+<stop offset="100%" stop-color="#553722" stop-opacity="0.01"></stop>
+</lineargradient>
+<lineargradient id="secondaryAreaGrad" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#3c6843" stop-opacity="0.30"></stop>
+<stop offset="100%" stop-color="#3c6843" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="#f2dfd2" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="740" y1="30" y2="30"></line>
+<line stroke="#f2dfd2" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="740" y1="80" y2="80"></line>
+<line stroke="#f2dfd2" stroke-dasharray="4 4" stroke-width="1" x1="30" x2="740" y1="130" y2="130"></line>
+<line stroke="#f2dfd2" stroke-width="1" x1="30" x2="740" y1="180" y2="180"></line>
+<!-- Y-Axis Values -->
+<text fill="#82746d" font-family="Plus Jakarta Sans" font-size="11" x="5" y="34">₺50k</text>
+<text fill="#82746d" font-family="Plus Jakarta Sans" font-size="11" x="5" y="84">₺35k</text>
+<text fill="#82746d" font-family="Plus Jakarta Sans" font-size="11" x="5" y="134">₺20k</text>
+<text fill="#82746d" font-family="Plus Jakarta Sans" font-size="11" x="5" y="184">₺5k</text>
+<!-- Filled Area Paths -->
+<path d="M 60 160 C 140 145, 200 120, 280 95 C 360 70, 440 60, 520 40 C 600 50, 660 35, 720 25 L 720 180 L 60 180 Z" fill="url(#primaryAreaGrad)"></path>
+<path d="M 60 172 C 140 165, 200 150, 280 140 C 360 125, 440 115, 520 100 C 600 110, 660 90, 720 80 L 720 180 L 60 180 Z" fill="url(#secondaryAreaGrad)"></path>
+<!-- Smooth Trend Lines -->
+<path d="M 60 160 C 140 145, 200 120, 280 95 C 360 70, 440 60, 520 40 C 600 50, 660 35, 720 25" stroke="#553722" stroke-linecap="round" stroke-width="3"></path>
+<path d="M 60 172 C 140 165, 200 150, 280 140 C 360 125, 440 115, 520 100 C 600 110, 660 90, 720 80" stroke="#3c6843" stroke-dasharray="3 3" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Interactive Highlight Nodes -->
+<g class="transition-transform hover:scale-125 cursor-pointer">
+<circle cx="280" cy="95" fill="#553722" r="5" stroke="#ffffff" stroke-width="2"></circle>
+</g>
+<g class="transition-transform hover:scale-125 cursor-pointer">
+<circle cx="520" cy="40" fill="#553722" r="5" stroke="#ffffff" stroke-width="2"></circle>
+</g>
+<g class="transition-transform hover:scale-125 cursor-pointer">
+<circle cx="720" cy="25" fill="#3c6843" r="6" stroke="#ffffff" stroke-width="2"></circle>
+</g>
+</svg>
+<!-- X-Axis Labels -->
+<div class="flex justify-between pl-8 pr-4 pt-2 font-body-sm text-body-sm text-outline">
+<span>Mayıs</span>
+<span>Haziran</span>
+<span>Temmuz (Hasat Başlangıcı)</span>
+<span>Ağustos</span>
+<span>Eylül</span>
+<span class="text-primary font-medium">Ekim (Pik Ayı)</span>
+</div>
+</div>
+</div>
+<!-- Quick Context Strip below chart -->
+<div class="mt-space-lg pt-space-md bg-surface-container-low rounded-lg p-space-md flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary/15 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[22px]">eco</span>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface">Organik Hasat Katkısı</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Bu ay doğrudan çiftlik sepetleri genel hacmin %68.2'sini oluşturdu.</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-headline-sm text-headline-sm text-primary font-semibold">₺125.840</div>
+<div class="font-label-tag text-label-tag text-secondary uppercase">Fındık Ana Kategori</div>
+</div>
+</div>
+</div>
+<!-- Right: En Çok Satan Ürünler Sıralaması (4 Cols) -->
+<div class="lg:col-span-4 bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">En Çok Satanlar</h2>
+<span class="font-label-tag text-label-tag text-outline uppercase tracking-wider">Hacim Bazlı</span>
+</div>
+<div class="flex flex-col gap-space-md">
+<!-- Item 1 -->
+<div class="flex items-center gap-space-sm p-2 rounded-lg hover:bg-surface-container transition-colors">
+<img class="w-12 h-12 rounded-lg object-cover bg-surface-container" data-alt="Close-up luxury food photo of roasted Turkish Girasun hazelnuts in a natural clay bowl with warm golden studio lighting and soft linen texture" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7bOAQXDyM20XaUfI9bTy--fLeci5HrhIkjeGvVOezcpagKVFfypBegnO-wFgMmW1BH8ILIB3wSWK7qG5mM2qbbA-O2OvjqZTZA6awQ_Va_GvXNUxVIUz-O3n_8tiMIWgoHlliZH5j7x_NmvXErCZcU1VOE9pA8cFv-DLX1W6FEnuxcMI0No--SxKfnfDepcSx4C-W878S7Ob2OTX9rMAyUGpwMw_vinlx0XEWSvawEKy1Fg5gds2zoA"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Çifte Kavrulmuş Giresun Fındığı</span>
+<span class="font-label-md text-label-md text-primary font-bold">₺74.200</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-outline">
+<span>742 kg satıldı</span>
+<span class="text-secondary font-medium">%40.2 pay</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 82%;"></div>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="flex items-center gap-space-sm p-2 rounded-lg hover:bg-surface-container transition-colors">
+<img class="w-12 h-12 rounded-lg object-cover bg-surface-container" data-alt="Artisanal glass jar of pure stone ground smooth hazelnut butter with craft wooden lid against warm cream rustic backdrop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3YcSEFpPOPBdNugZA52t6TXJQZYmg2EOvBveLhW06Bx3r_Wa9siqXwl3CcgljL0XDbuWBA3kp4fkp4P6VkrzJCwmBoV33kHQK9XIWzk5AmsJbfIIPjXOoblqgt04Un51D_gXu88YCDoSqR-vy8KVluxubyk0q8j5aYL2Xb83s2YmFb3KvQ7oUdcJ_qyOsxNeFn5tunFnaVoAhco-IAXjzYQPPiVG8_wtj5c2adYPV9xxU_vFDykP0kw"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Şekersiz Taş Değirmen Fındık Ezmesi</span>
+<span class="font-label-md text-label-md text-primary font-bold">₺48.650</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-outline">
+<span>460 kavanoz</span>
+<span class="text-secondary font-medium">%26.3 pay</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 61%;"></div>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="flex items-center gap-space-sm p-2 rounded-lg hover:bg-surface-container transition-colors">
+<img class="w-12 h-12 rounded-lg object-cover bg-surface-container" data-alt="Organic golden raw wildflower blossom honey jar placed in an authentic wooden orchard crate with warm afternoon sunbeam" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBccLbstDMzhZGyw8aOXikTb3TBR3oe1LNhxHV3mG6_qoqc3vRt5-xcyk1Gx9u0U1TaR4dqBK6FiuWUa-DM9ExI5TC8GSldnAkhme9_9ZJtEkY3BHnxuPr8Otxk_nK2BK95PtrRfIyFE4XgUGxAwV-gTQ24ivVApiNR-Nv2U0e635VD1Y4Wbo5mjI3UoLxGzv976lVH0bWVZfsGqmt8wUqI_bQpesJFoIKNEqVCs4P1q6xbLGBMHXf8vg"/>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Yayla Çiçek Balı &amp; Fındık Karışımı</span>
+<span class="font-label-md text-label-md text-primary font-bold">₺31.900</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-outline">
+<span>190 kg</span>
+<span class="text-secondary font-medium">%17.2 pay</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-tertiary-container h-full rounded-full" style="width: 44%;"></div>
+</div>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="flex items-center gap-space-sm p-2 rounded-lg hover:bg-surface-container transition-colors">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[24px]">grain</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between mb-0.5">
+<span class="font-label-lg text-label-lg text-on-surface truncate">Vakumlu Natürel Çiğ Fındık (1kg)</span>
+<span class="font-label-md text-label-md text-primary font-bold">₺29.770</span>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm text-outline">
+<span>448 paket</span>
+<span class="text-secondary font-medium">%16.3 pay</span>
+</div>
+<div class="w-full bg-surface-container-high h-1.5 rounded-full mt-1.5 overflow-hidden">
+<div class="bg-outline h-full rounded-full" style="width: 38%;"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Action / Stock alert -->
+<div class="mt-space-md p-space-sm rounded-lg bg-surface-container flex items-center justify-between">
+<div class="flex items-center gap-space-xs text-on-surface">
+<span class="material-symbols-outlined text-secondary text-[20px]">inventory</span>
+<span class="font-label-md text-label-md">Ezme Rezervi: 120 adet kaldı</span>
+</div>
+<button class="font-label-tag text-label-tag text-primary uppercase font-bold hover:underline">Üretim Emri</button>
+</div>
+</div>
+</div>
+<!-- Operational Insights: Stock Turnover & Harvest Traceability Micro-Section -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Card: Stok Devir Hızı (Progress Ring visual) -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex items-center gap-space-md">
+<div class="relative w-20 h-20 flex-shrink-0">
+<svg class="w-20 h-20 transform -rotate-90" viewbox="0 0 36 36">
+<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3.5"></path>
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="88, 100" stroke-linecap="round" stroke-width="3.5"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold leading-none">%88</span>
+</div>
+</div>
+<div>
+<div class="font-title-md text-title-md text-on-surface font-semibold">Stok Devir Hızı</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Hasat edilen 2.100 kg ürünün %88'i paketlenip sevk aşamasına geldi.</div>
+<div class="mt-1 font-label-tag text-label-tag text-secondary uppercase font-semibold">Hızlı Döngü • Düşük Fire</div>
+</div>
+</div>
+<!-- Card: Şehir Bazlı Dağılım -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="font-title-md text-title-md text-on-surface font-semibold">En Çok Talep Gelen İller</span>
+<span class="material-symbols-outlined text-outline text-[20px]">local_shipping</span>
+</div>
+<div class="space-y-2">
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface">İstanbul (Avrupa + Anadolu)</span>
+<span class="font-label-md text-label-md text-primary font-bold">%44.2</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-primary h-full" style="width: 44.2%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface">Ankara (Çankaya, Gölbaşı)</span>
+<span class="font-label-md text-label-md text-secondary font-bold">%22.8</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full" style="width: 22.8%;"></div>
+</div>
+<div class="flex items-center justify-between text-body-sm font-body-sm">
+<span class="text-on-surface">İzmir &amp; Bursa</span>
+<span class="font-label-md text-label-md text-tertiary-container font-bold">%18.5</span>
+</div>
+<div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
+<div class="bg-tertiary-container h-full" style="width: 18.5%;"></div>
+</div>
+</div>
+</div>
+<!-- Harvest Traceability Card: Specialized Farm Component -->
+<div class="bg-surface-container-low p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden">
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label-tag text-label-tag uppercase text-secondary tracking-widest font-bold">Origin Traceability #24-GK</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold mt-0.5">Keşap / Giresun</h3>
+</div>
+<div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+</div>
+<div class="my-space-sm space-y-1 text-body-sm font-body-sm text-on-surface-variant">
+<div class="flex justify-between">
+<span>Ortalama Rakım:</span>
+<span class="font-medium text-on-surface">450 - 520 metre</span>
+</div>
+<div class="flex justify-between">
+<span>Nem Değeri:</span>
+<span class="font-medium text-on-surface">%5.4 (Kurutulmuş İdeal)</span>
+</div>
+<div class="flex justify-between">
+<span>Randıman Oranı:</span>
+<span class="font-medium text-secondary font-semibold">%52 Randıman</span>
+</div>
+</div>
+<div class="pt-space-xs text-outline font-label-tag text-label-tag tracking-wider flex items-center justify-between">
+<span>KONTROL: KEMAL YILMAZ</span>
+<span class="text-secondary flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>LOT ONAYLANDI</span>
+</div>
+</div>
+</div>
+<!-- Son Gelen Siparişler Hızlı Takip Tablosu -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm mb-space-md">
+<div>
+<div class="flex items-center gap-space-xs">
+<h2 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Son Gelen Siparişler</h2>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed/50 text-secondary font-label-tag text-label-tag font-bold">8 Yeni</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Gerçek zamanlı sevkiyat ve tahsilat takibi</p>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="relative">
+<input class="pl-8 pr-3 py-1.5 rounded-lg bg-surface-container text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:ring-1 focus:ring-primary" id="order-table-search" placeholder="Tabloda filtrele..." type="text"/>
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-outline text-[16px]">search</span>
+</div>
+<button class="p-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Tabloyu Yenile" type="button">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+</button>
+</div>
+</div>
+<!-- Table Container -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-md text-label-md uppercase tracking-wider">
+<th class="py-3 px-space-md rounded-l-lg">Sipariş No</th>
+<th class="py-3 px-space-md">Müşteri</th>
+<th class="py-3 px-space-md">Şehir</th>
+<th class="py-3 px-space-md">Satın Alınan Ürünler</th>
+<th class="py-3 px-space-md">Tutar</th>
+<th class="py-3 px-space-md">Ödeme</th>
+<th class="py-3 px-space-md">Sevkiyat Durumu</th>
+<th class="py-3 px-space-md text-right rounded-r-lg">Eylem</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container text-body-sm font-body-sm text-on-surface">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-md font-label-lg text-label-lg font-bold text-primary">#ORD-9842</td>
+<td class="py-space-md px-space-md">
+<div class="font-medium text-on-surface">Elif Sencer</div>
+<div class="text-[11px] text-outline">Bireysel Müşteri</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-outline">location_on</span>
+                İstanbul (Kadıköy)
+              </div>
+</td>
+<td class="py-space-md px-space-md max-w-xs truncate" title="2x Çifte Kavrulmuş Fındık (500g), 1x Fındık Ezmesi (320g)">
+<span class="font-medium">2x Çifte Kavrulmuş (500g)</span>, 1x Fındık Ezmesi
+            </td>
+<td class="py-space-md px-space-md font-label-lg text-label-lg font-bold text-on-surface">₺890,00</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-tag text-label-tag bg-secondary-fixed/50 text-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                ÖDENDİ
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-tag text-label-tag bg-surface-container-high text-primary font-bold">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span>
+                Kargoda (Yurtiçi)
+              </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="order-detail-btn px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md transition-colors" data-order="9842" type="button">
+                Detay
+              </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-md font-label-lg text-label-lg font-bold text-primary">#ORD-9841</td>
+<td class="py-space-md px-space-md">
+<div class="font-medium text-on-surface">Ahmet Tarık Kaya</div>
+<div class="text-[11px] text-outline">Kurumsal Sipariş</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-outline">location_on</span>
+                Ankara (Çankaya)
+              </div>
+</td>
+<td class="py-space-md px-space-md max-w-xs truncate" title="10x Vakumlu Natürel Çiğ Fındık (1kg)">
+<span class="font-medium">10x Natürel Çiğ (1kg)</span> (Ahşap Sandık)
+            </td>
+<td class="py-space-md px-space-md font-label-lg text-label-lg font-bold text-on-surface">₺3.450,00</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-tag text-label-tag bg-secondary-fixed/50 text-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                ÖDENDİ
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-tag text-label-tag bg-tertiary-fixed/40 text-tertiary-container font-bold">
+<span class="material-symbols-outlined text-[14px]">inventory_2</span>
+                Hazırlanıyor
+              </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="order-detail-btn px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md transition-colors" data-order="9841" type="button">
+                Detay
+              </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-md font-label-lg text-label-lg font-bold text-primary">#ORD-9840</td>
+<td class="py-space-md px-space-md">
+<div class="font-medium text-on-surface">Deniz Akpolat</div>
+<div class="text-[11px] text-outline">Abonelik (Aylık)</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-outline">location_on</span>
+                İzmir (Urla)
+              </div>
+</td>
+<td class="py-space-md px-space-md max-w-xs truncate" title="1x Şekersiz Fındık Ezmesi, 1x Organik Çiçek Balı">
+<span class="font-medium">1x Ezme (320g)</span>, 1x Çiçek Balı (450g)
+            </td>
+<td class="py-space-md px-space-md font-label-lg text-label-lg font-bold text-on-surface">₺520,00</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-tag text-label-tag bg-secondary-fixed/50 text-secondary font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+                ÖDENDİ
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-tag text-label-tag bg-secondary/15 text-secondary font-bold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                Teslim Edildi
+              </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="order-detail-btn px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md transition-colors" data-order="9840" type="button">
+                Detay
+              </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-container-low/60 transition-colors">
+<td class="py-space-md px-space-md font-label-lg text-label-lg font-bold text-primary">#ORD-9839</td>
+<td class="py-space-md px-space-md">
+<div class="font-medium text-on-surface">Zeynep Çelik</div>
+<div class="text-[11px] text-outline">Havale / EFT Bildirimi</div>
+</td>
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[15px] text-outline">location_on</span>
+                Bursa (Nilüfer)
+              </div>
+</td>
+<td class="py-space-md px-space-md max-w-xs truncate" title="3x Çifte Kavrulmuş Fındık (1kg)">
+<span class="font-medium">3x Çifte Kavrulmuş (1kg)</span>
+</td>
+<td class="py-space-md px-space-md font-label-lg text-label-lg font-bold text-on-surface">₺1.200,00</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-tag text-label-tag bg-error-container text-on-error-container font-bold">
+<span class="w-1.5 h-1.5 rounded-full bg-error"></span>
+                BEKLİYOR
+              </span>
+</td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full font-label-tag text-label-tag bg-surface-container text-outline font-bold">
+<span class="material-symbols-outlined text-[14px]">hourglass_empty</span>
+                Ödeme Onayı Bekliyor
+              </span>
+</td>
+<td class="py-space-md px-space-md text-right">
+<button class="order-detail-btn px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high text-primary font-label-md text-label-md transition-colors" data-order="9839" type="button">
+                Detay
+              </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Pagination / Summary Footer -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-sm pt-space-md mt-space-md">
+<span class="font-body-sm text-body-sm text-outline">Toplam 428 siparişten ilk 4 tanesi görüntüleniyor</span>
+<div class="flex items-center gap-space-xs">
+<button class="px-3 py-1 rounded-md bg-surface-container text-outline hover:text-on-surface text-body-sm font-body-sm transition-colors" disabled="">Önceki</button>
+<button class="px-3 py-1 rounded-md bg-primary text-on-primary text-body-sm font-body-sm font-medium">1</button>
+<button class="px-3 py-1 rounded-md bg-surface-container text-on-surface hover:bg-surface-container-high text-body-sm font-body-sm transition-colors">2</button>
+<button class="px-3 py-1 rounded-md bg-surface-container text-on-surface hover:bg-surface-container-high text-body-sm font-body-sm transition-colors">3</button>
+<span class="px-2 text-outline">...</span>
+<button class="px-3 py-1 rounded-md bg-surface-container text-on-surface hover:bg-surface-container-high text-body-sm font-body-sm transition-colors">43</button>
+<button class="px-3 py-1 rounded-md bg-surface-container text-on-surface hover:bg-surface-container-high text-body-sm font-body-sm transition-colors">Sonraki</button>
+</div>
+</div>
+</div>
+<!-- Interactive Slide-over / Modal for Order Quick Detail -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-on-surface/40 backdrop-blur-sm hidden" id="detail-modal">
+<div class="bg-surface-container-lowest max-w-lg w-full rounded-2xl shadow-2xl p-space-lg relative animate-in fade-in zoom-in-95 duration-150">
+<div class="flex items-center justify-between pb-space-sm">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[24px]">receipt</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold" id="modal-order-title">Sipariş #ORD-9842 Detayı</h3>
+</div>
+<button class="p-1 rounded-full text-outline hover:text-on-surface hover:bg-surface-container transition-colors" id="close-modal-btn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="space-y-space-md py-space-md">
+<div class="p-space-md rounded-lg bg-surface-container-low flex justify-between items-center">
+<div>
+<div class="font-label-md text-label-md text-outline">Kargo Takip No</div>
+<div class="font-label-lg text-label-lg font-bold text-on-surface">YK-78921849102-TR</div>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-secondary-fixed/60 text-secondary font-label-tag text-label-tag font-bold">Kargoya Verildi</span>
+</div>
+<div class="space-y-2">
+<div class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Mahsul Lot Eşleşmesi</div>
+<div class="p-2.5 rounded-lg bg-surface-container flex items-center justify-between text-body-sm font-body-sm">
+<span>Parti Kodu: <strong>LOT-2024-KESAP-04</strong></span>
+<span class="text-secondary font-medium">Randıman: %53.8</span>
+</div>
+</div>
+</div>
+<div class="flex justify-end gap-space-sm pt-space-xs">
+<button class="px-space-md py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-lg text-label-lg transition-colors" id="modal-close-action" type="button">Kapat</button>
+<button class="px-space-md py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-lg text-label-lg transition-colors flex items-center gap-1" type="button">
+<span class="material-symbols-outlined text-[18px]">print</span>
+          İrsaliye Yazdır
+        </button>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function () {
+    // 1. Time Filter Pill selection behavior
+    const periodButtons = document.querySelectorAll('.period-btn');
+    periodButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        periodButtons.forEach(b => {
+          b.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm', 'font-semibold');
+          b.classList.add('text-on-surface-variant');
+        });
+        btn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm', 'font-semibold');
+        btn.classList.remove('text-on-surface-variant');
+      });
+    });
+
+    // 2. Export Dropdown behavior
+    const exportBtn = document.getElementById('export-btn');
+    const exportMenu = document.getElementById('export-menu');
+    if (exportBtn && exportMenu) {
+      exportBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        exportMenu.classList.toggle('hidden');
+      });
+      document.addEventListener('click', () => {
+        exportMenu.classList.add('hidden');
+      });
+    }
+
+    // 3. Quick Detail Modal interactions
+    const detailButtons = document.querySelectorAll('.order-detail-btn');
+    const modal = document.getElementById('detail-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const modalCloseAction = document.getElementById('modal-close-action');
+    const modalTitle = document.getElementById('modal-order-title');
+
+    detailButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const orderId = btn.getAttribute('data-order');
+        if (modalTitle) modalTitle.textContent = `Sipariş #ORD-${orderId} Detayı`;
+        if (modal) modal.classList.remove('hidden');
+      });
+    });
+
+    const closeModal = () => {
+      if (modal) modal.classList.add('hidden');
+    };
+
+    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+    if (modalCloseAction) modalCloseAction.addEventListener('click', closeModal);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
+
+    // 4. Client-side instant filter for order rows
+    const searchInput = document.getElementById('order-table-search');
+    if (searchInput) {
+      searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+          const text = row.innerText.toLowerCase();
+          row.style.display = text.includes(query) ? '' : 'none';
+        });
+      });
+    }
+  })();
+</script></main></div></body></html>
