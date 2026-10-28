@@ -1,13 +1,14 @@
 {
-  "name": "findik-vadisi-organik-e-ticaret",
-  "version": "1.0.0",
-  "description": "Fındık Vadisi & Doğal Çiftlik - Giresun Taş Değirmen E-Ticaret ve İşletme Yönetim Platformu",
+  "name": "tuccarim-organik-e-ticaret",
+  "version": "2.0.0",
+  "description": "Tüccarım - Giresun Keşap Vadisi Organik Çiftlik E-Ticaret ve İşletme Yönetim Platformu",
   "scripts": {
     "start": "node dev-server.js",
     "dev": "node dev-server.js",
     "build": "echo 'Static build ready'"
   },
   "keywords": [
+    "tuccarim",
     "e-commerce",
     "organic",
     "hazelnut",
@@ -15,6 +16,6 @@
     "artisanal",
     "turkey"
   ],
-  "author": "Fındık Vadisi Çiftliği",
+  "author": "Tüccarım Çiftliği",
   "license": "MIT"
 }

@@ -1,12 +1,12 @@
-// Fındık Vadisi - State Management & LocalStorage Engine
+// Tüccarım - State Management & LocalStorage Engine
 import { INITIAL_PRODUCTS, INITIAL_CART, INITIAL_ORDERS, VALID_COUPONS } from "./data.js";
 
 const STORAGE_KEYS = {
-  PRODUCTS: "findik_vadisi_products",
-  CART: "findik_vadisi_cart",
-  ORDERS: "findik_vadisi_orders",
-  COUPON: "findik_vadisi_coupon",
-  FAVORITES: "findik_vadisi_favorites"
+  PRODUCTS: "tuccarim_products_v2",
+  CART: "tuccarim_cart_v2",
+  ORDERS: "tuccarim_orders_v2",
+  COUPON: "tuccarim_coupon_v2",
+  FAVORITES: "tuccarim_favorites_v2"
 };
 
 class Store {
@@ -447,7 +447,7 @@ class Store {
     const giftFee = giftWrap ? 35.0 : 0.0;
     const total = Math.max(0, subtotal + shippingFee + paymentFee - farmDiscount - couponDiscount - paymentDiscount + giftFee);
 
-    const orderNumber = "ORD-" + Math.floor(1000 + Math.random() * 9000);
+    const orderNumber = "TC-" + Math.floor(10000 + Math.random() * 90000);
     const trackingCode = `YK-${Math.floor(1000000000 + Math.random() * 9000000000)}-TR`;
 
     const now = new Date();

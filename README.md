@@ -1,108 +1,57 @@
-# 🌱 Fındık Vadisi & Doğal Çiftlik E-Ticaret Platformu
+# 🌰 Tüccarım — Organik Çiftlik & E-Ticaret Platformu
 
-Karadeniz'in kalbinden, Giresun Keşap Vadisi'nin asırlık taş değirmen zanaatıyla üretilen tescilli fındık ve doğal köy mahsullerini tüketiciyle buluşturan ve işletme süreçlerini tek merkezden yöneten **entegre, reaktif ve modern e-ticaret platformu**.
-
-Bu proje, Stitch tasarım sistemini ve **Artisan Harvest** tasarım dilini (Epilogue ve Plus Jakarta Sans tipografisi, sıcak toprak tonları, meşe odunu kavurma renk paleti) tam fonksiyonel bir web uygulamasına dönüştürür.
+Giresun Keşap Vadisi asırlık ocaklarından sofralara uzanan, **Quiet Luxury Agronomy** (Sessiz Lüks Tarım) tasarım anlayışıyla geliştirilmiş reaktif ve modern Tek Sayfa Uygulaması (SPA).
 
 ---
 
-## 🚀 Hızlı Başlangıç
+## 🎨 Tasarım Sistemi & Özellikler
 
-Projeyi çalıştırmak için hiçbir harici kütüphane veya ağır kurulum gerekmez (sıfır bağımlılık):
+- **Marka:** Tüccarım — Organik Çiftlik (Menşei: Giresun Keşap Vadisi, Parsel 04 • 480m Rakım)
+- **Tipografi:** Plus Jakarta Sans (Bütünsel, modern ve okunaklı zanaat tipografisi)
+- **Renk Paleti:**
+  - `Primary:` `#000000` (Obsidyen & Kömür)
+  - `Secondary:` `#855232` (Kavrulmuş Fındık & Bronz Toprak)
+  - `Surface:` `#fbf9f6` (Alabaster & Sıcak Keten)
+  - `Outline:` `#80756f` / `#d1c4bd` (Hafif mimari çizgiler)
 
-### Yöntem 1: Yerel HTTP Sunucusu ile (Önerilen)
-```bash
-# Proje dizininde:
+---
+
+## 📱 5 Entegre Ekran (SPA Görünümleri)
+
+1. **Mahsuller & Vitrin (`#katalog`):**
+   - 2024 hasadı öne çıkan mahsulleri (Çifte Kavrulmuş, Taş Değirmen Ezme, Çiğ Fındık, Soğuk Sıkım Yağ, Yayla Balı, Fındık Unu, Gurme Sandık).
+   - Kategori filtreleme (`all`, `nut`, `butter`, `oil`, `honey`), canlı arama, fiyata göre sıralama, gramaj seçimi ve hızlı sepete ekleme.
+   - Hızlı inceleme modalı, aflatoksin analiz raporu ve favorilere ekleme.
+2. **Sepet & Kasa (`#sepet`):**
+   - 3 adımlı sipariş süreci (1. Sepet & Adres, 2. Ödeme Onayı, 3. Paketleme).
+   - Kayıtlı adreslerden otomatik doldurma, özel çiftlik & hediye notu.
+   - Ücretsiz kargo eşiği (500 ₺ üzeri kargo bedava ve -45 ₺ çiftçi desteği indirimi).
+   - 3 ödeme yöntemi: Kredi Kartı (256-Bit SSL), Havale / EFT (%5 Nakit İndirimi), Kapıda Ödeme (+20 ₺).
+3. **Satış & Operasyon Analitiği (`#admin-analitik`):**
+   - Sol yönetici menüsü, Kemal Yılmaz kurucu profili.
+   - 4 Bento KPI kartı: Brüt Hasılat, Lojistik Akış, Ortalama Sepet, İade Oranı.
+   - Zaman periyodu filtreleri (Bugün, Son 7 Gün, Bu Ay, 2024 Hasadı).
+   - HTML5 Canvas dinamik gelir eğrisi grafiği ve kategori dağılım çubukları.
+   - En çok satan mahsuller tablosu ve canlı sipariş hareketleri (durum değiştirme ve CSV rapor indirme).
+4. **Mahsul & Fiyat Yönetimi (`#admin-stok`):**
+   - Toplam Çeşit, Aktif Satışta Olanlar, Kritik Stok ve Tükenenler sayaçları.
+   - Dinamik stok arama ve kategori filtreleme.
+   - Aktif/Pasif satış anahtarı, anlık kâr marjı hesaplama (% margin), fiyat geçmişi modalı.
+   - Yeni Mahsul Ekle / Düzenle çekmecesi (Drawer) ve Toplu Fiyat Güncelleme modalı.
+5. **Hasat Hikayemiz (`#ciftlik-hikayesi`):**
+   - 3 kuşaklık Keşap mirası, el hasadı, güneşte kurutma ve laboratuvar aflatoksin güvencesi.
+
+---
+
+## 🚀 Çalıştırma & Dağıtım
+
+### Yerel Geliştirme (Local):
+```powershell
 npm start
-# veya
-node server.js
 ```
-Tarayıcınızda otomatik olarak açılır: **`http://localhost:3000`**
+Tarayıcınızda: `http://localhost:3000`
 
-### Yöntem 2: Doğrudan Tarayıcıda Açma
-`index.html` dosyasını çift tıklayarak herhangi bir modern tarayıcıda doğrudan açabilirsiniz.
+### Vercel / Netlify Dağıtımı:
+Proje `vercel.json` ve `netlify.toml` dosyalarıyla saf statik SPA olarak yapılandırılmıştır. GitHub deponuza (`Ernalmdr/site`) pushlandığı anda Vercel tarafından otomatik derlenir ve yayına alınır.
 
----
-
-## 🌟 Öne Çıkan Özellikler ve Modüller
-
-### 1. 🛒 Müşteri Vitrini & Mahsul Kataloğu (`#katalog`)
-* **Kategori Filtreleme:** Çifte Kavrulmuş Fındık, Çiğ Tombul, Şekersiz Taş Değirmen Ezmesi, Soğuk Sıkım Fındık Yağı, Yayla & Kestane Balı, Köy Pekmezi ve Gurme Paketler.
-* **Gramaj & Fiyat Senkronizasyonu:** Her ürün kartında gramaj seçimi (`250g`, `500g`, `1kg`, vb.) yapıldığında fiyat etiketi anında ve dinamik olarak yeniden hesaplanır.
-* **Canlı Arama ve Sıralama:** Başlıkta veya katalogda yazılan arama terimine göre anında filtreleme; fiyata göre artan/azalan ve popülerlik sıralaması.
-* **Hızlı İncele (Quick View Modal):** Ürünün yüksek çözünürlüklü görseli, besin değerleri (Kalori, Yağ, Protein), parti (lot) numarası, rakım bilgisi ve doğrudan sepete ekleme.
-* **Haftanın Çiftlik Paketi:** Tek tıkla "Vadiden Sofraya Gurme Tadım Paketi"ni sepete ekleme.
-* **Hasat İzlenebilirliği & Laboratuvar Raporu:** Coğrafi işaretli Keşap fındığı için TÜBİTAK/ISO analiz raporu sorgulama penceresi.
-
-### 2. 🧺 Sepet & Güvenli Ödeme (`#sepet`)
-* **Reaktif Alışveriş Sepeti:** Miktar artırma/azaltma, sepetten ürün silme, anlık ara toplam ve adet sayacı.
-* **Ücretsiz Kargo İlerleme Çubuğu:** 500 ₺ limitine göre kalan tutarı veya kazanılan kargo hakkını canlı gösteren interaktif bar.
-* **Kupon & İndirim Motoru:**
-  * `HASAT2024` → %15 Yeni Hasat İndirimi
-  * `FINDIK10` → %10 Köy Dayanışma İndirimi
-  * `GURME75` → 75 ₺ Sabit İndirim
-* **Ahşap Hediye Sandığı Seçeneği:** +35 ₺ opsiyonel ahşap koruma sandığı ve not ekleme.
-* **Teslimat & Kargo Tercihi:** Çiftlik Doğrudan Kargo (Ücretsiz) veya Aynı Gün Ekspres Kargo (+45 ₺).
-* **3 Farklı Ödeme Yöntemi:**
-  * **Kredi / Banka Kartı:** Canlı kart numarası formatlayıcı (4 hanede bir boşluk), kart markası simgesi, son kullanma ve CVV güvenlik kontrolleri.
-  * **Havale / EFT:** Tek tıkla panoya kopyalanabilir Ziraat Bankası IBAN ve %5 ek indirim avantajı.
-  * **Kapıda Ödeme:** Kurye kapıya geldiğinde nakit veya temassız POS ile ödeme.
-* **Sipariş Oluşturma:** Siparişi Tamamla dendiğinde otomatik **Sipariş Takip Kodu** (`YK-XXXXXXXXX-TR`) ve Benzersiz Sipariş ID üretilir, stoktan düşülür ve sipariş anında Yönetici Paneline iletilir.
-
-### 3. 📊 Satış & Analitik Paneli (`#admin-analitik`)
-* **Dinamik KPI Kartları:** Toplam Ciro, Toplam Sipariş Adedi, Ortalama Sepet Tutarı ve Taş Değirmen Kapasite Kullanımı.
-* **Zaman Filtreleri:** Bugün, Son 7 Gün, Bu Ay, Bu Yıl ve Hasat 2024 seçeneklerine göre anlık veri tazeleme.
-* **HTML5 Canvas Trend Grafiği:** Günlük ciro ve kargo hacmini gösteren çift eksenli yumuşak eğri grafiği.
-* **Canlı Sipariş Takip Tablosu:**
-  * Müşterinin verdiği son siparişler burada anında listelenir.
-  * Sipariş durumu (Hazırlanıyor → Kargoya Verildi → Teslim Edildi) tek tıkla güncellenir ve müşteriye yansır.
-  * **İrsaliye ve Sipariş Detayı Modalı:** Müşteri adresi, telefon, parti kodu ve resmi irsaliye yazdırma (`window.print()`).
-* **Excel (CSV) Dışa Aktarım:** Tek tıkla tüm sipariş listesini `.csv` tablosu olarak bilgisayara indirme.
-
-### 4. 📦 Fiyat & Stok Yönetimi (`#admin-stok`)
-* **Hızlı Fiyat Güncelleme (Inline Edit):** Tablodaki herhangi bir ürünün fiyatını değiştirip enter'a bastığınızda, **müşteri vitrinindeki fiyat anında güncellenir!**
-* **Stok Seviyesi Görselleştirmesi:** 500 adet üzerinden doluluk çubuğu; 50 adedin altına inen mahsullerde kırmızı "Kritik Stok" alarmı.
-* **Toplu Fiyat Güncelleme Modalı:** Seçili kategoriye veya tüm ürünlere tek seferde yüzdesel (%10, %15) veya sabit (₺50) fiyat artışı/indirimi uygulama.
-* **+ Yeni Ürün Ekleme Çekmecesi (Slide-Over Drawer):** Çiftliğin yeni mahsulünü kategori, lot numarası, maliyet, fiyat ve stok bilgileriyle sisteme ekleme; kaydedildiği an vitrinde canlıya çıkar.
-
-### 5. 📜 Çiftlik Mirası & Hikayesi (`#ciftlik-hikayesi`)
-* Giresun Keşap Vadisi'nin 3 kuşaklık üretim mirası, granit taş değirmen zanaatı, kimyasalsız üretim ilkeleri ve uluslararası kalite sertifikaları (Coğrafi İşaret, İTU, ISO 22000, Organik Tarım No: 28-341).
-
----
-
-## 🎨 Tasarım Sistemi & Kimlik (Artisan Harvest)
-
-| Öğe | Değer | Açıklama |
-| :--- | :--- | :--- |
-| **Ana Başlık Fontu** | `Epilogue` | Zanaatkarlık ve güçlü tipografik karakter |
-| **Gövde & Veri Fontu** | `Plus Jakarta Sans` | Tablolar, fiyatlar ve veri netliği |
-| **Primary Renk** | `#553722` / `#6F4E37` | Kavrulmuş Giresun Fındığı ve kabuk tonu |
-| **Secondary Renk** | `#3C6843` / `#2E5A36` | Karadeniz fındık yaprağı ve organik yeşil |
-| **Tertiary Renk** | `#613200` / `#D97706` | Ham orman ve yayla balı kehribarı |
-| **Canvas / Zemin** | `#FFF8F5` | Sıcak süt ve doğal un parşömeni |
-
----
-
-## 📁 Proje Dizin Yapısı
-
-```
-stitch_organik_r_n_e_ticaret_platformu/
-├── index.html                   # Ana tek sayfa uygulama (SPA)
-├── server.js                    # Sıfır bağımlılıklı yerel HTTP sunucusu
-├── package.json                 # Proje bilgisi ve npm komutları
-├── js/
-│   ├── data.js                  # Başlangıç ürünleri, sepet ve sipariş verileri
-│   ├── store.js                 # LocalStorage & Reaktif Event Bus motoru
-│   └── app.js                   # Yönlendirme, görünüm kontrolcüleri ve etkileşimler
-├── stitch_organik_r_n_e_ticaret_platformu/  # Orijinal Stitch tasarım kaynakları
-│   ├── artisan_harvest/DESIGN.md
-│   ├── organik_r_nler_f_nd_k_katalo_u/
-│   ├── sepet_g_venli_deme/
-│   ├── r_n_fiyat_y_netimi_i_letme_paneli/
-│   └── sat_i_statistikleri_analitik_paneli/
-└── README.md                    # Proje dokümantasyonu
-```
-
----
-
-© 2026 Fındık Vadisi Doğal Çiftlik İşletmesi.
+- **Canlı Adres:** https://tuccarim.vercel.app/

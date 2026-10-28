@@ -1,4 +1,6 @@
-// Fındık Vadisi - Modern Application Controller
+// Tüccarım - Organik Çiftlik & E-Ticaret Platformu
+// Modern Application Controller (Quiet Luxury Agronomy Theme)
+
 import { store } from "./store.js";
 import { SAVED_ADDRESSES, ANALYTICS_PERIOD_DATA } from "./data.js";
 
@@ -48,9 +50,9 @@ function navigateTo(route) {
   document.querySelectorAll(".nav-link").forEach((link) => {
     const linkRoute = link.getAttribute("data-route");
     if (linkRoute === route) {
-      link.className = "nav-link px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-label-lg text-label-lg transition-all shadow-xs font-bold";
+      link.className = "nav-link text-[14px] font-bold text-primary border-b-2 border-primary pb-1 transition-all";
     } else {
-      link.className = "nav-link px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-lg text-label-lg transition-all";
+      link.className = "nav-link text-[14px] font-medium text-on-surface-variant hover:text-on-surface transition-all";
     }
   });
 
@@ -58,9 +60,9 @@ function navigateTo(route) {
   document.querySelectorAll(".admin-nav-link").forEach((link) => {
     const linkRoute = link.getAttribute("data-admin-route");
     if (linkRoute === route) {
-      link.className = "admin-nav-link flex items-center px-space-md py-space-sm rounded-lg bg-primary text-on-primary font-label-lg text-label-lg transition-colors shadow-xs font-bold";
+      link.className = "admin-nav-link flex items-center gap-space-sm px-space-sm py-2 rounded text-[13px] bg-surface-container-highest text-on-surface font-semibold transition-colors";
     } else {
-      link.className = "admin-nav-link flex items-center px-space-md py-space-sm rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface font-label-lg text-label-lg transition-colors";
+      link.className = "admin-nav-link flex items-center gap-space-sm px-space-sm py-2 rounded text-[13px] text-on-surface-variant hover:bg-surface-container hover:text-on-surface transition-colors font-medium";
     }
   });
 
@@ -96,12 +98,12 @@ function showToast(message, type = "success") {
   const toast = document.createElement("div");
   const isError = type === "error";
   const icon = isError ? "error" : type === "info" ? "info" : "check_circle";
-  const borderCol = isError ? "border-error/40 bg-error-container text-on-error-container" : "border-secondary/40 bg-surface-container-lowest text-on-surface shadow-xl";
+  const borderCol = isError ? "border-error/40 bg-error-container text-on-error-container" : "border-outline-variant/40 bg-surface-container-lowest text-on-surface shadow-xl";
 
   toast.className = `flex items-center gap-3 p-3.5 rounded-xl border ${borderCol} pointer-events-auto transition-all transform duration-300 translate-y-4 opacity-0`;
   toast.innerHTML = `
     <span class="material-symbols-outlined text-[20px] ${isError ? 'text-error' : 'text-secondary'}">${icon}</span>
-    <span class="font-body-sm text-[13px] font-semibold flex-1 leading-snug">${message}</span>
+    <span class="text-[13px] font-semibold flex-1 leading-snug">${message}</span>
     <button class="text-outline hover:text-on-surface p-1">&times;</button>
   `;
 
@@ -123,13 +125,12 @@ function showToast(message, type = "success") {
 
 // --- CATALOG CONTROLLER ---
 let activeCategoryFilter = "all";
-let activeWeightFilter = "all";
 let activeSortOrder = "featured";
 let activeCatalogSearch = "";
 
 function renderCatalog() {
   const container = document.getElementById("catalog-products-container");
-  const countSpan = document.getElementById("catalog-count");
+  const countBadge = document.getElementById("catalog-count-badge");
   if (!container) return;
 
   // Filter only active products for the customer catalog
@@ -140,22 +141,14 @@ function renderCatalog() {
     products = products.filter((p) => p.category === activeCategoryFilter);
   }
 
-  // Filter Weight tag
-  if (activeWeightFilter === "kavanoz") {
-    products = products.filter((p) => p.category === "ezme" || p.name.includes("Kavanoz"));
-  } else if (activeWeightFilter === "cuval") {
-    products = products.filter((p) => p.category === "kavrulmus" || p.category === "cig");
-  } else if (activeWeightFilter === "yagbal") {
-    products = products.filter((p) => p.category === "yag" || p.category === "bal");
-  }
-
   // Search Filter
   if (activeCatalogSearch) {
     const q = activeCatalogSearch.toLowerCase();
     products = products.filter((p) =>
       p.name.toLowerCase().includes(q) ||
       p.origin.toLowerCase().includes(q) ||
-      p.description.toLowerCase().includes(q)
+      p.description.toLowerCase().includes(q) ||
+      p.lot.toLowerCase().includes(q)
     );
   }
 
@@ -168,22 +161,21 @@ function renderCatalog() {
     products.sort((a, b) => b.rating - a.rating);
   }
 
-  if (countSpan) countSpan.textContent = products.length;
+  if (countBadge) countBadge.textContent = `${products.length} Seçkin Mahsul`;
 
   if (products.length === 0) {
     container.innerHTML = `
       <div class="col-span-full py-16 text-center flex flex-col items-center gap-3">
         <span class="material-symbols-outlined text-outline text-[48px]">search_off</span>
-        <h4 class="font-title-md text-on-surface font-bold">Aradığınız kriterlere uygun mahsul bulunamadı</h4>
-        <p class="font-body-sm text-on-surface-variant">Filtreleri temizleyerek veya farklı bir arama yaparak tekrar deneyin.</p>
-        <button id="btn-reset-filters" class="mt-2 px-5 py-2 rounded-xl bg-primary text-on-primary font-label-md">Tüm Mahsulleri Göster</button>
+        <h4 class="text-[16px] text-on-surface font-bold">Aradığınız kriterlere uygun mahsul bulunamadı</h4>
+        <p class="text-[13px] text-on-surface-variant">Filtreleri temizleyerek veya farklı bir arama yaparak tekrar deneyin.</p>
+        <button id="btn-reset-filters" class="mt-2 px-5 py-2 rounded-lg bg-primary text-on-primary text-[13px] font-semibold hover:bg-secondary transition-colors">Tüm Mahsulleri Göster</button>
       </div>
     `;
     const resetBtn = document.getElementById("btn-reset-filters");
     if (resetBtn) {
       resetBtn.addEventListener("click", () => {
         activeCategoryFilter = "all";
-        activeWeightFilter = "all";
         activeCatalogSearch = "";
         const searchInput = document.getElementById("header-search-input");
         if (searchInput) searchInput.value = "";
@@ -201,78 +193,71 @@ function renderCatalog() {
     // Weight switchers
     const weightsHtml = product.weights && product.weights.length > 1
       ? `
-        <div class="flex items-center gap-1 p-1 rounded-lg bg-surface-container-low mb-2">
-          ${product.weights.map((w, idx) => `
-            <button class="prod-weight-btn flex-1 py-1 rounded font-label-md text-[11px] transition-all ${w.default ? 'bg-primary text-on-primary font-bold shadow-xs' : 'text-on-surface-variant hover:bg-surface-container-high'}"
-              data-prod-id="${product.id}"
-              data-weight-label="${w.label}"
-              data-weight-price="${w.price}">
-              ${w.label}
-            </button>
-          `).join("")}
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Gramaj</span>
+          <div class="inline-flex gap-1 bg-surface-container-low p-0.5 rounded">
+            ${product.weights.map((w, idx) => `
+              <button class="weight-opt px-2.5 py-1 text-[11px] rounded transition-all ${w.default ? 'bg-surface-container-lowest text-on-surface shadow-xs font-semibold' : 'text-on-surface-variant hover:text-on-surface font-medium'}"
+                data-prod-id="${product.id}"
+                data-weight-label="${w.label}"
+                data-weight-price="${w.price}">
+                ${w.label}
+              </button>
+            `).join("")}
+          </div>
         </div>
       `
-      : "";
+      : `
+        <div class="flex items-center justify-between">
+          <span class="text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold">Ambalaj</span>
+          <span class="text-[12px] text-on-surface font-medium">${defaultWeight.label}</span>
+        </div>
+      `;
 
     return `
-      <article class="product-card flex flex-col bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow group border border-outline-variant/30" data-id="${product.id}">
-        <!-- Image Area -->
-        <div class="relative w-full aspect-square bg-surface-container-low overflow-hidden cursor-pointer btn-open-detail" data-id="${product.id}">
-          <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt="${product.name}" src="${product.image}"/>
-          <span class="absolute top-3 left-3 px-space-sm py-0.5 rounded-full bg-secondary text-on-secondary font-label-tag text-label-tag uppercase tracking-wide font-bold shadow-xs">
-            ${product.badge || "Yeni Mahsul"}
-          </span>
-          <button class="btn-favorite absolute top-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur-sm ${isFav ? 'text-error' : 'text-on-surface-variant hover:text-primary'} flex items-center justify-center transition-colors shadow-xs" data-id="${product.id}">
-            <span class="material-symbols-outlined text-[18px]" style="${isFav ? "font-variation-settings: 'FILL' 1;" : ''}">favorite</span>
-          </button>
-          <div class="absolute bottom-3 left-3 px-space-xs py-0.5 rounded bg-surface-container-lowest/90 font-label-tag text-label-tag text-on-surface-variant shadow-xs">
-            ${product.lot} · ${product.altitude}
+      <article class="product-card group bg-surface-container-lowest rounded-xl p-space-md shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between border border-outline-variant/30" data-id="${product.id}">
+        <div>
+          <!-- Visual Container -->
+          <div class="relative w-full aspect-[4/3] rounded-lg overflow-hidden bg-surface-container-low mb-space-md cursor-pointer btn-open-detail" data-id="${product.id}">
+            <img class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500" alt="${product.name}" src="${product.image}"/>
+            <span class="absolute top-3 left-3 px-2 py-0.5 rounded bg-surface/90 backdrop-blur text-secondary text-[11px] uppercase font-semibold">
+              ${product.badge || "Yeni Mahsul"}
+            </span>
+            <span class="absolute top-3 right-3 text-on-surface-variant text-[11px] bg-surface-container-low/90 backdrop-blur px-2 py-0.5 rounded font-mono">
+              ${product.lot}
+            </span>
+            <button class="btn-favorite absolute bottom-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur ${isFav ? 'text-error' : 'text-on-surface-variant hover:text-secondary'} flex items-center justify-center transition-colors shadow-xs" data-id="${product.id}" title="Favorilere Ekle">
+              <span class="material-symbols-outlined text-[18px]" style="${isFav ? "font-variation-settings: 'FILL' 1;" : ''}">favorite</span>
+            </button>
           </div>
-        </div>
 
-        <!-- Details Area -->
-        <div class="p-space-md flex flex-col flex-1 justify-between gap-space-sm">
-          <div>
-            <div class="flex items-center justify-between gap-space-xs mb-1">
-              <span class="font-label-tag text-label-tag text-secondary uppercase font-bold">${product.tag || "Organik Sertifikalı"}</span>
-              <div class="flex items-center gap-0.5 text-tertiary">
-                <span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
-                <span class="font-label-md text-label-md font-bold text-on-surface">${product.rating.toFixed(1)}</span>
-                <span class="font-body-sm text-[11px] text-outline">(${product.reviewsCount})</span>
-              </div>
-            </div>
-            
-            <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold group-hover:text-primary transition-colors cursor-pointer btn-open-detail" data-id="${product.id}">
+          <!-- Product Details -->
+          <div class="flex items-start justify-between gap-space-xs mb-1">
+            <h3 class="text-[17px] font-semibold text-on-surface group-hover:text-secondary transition-colors cursor-pointer btn-open-detail" data-id="${product.id}">
               ${product.name}
             </h3>
-            <p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mt-1">
-              ${product.description}
-            </p>
           </div>
+          <p class="text-[13px] text-on-surface-variant mb-space-sm line-clamp-2 leading-relaxed">
+            ${product.description}
+          </p>
+        </div>
 
-          <!-- Weights Selector -->
+        <div class="mt-space-sm pt-space-sm border-t border-outline-variant/20 flex flex-col gap-space-sm">
+          <!-- Weight selector -->
           ${weightsHtml}
 
-          <!-- Price & Add To Cart -->
-          <div class="pt-space-xs flex items-center justify-between gap-space-sm border-t border-outline-variant/20">
-            <div class="flex flex-col">
-              ${product.oldPrice ? `<span class="font-body-sm text-[12px] text-outline line-through">${product.oldPrice.toFixed(0)} ₺</span>` : ""}
-              <span class="card-price font-headline-sm text-headline-sm text-primary font-bold" data-current-price="${defaultWeight.price}">
+          <!-- Price & Add Button -->
+          <div class="flex items-center justify-between mt-1">
+            <div>
+              <span class="text-[11px] text-on-surface-variant block font-medium">Birim Fiyat</span>
+              <span class="product-price text-[22px] text-on-surface font-bold tracking-tight" data-current-price="${defaultWeight.price}">
                 ${defaultWeight.price.toFixed(0)} ₺
               </span>
             </div>
-
-            <!-- Quantity Stepper & Add Button -->
-            <div class="flex items-center gap-space-xs">
-              <div class="flex items-center rounded-lg bg-surface-container border border-outline-variant/30">
-                <button class="btn-card-minus w-7 h-7 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors font-bold text-sm">−</button>
-                <span class="card-qty-val font-label-md text-label-md px-1.5 text-on-surface font-semibold">1</span>
-                <button class="btn-card-plus w-7 h-7 flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors font-bold text-sm">+</button>
-              </div>
-              <button class="btn-add-to-cart p-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary transition-all flex items-center justify-center shadow-xs hover:scale-105" data-id="${product.id}" title="Sepete Ekle">
-                <span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
-              </button>
-            </div>
+            <button class="add-to-cart-btn px-space-md py-2.5 rounded bg-primary hover:bg-secondary text-on-primary text-[13px] font-semibold transition-colors duration-200 flex items-center gap-1.5 shadow-sm active:scale-95" data-id="${product.id}">
+              <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+              <span>Sepete Ekle</span>
+            </button>
           </div>
         </div>
       </article>
@@ -285,31 +270,16 @@ function renderCatalog() {
     const product = store.getProductById(prodId);
     let selectedWeightLabel = product?.weights?.find((w) => w.default)?.label || product?.weights?.[0]?.label || "500g";
     let selectedPrice = product?.weights?.find((w) => w.default)?.price || product?.price || 0;
-    let qty = 1;
 
-    const qtySpan = card.querySelector(".card-qty-val");
-    const priceSpan = card.querySelector(".card-price");
-
-    // Stepper
-    card.querySelector(".btn-card-plus")?.addEventListener("click", () => {
-      qty++;
-      if (qtySpan) qtySpan.textContent = qty;
-    });
-
-    card.querySelector(".btn-card-minus")?.addEventListener("click", () => {
-      if (qty > 1) {
-        qty--;
-        if (qtySpan) qtySpan.textContent = qty;
-      }
-    });
+    const priceSpan = card.querySelector(".product-price");
 
     // Weight switchers
-    card.querySelectorAll(".prod-weight-btn").forEach((btn) => {
+    card.querySelectorAll(".weight-opt").forEach((btn) => {
       btn.addEventListener("click", () => {
-        card.querySelectorAll(".prod-weight-btn").forEach((b) => {
-          b.className = "prod-weight-btn flex-1 py-1 rounded font-label-md text-[11px] text-on-surface-variant hover:bg-surface-container-high transition-colors";
+        card.querySelectorAll(".weight-opt").forEach((b) => {
+          b.className = "weight-opt px-2.5 py-1 text-[11px] rounded transition-all text-on-surface-variant hover:text-on-surface font-medium";
         });
-        btn.className = "prod-weight-btn flex-1 py-1 rounded font-label-md text-[11px] bg-primary text-on-primary font-bold shadow-xs";
+        btn.className = "weight-opt px-2.5 py-1 text-[11px] rounded transition-all bg-surface-container-lowest text-on-surface shadow-xs font-semibold";
 
         selectedWeightLabel = btn.getAttribute("data-weight-label");
         selectedPrice = parseFloat(btn.getAttribute("data-weight-price"));
@@ -318,153 +288,120 @@ function renderCatalog() {
     });
 
     // Add to cart
-    card.querySelector(".btn-add-to-cart")?.addEventListener("click", () => {
-      if (product) {
-        store.addToCart(product, selectedWeightLabel, qty);
-        qty = 1;
-        if (qtySpan) qtySpan.textContent = "1";
-      }
+    card.querySelector(".add-to-cart-btn")?.addEventListener("click", () => {
+      store.addToCart(product, selectedWeightLabel, 1);
     });
 
-    // Persistent favorite toggle
+    // Favorite toggle
     card.querySelector(".btn-favorite")?.addEventListener("click", (e) => {
       e.stopPropagation();
-      const isNowFav = store.toggleFavorite(prodId);
-      const icon = e.currentTarget.querySelector("span");
-      if (isNowFav) {
-        icon.style.fontVariationSettings = "'FILL' 1";
-        e.currentTarget.classList.add("text-error");
-        e.currentTarget.classList.remove("text-on-surface-variant");
-        store.notifyToast(`"${product.name}" favorilerinize eklendi!`, "info");
-      } else {
-        icon.style.fontVariationSettings = "'FILL' 0";
-        e.currentTarget.classList.remove("text-error");
-        e.currentTarget.classList.add("text-on-surface-variant");
-        store.notifyToast(`"${product.name}" favorilerden çıkarıldı.`, "info");
+      const isNowFav = store.toggleFavorite(product.id);
+      const icon = card.querySelector(".btn-favorite span");
+      if (icon) {
+        icon.style.fontVariationSettings = isNowFav ? "'FILL' 1" : "";
+        card.querySelector(".btn-favorite").className = `btn-favorite absolute bottom-3 right-3 w-8 h-8 rounded-full bg-surface-container-lowest/90 backdrop-blur ${isNowFav ? 'text-error' : 'text-on-surface-variant hover:text-secondary'} flex items-center justify-center transition-colors shadow-xs`;
       }
     });
 
-    // Open detail modal
+    // Open detail
     card.querySelectorAll(".btn-open-detail").forEach((el) => {
-      el.addEventListener("click", () => openQuickView(prodId));
+      el.addEventListener("click", () => {
+        openQuickViewModal(product);
+      });
     });
   });
 }
 
 function updateCategoryPills() {
-  document.querySelectorAll(".cat-pill").forEach((btn) => {
-    const cat = btn.getAttribute("data-cat");
+  document.querySelectorAll(".filter-btn").forEach((btn) => {
+    const cat = btn.getAttribute("data-category");
     if (cat === activeCategoryFilter) {
-      btn.className = "cat-pill px-space-md py-space-sm rounded-full bg-primary text-on-primary font-label-md text-label-md whitespace-nowrap shadow-xs transition-all font-bold";
+      btn.className = "filter-btn active px-4 py-2 rounded text-[13px] transition-all duration-200 bg-primary text-on-primary font-medium shadow-sm";
     } else {
-      btn.className = "cat-pill px-space-md py-space-sm rounded-full bg-surface-container-high text-on-surface-variant hover:text-on-surface hover:bg-surface-variant font-label-md text-label-md whitespace-nowrap transition-all";
+      btn.className = "filter-btn px-4 py-2 rounded text-[13px] transition-all duration-200 bg-surface-container-low hover:bg-surface-container text-on-surface-variant font-medium";
     }
   });
 }
 
 // --- QUICK VIEW MODAL ---
-function openQuickView(productId) {
-  const product = store.getProductById(productId);
-  if (!product) return;
-
+function openQuickViewModal(product) {
   const modal = document.getElementById("quick-view-modal");
   const content = document.getElementById("quick-view-content");
   if (!modal || !content) return;
 
-  let activeModalWeight = product.weights?.find((w) => w.default) || product.weights?.[0];
+  const weights = product.weights || [{ label: "500g", price: product.price }];
+  let activeModalWeight = weights.find((w) => w.default) || weights[0];
   let modalQty = 1;
 
   content.innerHTML = `
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
-      <div class="aspect-square rounded-2xl overflow-hidden bg-surface-container border border-outline-variant/30">
-        <img class="w-full h-full object-cover" alt="${product.name}" src="${product.image}"/>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+      <div class="aspect-square rounded-xl bg-surface-container-low overflow-hidden">
+        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover"/>
       </div>
-      <div class="flex flex-col gap-3">
-        <div class="flex items-center gap-2">
-          <span class="px-2.5 py-0.5 rounded-full bg-secondary/15 text-secondary font-label-tag text-xs font-bold">${product.tag || "Organik Sertifikalı"}</span>
-          <span class="text-outline text-xs">•</span>
-          <span class="text-on-surface-variant font-label-md text-xs">${product.origin}</span>
+      <div class="flex flex-col justify-between gap-space-sm">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="px-2 py-0.5 rounded bg-secondary/15 text-secondary text-[11px] font-bold uppercase">${product.tag || 'Organik Mahsul'}</span>
+            <span class="text-on-surface-variant text-[11px] font-mono">${product.lot}</span>
+          </div>
+          <h2 class="text-[22px] font-bold text-on-surface">${product.name}</h2>
+          <p class="text-[12px] text-secondary font-semibold mt-0.5">${product.origin} • ${product.altitude}</p>
+          <p class="text-[13px] text-on-surface-variant mt-3 leading-relaxed">${product.details || product.description}</p>
+          
+          <!-- Nutrition info -->
+          <div class="grid grid-cols-3 gap-2 p-2.5 rounded-lg bg-surface-container-low mt-4 text-center text-[11px]">
+            <div>
+              <span class="text-on-surface-variant block">Enerji</span>
+              <span class="font-bold text-on-surface">${product.nutritions?.energy || '628 kcal'}</span>
+            </div>
+            <div>
+              <span class="text-on-surface-variant block">Doğal Yağ</span>
+              <span class="font-bold text-on-surface">${product.nutritions?.fat || '60.8 g'}</span>
+            </div>
+            <div>
+              <span class="text-on-surface-variant block">Protein</span>
+              <span class="font-bold text-on-surface">${product.nutritions?.protein || '15.0 g'}</span>
+            </div>
+          </div>
         </div>
-        <h2 class="font-headline-md text-on-surface font-bold">${product.name}</h2>
-        <div class="flex items-baseline gap-2">
-          <span id="modal-price" class="font-headline-lg text-primary font-bold">${activeModalWeight.price.toFixed(0)} ₺</span>
-          ${product.oldPrice ? `<span class="text-outline text-sm line-through">${product.oldPrice.toFixed(0)} ₺</span>` : ""}
-        </div>
-        <p class="font-body-sm text-on-surface-variant leading-relaxed">${product.details || product.description}</p>
-        
-        <!-- Weight switcher in modal -->
-        ${product.weights && product.weights.length > 1 ? `
-          <div class="mt-2">
-            <label class="block font-label-md text-xs font-bold text-on-surface mb-1">Gramaj / Ambalaj Seçimi:</label>
-            <div class="flex gap-2 flex-wrap">
-              ${product.weights.map((w) => `
-                <button class="modal-weight-btn px-3 py-1.5 rounded-lg border text-body-sm font-semibold transition-all ${w.label === activeModalWeight.label ? 'border-primary bg-primary/10 text-primary' : 'border-outline-variant/50 text-on-surface-variant hover:bg-surface-container'}"
-                  data-label="${w.label}" data-price="${w.price}">
+
+        <div class="space-y-3 pt-3 border-t border-outline-variant/20">
+          <div class="flex items-center justify-between">
+            <span class="text-[12px] font-semibold text-on-surface-variant">Gramaj / Ambalaj:</span>
+            <div class="flex gap-1">
+              ${weights.map((w) => `
+                <button class="modal-weight-btn px-2.5 py-1 text-[11px] rounded border ${w.label === activeModalWeight.label ? 'border-primary bg-primary text-on-primary font-bold' : 'border-outline-variant/40 bg-surface-container-lowest text-on-surface-variant'}" data-label="${w.label}" data-price="${w.price}">
                   ${w.label}
                 </button>
               `).join("")}
             </div>
           </div>
-        ` : ""}
-
-        <!-- Quantity & ATC -->
-        <div class="flex items-center gap-3 pt-3">
-          <div class="flex items-center rounded-xl bg-surface-container border border-outline-variant/30 p-1">
-            <button id="modal-qty-minus" class="w-8 h-8 flex items-center justify-center font-bold text-on-surface-variant hover:text-primary">−</button>
-            <span id="modal-qty-display" class="px-3 font-label-md font-bold">1</span>
-            <button id="modal-qty-plus" class="w-8 h-8 flex items-center justify-center font-bold text-on-surface-variant hover:text-primary">+</button>
-          </div>
-          <button id="modal-add-to-cart" class="flex-1 py-3 px-5 rounded-xl bg-primary hover:bg-primary-container text-on-primary font-label-lg font-bold flex items-center justify-center gap-2 shadow-md transition-all">
-            <span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
-            Sepete Ekle
-          </button>
-        </div>
-
-        <!-- Lot & Quality Card -->
-        <div class="mt-3 p-3 rounded-xl bg-surface-container-low border border-outline-variant/30 space-y-1 text-[12px]">
-          <div class="flex justify-between text-on-surface-variant">
-            <span>Parti (Lot) Kodu:</span>
-            <strong class="text-on-surface font-mono">${product.lot}</strong>
-          </div>
-          <div class="flex justify-between text-on-surface-variant">
-            <span>Hasat Yılı:</span>
-            <strong class="text-on-surface">2024 Hasadı (Taze Çekim)</strong>
-          </div>
-          <div class="flex justify-between text-on-surface-variant">
-            <span>Enerji &amp; Yağ:</span>
-            <strong class="text-secondary">${product.nutritions.energy} / ${product.nutritions.fat} Yağ</strong>
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[11px] text-on-surface-variant block">Birim Fiyat</span>
+              <span id="modal-price" class="text-[24px] font-bold text-on-surface">${activeModalWeight.price.toFixed(0)} ₺</span>
+            </div>
+            <button id="modal-add-to-cart" class="px-6 py-2.5 rounded-lg bg-primary hover:bg-secondary text-on-primary text-[13px] font-bold transition-colors flex items-center gap-1.5 shadow-sm">
+              <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+              Sepete Ekle
+            </button>
           </div>
         </div>
       </div>
     </div>
   `;
 
-  // Weight click handler
+  // Modal weights switcher
   content.querySelectorAll(".modal-weight-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
+      const label = btn.getAttribute("data-label");
+      activeModalWeight = weights.find((w) => w.label === label);
       content.querySelectorAll(".modal-weight-btn").forEach((b) => {
-        b.className = "modal-weight-btn px-3 py-1.5 rounded-lg border text-body-sm font-semibold transition-all border-outline-variant/50 text-on-surface-variant hover:bg-surface-container";
+        b.className = "modal-weight-btn px-2.5 py-1 text-[11px] rounded border border-outline-variant/40 bg-surface-container-lowest text-on-surface-variant";
       });
-      btn.className = "modal-weight-btn px-3 py-1.5 rounded-lg border text-body-sm font-semibold transition-all border-primary bg-primary/10 text-primary";
-      const lbl = btn.getAttribute("data-label");
-      const prc = parseFloat(btn.getAttribute("data-price"));
-      activeModalWeight = { label: lbl, price: prc };
-      const prcEl = content.querySelector("#modal-price");
-      if (prcEl) prcEl.textContent = `${prc.toFixed(0)} ₺`;
+      btn.className = "modal-weight-btn px-2.5 py-1 text-[11px] rounded border border-primary bg-primary text-on-primary font-bold";
+      content.querySelector("#modal-price").textContent = `${activeModalWeight.price.toFixed(0)} ₺`;
     });
-  });
-
-  // Quantity Stepper
-  content.querySelector("#modal-qty-plus")?.addEventListener("click", () => {
-    modalQty++;
-    content.querySelector("#modal-qty-display").textContent = modalQty;
-  });
-
-  content.querySelector("#modal-qty-minus")?.addEventListener("click", () => {
-    if (modalQty > 1) {
-      modalQty--;
-      content.querySelector("#modal-qty-display").textContent = modalQty;
-    }
   });
 
   // Add to cart from modal
@@ -497,7 +434,7 @@ function renderCart() {
     cartItemsContainer.innerHTML = "";
     if (emptyNotice) emptyNotice.classList.remove("hidden");
     if (emptyNotice) emptyNotice.classList.add("flex");
-    if (countText) countText.textContent = "Sepetinizde ürün bulunmamaktadır";
+    if (countText) countText.textContent = "Sepetiniz boş";
     updateCheckoutCalculations();
     return;
   }
@@ -506,38 +443,39 @@ function renderCart() {
   if (emptyNotice) emptyNotice.classList.remove("flex");
 
   const totalItemUnits = store.getCartCount();
-  if (countText) countText.textContent = `Bugün hasat tazeliğinde paketlenecek ${totalItemUnits} adet ürün`;
+  if (countText) countText.textContent = `${cart.length} Farklı Mahsul • ${totalItemUnits} Adet`;
 
   cartItemsContainer.innerHTML = cart.map((item, index) => {
     const itemSubtotal = item.price * item.quantity;
     return `
-      <div class="cart-item-row flex flex-col sm:flex-row items-start sm:items-center justify-between gap-space-md p-space-md rounded-xl bg-surface-container-low/60 hover:bg-surface-container-low transition-colors border border-outline-variant/20">
+      <div class="cart-item flex flex-col sm:flex-row items-start sm:items-center justify-between p-space-sm rounded-lg bg-surface-container-low/60 hover:bg-surface-container-low transition-colors duration-200 gap-space-sm border border-outline-variant/20" data-id="${item.productId}">
         <div class="flex items-center gap-space-md min-w-0">
-          <img alt="${item.name}" class="w-20 h-20 rounded-lg object-cover shrink-0 bg-surface-variant border border-outline-variant/30" src="${item.image}"/>
+          <img class="w-16 h-16 sm:w-20 sm:h-20 rounded-lg object-cover flex-shrink-0 bg-surface-container" src="${item.image}" alt="${item.name}"/>
           <div class="min-w-0">
-            <div class="flex items-center gap-space-xs mb-1">
-              <span class="px-2 py-0.5 rounded bg-primary/10 text-primary font-label-tag text-label-tag uppercase font-bold">Coğrafi İşaret</span>
-              <span class="text-outline text-body-sm">•</span>
-              <span class="text-secondary font-label-md text-label-md font-semibold">${item.origin || "Keşap / Giresun"}</span>
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] text-secondary bg-secondary-fixed/50 px-1.5 py-0.5 rounded font-semibold">${item.lot || 'Parti #24-11'}</span>
+              <span class="text-[11px] text-on-surface-variant font-medium">Vakum Mühürlü</span>
             </div>
-            <h3 class="font-title-md text-title-md text-on-surface truncate font-semibold">${item.name}</h3>
-            <p class="font-body-sm text-body-sm text-on-surface-variant">${item.weight} • Birim: ${item.price.toFixed(0)} ₺</p>
-            <p class="font-label-lg text-label-lg text-primary mt-1 sm:hidden font-bold">${itemSubtotal.toFixed(0)} ₺</p>
+            <h3 class="text-[15px] font-bold text-on-surface truncate mt-0.5">${item.name}</h3>
+            <p class="text-[12px] text-on-surface-variant">${item.weight} • Birim: ${item.price.toFixed(0)} ₺</p>
           </div>
         </div>
-
-        <div class="flex items-center justify-between w-full sm:w-auto sm:justify-end gap-space-lg shrink-0">
-          <div class="flex items-center bg-surface-container-lowest rounded-lg p-1 shadow-xs border border-outline-variant/30">
-            <button class="cart-minus-btn w-7 h-7 flex items-center justify-center text-primary hover:bg-surface-container-high rounded text-body-md font-bold" data-index="${index}">−</button>
-            <span class="w-8 text-center font-label-md text-label-md text-on-surface font-bold">${item.quantity}</span>
-            <button class="cart-plus-btn w-7 h-7 flex items-center justify-center text-primary hover:bg-surface-container-high rounded text-body-md font-bold" data-index="${index}">+</button>
+        
+        <div class="flex items-center justify-between w-full sm:w-auto gap-space-md self-end sm:self-center">
+          <div class="flex items-center bg-surface-container-lowest rounded px-1 py-0.5 shadow-sm border border-outline-variant/20">
+            <button class="cart-minus-btn w-7 h-7 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors font-bold" data-index="${index}" type="button">
+              <span class="material-symbols-outlined text-[16px]">remove</span>
+            </button>
+            <span class="w-6 text-center text-[13px] text-on-surface font-bold">${item.quantity}</span>
+            <button class="cart-plus-btn w-7 h-7 flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors font-bold" data-index="${index}" type="button">
+              <span class="material-symbols-outlined text-[16px]">add</span>
+            </button>
           </div>
-          <div class="text-right hidden sm:block w-24">
-            <span class="font-title-md text-title-md text-primary font-bold block">${itemSubtotal.toFixed(0)} ₺</span>
-            <span class="font-body-sm text-[12px] text-outline">${item.price.toFixed(0)} ₺/adet</span>
+          <div class="text-right min-w-[70px]">
+            <span class="text-[16px] font-bold text-on-surface item-total">${itemSubtotal.toFixed(0)} ₺</span>
           </div>
-          <button class="cart-del-btn p-2 text-outline hover:text-error rounded-lg hover:bg-error-container/20 transition-colors" data-index="${index}" title="Ürünü Çıkar">
-            <span class="material-symbols-outlined text-[20px]">delete_outline</span>
+          <button class="cart-del-btn text-on-surface-variant hover:text-error transition-colors p-1" data-index="${index}" type="button" title="Ürünü Çıkar">
+            <span class="material-symbols-outlined text-[20px]">delete</span>
           </button>
         </div>
       </div>
@@ -571,30 +509,23 @@ function renderCart() {
 
 function updateCheckoutCalculations() {
   const subtotal = store.getCartSubtotal();
-  const cartCount = store.getCartCount();
   const coupon = store.getCoupon();
-  const giftWrap = document.getElementById("checkbox-gift-wrap")?.checked || false;
 
-  const subtotalEl = document.getElementById("summary-subtotal");
-  const countEl = document.getElementById("summary-items-count");
-  const shippingEl = document.getElementById("summary-shipping");
-  const totalEl = document.getElementById("summary-total");
+  const subtotalEl = document.getElementById("subtotal-amount");
+  const shippingEl = document.getElementById("shipping-amount");
+  const totalEl = document.getElementById("final-total-amount");
   const farmDiscRow = document.getElementById("farm-discount-row");
-  const farmDiscEl = document.getElementById("summary-farm-discount");
-  const transferDiscRow = document.getElementById("transfer-discount-row");
-  const transferDiscEl = document.getElementById("summary-transfer-discount");
-  const cashFeeRow = document.getElementById("cash-fee-row");
+  const farmDiscEl = document.getElementById("farmer-discount-amount");
+  const transferDiscRow = document.getElementById("payment-discount-row");
+  const transferDiscEl = document.getElementById("payment-discount-amount");
+  const cashFeeRow = document.getElementById("payment-fee-row");
+  const cashFeeEl = document.getElementById("payment-fee-amount");
   const couponRow = document.getElementById("coupon-discount-row");
-  const couponDiscEl = document.getElementById("summary-coupon-discount");
-  const giftRow = document.getElementById("gift-wrap-row");
-  const freeShipBar = document.getElementById("free-shipping-bar");
-  const freeShipText = document.getElementById("free-shipping-text");
-  const freeShipSub = document.getElementById("free-shipping-sub");
+  const couponDiscEl = document.getElementById("coupon-discount-amount");
 
-  if (countEl) countEl.textContent = `Ara Toplam (${cartCount} Adet)`;
   if (subtotalEl) subtotalEl.textContent = `${subtotal.toFixed(0)} ₺`;
 
-  // Fix 1: If cart is empty (subtotal is 0), everything is 0
+  // Fix: If cart is empty, everything is 0
   if (subtotal === 0) {
     if (shippingEl) shippingEl.textContent = "0 ₺";
     if (totalEl) totalEl.textContent = "0 ₺";
@@ -602,43 +533,22 @@ function updateCheckoutCalculations() {
     if (transferDiscRow) transferDiscRow.classList.add("hidden");
     if (cashFeeRow) cashFeeRow.classList.add("hidden");
     if (couponRow) couponRow.classList.add("hidden");
-    if (giftRow) giftRow.classList.add("hidden");
-    if (freeShipBar) freeShipBar.style.width = "0%";
-    if (freeShipText) freeShipText.textContent = "Sepetiniz Boş";
-    if (freeShipSub) freeShipSub.textContent = "500 ₺ üzeri siparişlerde kargo çiftliğimizden hediye.";
-    const completeBtn = document.getElementById("btn-complete-order");
-    if (completeBtn) {
-      completeBtn.querySelector("span:last-child").textContent = "Sepetiniz Boş (0 ₺)";
-    }
     return;
   }
 
-  // Free shipping progress logic (> 500 ₺ threshold)
+  // Free shipping threshold (> 500 ₺)
   const freeThreshold = 500;
-  if (subtotal >= freeThreshold) {
-    if (freeShipBar) freeShipBar.style.width = "100%";
-    if (freeShipText) freeShipText.textContent = "Ücretsiz Kargo Kazandınız!";
-    if (freeShipSub) freeShipSub.textContent = "Harika! Sepetiniz çiftliğimizin ücretsiz kargo limitini aştı.";
-  } else {
-    const diff = freeThreshold - subtotal;
-    const pct = Math.min(100, Math.round((subtotal / freeThreshold) * 100));
-    if (freeShipBar) freeShipBar.style.width = `${pct}%`;
-    if (freeShipText) freeShipText.textContent = `${diff.toFixed(0)} ₺ daha ekleyin bedava kargo kazanın!`;
-    if (freeShipSub) freeShipSub.textContent = `500 ₺ üzeri siparişlerde kargo çiftliğimizden hediye.`;
-  }
-
-  // Shipping cost
   let shippingFee = 0;
   if (activeShippingMethod === "express") {
     shippingFee = 45;
-    if (shippingEl) shippingEl.textContent = "+45 ₺ (Ekspres)";
+    if (shippingEl) shippingEl.textContent = "+45 ₺";
   } else {
     shippingFee = subtotal >= freeThreshold ? 0 : 35;
-    if (shippingEl) shippingEl.textContent = shippingFee === 0 ? "ÜCRETSİZ" : "35 ₺";
+    if (shippingEl) shippingEl.textContent = shippingFee === 0 ? "Ücretsiz" : "35 ₺";
   }
 
-  // Farm discount (> 500 ₺ is 50 ₺)
-  const farmDiscount = subtotal >= freeThreshold ? 50 : 0;
+  // Farm direct support discount (> 500 ₺ is -45 ₺)
+  const farmDiscount = subtotal >= freeThreshold ? 45 : 0;
   if (farmDiscRow) {
     if (farmDiscount > 0) {
       farmDiscRow.classList.remove("hidden");
@@ -648,7 +558,7 @@ function updateCheckoutCalculations() {
     }
   }
 
-  // Fix 2: Payment method adjustments (Havale %5 discount, Kapıda +20 ₺)
+  // Payment method adjustments (Havale %5 discount, Kapıda +20 ₺)
   let paymentDiscount = 0;
   let paymentFee = 0;
 
@@ -656,7 +566,7 @@ function updateCheckoutCalculations() {
     paymentDiscount = Math.round(subtotal * 0.05);
     if (transferDiscRow) {
       transferDiscRow.classList.remove("hidden");
-      if (transferDiscEl) transferDiscEl.textContent = `-${paymentDiscount} ₺ (%5 Havale İndirimi)`;
+      if (transferDiscEl) transferDiscEl.textContent = `-${paymentDiscount} ₺`;
     }
   } else {
     if (transferDiscRow) transferDiscRow.classList.add("hidden");
@@ -664,7 +574,10 @@ function updateCheckoutCalculations() {
 
   if (activePaymentMethod === "cash") {
     paymentFee = 20;
-    if (cashFeeRow) cashFeeRow.classList.remove("hidden");
+    if (cashFeeRow) {
+      cashFeeRow.classList.remove("hidden");
+      if (cashFeeEl) cashFeeEl.textContent = `+${paymentFee} ₺`;
+    }
   } else {
     if (cashFeeRow) cashFeeRow.classList.add("hidden");
   }
@@ -672,33 +585,22 @@ function updateCheckoutCalculations() {
   // Coupon discount
   let couponDiscount = 0;
   if (coupon) {
-    if (coupon.discountPercent) {
-      couponDiscount = Math.round(subtotal * (coupon.discountPercent / 100));
-    } else if (coupon.discountFixed) {
-      couponDiscount = coupon.discountFixed;
+    if (coupon.type === "percent") {
+      couponDiscount = Math.round(subtotal * (coupon.value / 100));
+    } else if (coupon.type === "fixed") {
+      couponDiscount = coupon.value;
     }
-    if (couponRow) couponRow.classList.remove("hidden");
-    if (couponDiscEl) couponDiscEl.textContent = `-${couponDiscount} ₺ (${coupon.label})`;
+    if (couponRow) {
+      couponRow.classList.remove("hidden");
+      if (couponDiscEl) couponDiscEl.textContent = `-${couponDiscount} ₺`;
+    }
   } else {
     if (couponRow) couponRow.classList.add("hidden");
   }
 
-  // Gift wrap
-  const giftFee = giftWrap ? 35 : 0;
-  if (giftRow) {
-    if (giftWrap) giftRow.classList.remove("hidden");
-    else giftRow.classList.add("hidden");
-  }
-
   // Final Total
-  const grandTotal = Math.max(0, subtotal + shippingFee + paymentFee - farmDiscount - couponDiscount - paymentDiscount + giftFee);
+  const grandTotal = Math.max(0, subtotal + shippingFee + paymentFee - farmDiscount - couponDiscount - paymentDiscount);
   if (totalEl) totalEl.textContent = `${grandTotal.toFixed(0)} ₺`;
-
-  // Update complete order button text
-  const completeBtn = document.getElementById("btn-complete-order");
-  if (completeBtn) {
-    completeBtn.querySelector("span:last-child").textContent = `Siparişi Güvenle Tamamla (${grandTotal.toFixed(0)} ₺)`;
-  }
 }
 
 // --- SAVED ADDRESSES MODAL ---
@@ -709,17 +611,17 @@ function renderSavedAddresses() {
   container.innerHTML = SAVED_ADDRESSES.map((addr) => `
     <div class="p-3.5 rounded-xl bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 cursor-pointer transition-all flex flex-col gap-1 saved-addr-item" data-id="${addr.id}">
       <div class="flex items-center justify-between">
-        <span class="font-label-md font-bold text-on-surface text-sm flex items-center gap-1.5">
+        <span class="font-bold text-on-surface text-[14px] flex items-center gap-1.5">
           <span class="material-symbols-outlined text-[18px] text-secondary">location_on</span>
           ${addr.title}
         </span>
-        <button class="px-2.5 py-1 rounded-lg bg-surface-container-lowest text-primary font-label-tag text-xs font-bold hover:bg-primary hover:text-on-primary transition-colors">
+        <button class="px-2.5 py-1 rounded bg-surface-container-lowest text-primary text-[11px] font-bold hover:bg-primary hover:text-on-primary transition-colors">
           Seç
         </button>
       </div>
-      <p class="font-body-sm text-[12px] text-on-surface-variant font-medium">${addr.address}</p>
+      <p class="text-[12px] text-on-surface-variant font-medium">${addr.detailedAddress}</p>
       <div class="flex gap-2 text-[11px] text-outline">
-        <span>${addr.name}</span> • <span>+90 ${addr.phone}</span>
+        <span>${addr.fullName}</span> • <span>${addr.phone}</span>
       </div>
     </div>
   `).join("");
@@ -729,27 +631,27 @@ function renderSavedAddresses() {
       const id = item.getAttribute("data-id");
       const addr = SAVED_ADDRESSES.find((a) => a.id === id);
       if (addr) {
-        document.getElementById("input-customer-name").value = addr.name;
-        document.getElementById("input-customer-phone").value = addr.phone;
-        document.getElementById("input-customer-city").value = addr.city;
-        document.getElementById("input-customer-district").value = addr.district;
-        document.getElementById("input-customer-address").value = addr.address;
-        if (addr.notes) document.getElementById("input-customer-notes").value = addr.notes;
+        document.getElementById("full-name").value = addr.fullName;
+        document.getElementById("phone-number").value = addr.phone;
+        document.getElementById("city-select").value = addr.city;
+        document.getElementById("district-select").value = addr.district;
+        document.getElementById("detailed-address").value = addr.detailedAddress;
 
         document.getElementById("saved-addresses-modal")?.classList.add("hidden");
-        store.notifyToast(`"${addr.title}" teslimat adresi olarak seçildi!`, "success");
+        store.notifyToast(`"${addr.title}" adresi forma aktarıldı.`, "success");
       }
     });
   });
+
+  document.getElementById("saved-addresses-modal")?.classList.remove("hidden");
 }
 
 // --- ADMIN SALES & ANALYTICS CONTROLLER ---
-let activeAnalyticsPeriod = "season2024";
+let activeAnalyticsPeriod = "harvest";
 
 function renderAdminAnalytics() {
   const orders = store.getOrders();
-  const products = store.getProducts();
-  const periodData = ANALYTICS_PERIOD_DATA[activeAnalyticsPeriod] || ANALYTICS_PERIOD_DATA["season2024"];
+  const periodData = ANALYTICS_PERIOD_DATA[activeAnalyticsPeriod] || ANALYTICS_PERIOD_DATA["harvest"];
 
   // Update dynamic KPIs
   const kpiRevenue = document.getElementById("kpi-revenue");
@@ -762,7 +664,7 @@ function renderAdminAnalytics() {
   if (kpiAvg) kpiAvg.textContent = `₺${periodData.avgOrder.toLocaleString("tr-TR")},00`;
   if (kpiGrowth) {
     kpiGrowth.innerHTML = `
-      <span class="material-symbols-outlined text-[16px] mr-0.5">trending_up</span>
+      <span class="material-symbols-outlined text-[14px] mr-0.5">arrow_upward</span>
       ${periodData.growthText}
     `;
   }
@@ -785,19 +687,19 @@ function renderCategoryDistribution() {
   if (!container) return;
 
   const categories = [
-    { name: "Çifte Kavrulmuş Fındık", pct: 42, color: "bg-primary" },
+    { name: "Çifte Kavrulmuş Fındık", pct: 44, color: "bg-primary" },
     { name: "Taş Değirmen Ezmeler", pct: 28, color: "bg-secondary" },
-    { name: "Köy Balları & Pekmez", pct: 18, color: "bg-tertiary" },
-    { name: "Soğuk Sıkım Fındık Yağı", pct: 12, color: "bg-primary-container" }
+    { name: "Soğuk Sıkım Yağlar", pct: 16, color: "bg-secondary-fixed-dim" },
+    { name: "Yayla Balları", pct: 12, color: "bg-outline" }
   ];
 
   container.innerHTML = categories.map((cat) => `
     <div>
-      <div class="flex justify-between text-body-sm font-semibold mb-1">
+      <div class="flex justify-between text-[13px] font-semibold mb-1">
         <span>${cat.name}</span>
         <span class="font-bold font-mono">%${cat.pct}</span>
       </div>
-      <div class="w-full bg-surface-container h-2 rounded-full overflow-hidden">
+      <div class="w-full bg-surface-container h-1.5 rounded-full overflow-hidden">
         <div class="${cat.color} h-full rounded-full transition-all duration-500" style="width: ${cat.pct}%;"></div>
       </div>
     </div>
@@ -809,22 +711,19 @@ function renderTopSellingProducts() {
   if (!tbody) return;
 
   const topItems = [
-    { name: "Giresun Tombul Çifte Kavrulmuş", category: "Kavrulmuş Fındık", sales: "142 Kutu", rev: "₺51.830", stock: "420 Adet", badge: "En Çok Satan", color: "text-secondary" },
-    { name: "Taş Değirmen Fındık Ezmesi (%100)", category: "Doğal Ezme", sales: "98 Kavanoz", rev: "₺27.930", stock: "185 Adet", badge: "Yüksek Talep", color: "text-primary" },
-    { name: "Karadeniz Kestane Balı", category: "Köy Balı", sales: "64 Şişe", rev: "₺31.360", stock: "42 Adet (Kritik)", badge: "Sınırlı Stok", color: "text-error" },
-    { name: "Saf Soğuk Sıkım Fındık Yağı", category: "Bitkisel Yağ", sales: "52 Şişe", rev: "₺15.080", stock: "95 Adet", badge: "Düzenli Talep", color: "text-secondary" }
+    { name: "Giresun Çifte Kavrulmuş Tombul", category: "Çiğ & Kavrulmuş", sales: "142 Kavanoz", rev: "₺54.670", stock: "420 Adet" },
+    { name: "Şekersiz Doğal Fındık Ezmesi", category: "Taş Değirmen", sales: "98 Kavanoz", rev: "₺28.910", stock: "185 Adet" },
+    { name: "Doğal Güneşte Kurutulmuş Çiğ Fındık", category: "Çiğ & Kavrulmuş", sales: "64 Kese", rev: "₺21.760", stock: "260 Adet" },
+    { name: "Soğuk Sıkım Ham Fındık Yağı", category: "Soğuk Sıkım", sales: "52 Şişe", rev: "₺28.080", stock: "95 Adet" }
   ];
 
   tbody.innerHTML = topItems.map((item) => `
     <tr class="hover:bg-surface-container-low/50 transition-colors">
-      <td class="py-3 px-space-md font-semibold text-on-surface text-sm">${item.name}</td>
-      <td class="py-3 px-space-md text-xs text-on-surface-variant">${item.category}</td>
-      <td class="py-3 px-space-md font-bold text-on-surface font-mono text-sm">${item.sales}</td>
-      <td class="py-3 px-space-md font-bold text-primary text-sm">${item.rev}</td>
-      <td class="py-3 px-space-md text-xs font-semibold ${item.stock.includes('Kritik') ? 'text-error' : 'text-on-surface'}">${item.stock}</td>
-      <td class="py-3 px-space-md text-right">
-        <span class="px-2 py-0.5 rounded-full text-[11px] font-bold bg-surface-container ${item.color}">${item.badge}</span>
-      </td>
+      <td class="py-2.5 px-3 font-semibold text-on-surface">${item.name}</td>
+      <td class="py-2.5 px-3 text-on-surface-variant">${item.category}</td>
+      <td class="py-2.5 px-3 font-semibold text-on-surface">${item.sales}</td>
+      <td class="py-2.5 px-3 font-mono font-bold text-secondary">${item.rev}</td>
+      <td class="py-2.5 px-3 text-on-surface-variant">${item.stock}</td>
     </tr>
   `).join("");
 }
@@ -833,51 +732,53 @@ function renderAdminOrdersTable(orders) {
   const tbody = document.getElementById("admin-orders-table-body");
   if (!tbody) return;
 
-  const searchQuery = (document.getElementById("admin-order-search")?.value || "").toLowerCase().trim();
+  const q = (document.getElementById("admin-order-search")?.value || "").toLowerCase().trim();
+  let filtered = [...orders];
 
-  let filtered = orders;
-  if (searchQuery) {
-    filtered = orders.filter((o) =>
-      o.id.toLowerCase().includes(searchQuery) ||
-      o.customerName.toLowerCase().includes(searchQuery) ||
-      o.city.toLowerCase().includes(searchQuery)
+  if (q) {
+    filtered = filtered.filter((o) =>
+      o.id.toLowerCase().includes(q) ||
+      (o.customer?.name || o.customerName || "").toLowerCase().includes(q) ||
+      (o.itemsSummary || "").toLowerCase().includes(q)
     );
   }
 
+  if (filtered.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="6" class="py-8 text-center text-outline text-[13px]">
+          Eşleşen sipariş hareketi bulunamadı.
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
   tbody.innerHTML = filtered.map((order) => {
-    let statusClass = "bg-secondary-fixed/50 text-secondary";
-    if (order.status === "Hazırlanıyor") statusClass = "bg-primary-fixed/60 text-primary";
-    if (order.status === "Teslim Edildi") statusClass = "bg-secondary/15 text-secondary";
+    const custName = order.customer?.name || order.customerName || "Değerli Müşteri";
+    const status = order.status || "Hazırlanıyor";
+    const statusCol = status === "Teslim Edildi" ? "text-secondary bg-secondary-fixed/50" : status === "Kargoya Verildi" ? "text-on-surface bg-surface-container-high" : "text-secondary font-semibold bg-secondary/10";
+    const total = order.total || 0;
+    const summary = order.itemsSummary || (order.items ? order.items.map(i => `${i.quantity}x ${i.name}`).join(", ") : "Organik Mahsuller");
 
     return `
       <tr class="hover:bg-surface-container-low/50 transition-colors">
-        <td class="py-3 px-space-md font-mono font-bold text-primary">
-          #${order.id}
-          <span class="block font-body-sm text-[11px] text-outline font-normal">${order.date}</span>
+        <td class="py-3 px-3 font-mono font-bold text-on-surface">${order.id}</td>
+        <td class="py-3 px-3">
+          <div class="font-semibold text-on-surface">${custName}</div>
+          <div class="text-[11px] text-outline">${order.date}</div>
         </td>
-        <td class="py-3 px-space-md">
-          <span class="font-title-md text-[14px] text-on-surface font-semibold block">${order.customerName}</span>
-          <span class="font-body-sm text-[11px] text-outline">${order.city} / ${order.district || ''}</span>
-        </td>
-        <td class="py-3 px-space-md max-w-xs">
-          <span class="font-body-sm text-body-sm text-on-surface line-clamp-1">${order.itemsSummary || 'Doğal Fındık Paketi'}</span>
-          <span class="font-label-tag text-[10px] text-secondary font-bold">${order.lotMatch || 'LOT-2024'}</span>
-        </td>
-        <td class="py-3 px-space-md font-bold text-primary">
-          ${order.total.toFixed(0)} ₺
-        </td>
-        <td class="py-3 px-space-md font-body-sm text-[12px] text-on-surface-variant">
-          ${order.paymentMethod || 'Kredi Kartı'}
-        </td>
-        <td class="py-3 px-space-md text-center">
-          <select class="order-status-select px-2.5 py-1 rounded-full text-xs font-bold ${statusClass} border border-outline-variant/30 focus:outline-none cursor-pointer" data-id="${order.id}">
-            <option value="Hazırlanıyor" ${order.status === 'Hazırlanıyor' ? 'selected' : ''}>Hazırlanıyor</option>
-            <option value="Kargoya Verildi" ${order.status === 'Kargoya Verildi' ? 'selected' : ''}>Kargoya Verildi</option>
-            <option value="Teslim Edildi" ${order.status === 'Teslim Edildi' ? 'selected' : ''}>Teslim Edildi</option>
+        <td class="py-3 px-3 max-w-xs truncate text-on-surface-variant text-[12px]">${summary}</td>
+        <td class="py-3 px-3 font-mono font-bold text-on-surface">₺${total.toFixed(0)}</td>
+        <td class="py-3 px-3">
+          <select class="order-status-select text-[11px] font-semibold py-1 px-2 rounded cursor-pointer ${statusCol} border-0 outline-none" data-id="${order.id}">
+            <option value="Hazırlanıyor" ${status === "Hazırlanıyor" ? "selected" : ""}>Hazırlanıyor</option>
+            <option value="Kargoya Verildi" ${status === "Kargoya Verildi" ? "selected" : ""}>Kargoya Verildi</option>
+            <option value="Teslim Edildi" ${status === "Teslim Edildi" ? "selected" : ""}>Teslim Edildi</option>
           </select>
         </td>
-        <td class="py-3 px-space-md text-right">
-          <button class="btn-view-order-detail p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" data-id="${order.id}" title="Detay & İrsaliye">
+        <td class="py-3 px-3 text-right">
+          <button class="btn-view-order-detail p-1.5 rounded text-outline hover:text-primary hover:bg-surface-container transition-colors" data-id="${order.id}" title="Detay & İrsaliye">
             <span class="material-symbols-outlined text-[18px]">receipt_long</span>
           </button>
         </td>
@@ -902,35 +803,36 @@ function renderAdminOrdersTable(orders) {
   });
 }
 
-function drawRevenueChart(period = "season2024") {
+function drawRevenueChart(period = "harvest") {
   const canvas = document.getElementById("revenue-trend-canvas");
   if (!canvas) return;
 
-  const pData = ANALYTICS_PERIOD_DATA[period] || ANALYTICS_PERIOD_DATA["season2024"];
+  const pData = ANALYTICS_PERIOD_DATA[period] || ANALYTICS_PERIOD_DATA["harvest"];
   const labels = pData.labels;
   const revenueData = pData.revenueData;
   const maxVal = pData.maxVal;
 
   const ctx = canvas.getContext("2d");
   const rect = canvas.getBoundingClientRect();
-  canvas.width = rect.width * window.devicePixelRatio;
-  canvas.height = rect.height * window.devicePixelRatio;
-  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  const dpr = window.devicePixelRatio || 1;
+  const width = rect.width || 600;
+  const height = rect.height || 250;
 
-  const width = rect.width;
-  const height = rect.height;
+  canvas.width = width * dpr;
+  canvas.height = height * dpr;
+  ctx.scale(dpr, dpr);
 
   ctx.clearRect(0, 0, width, height);
 
-  const paddingLeft = 50;
-  const paddingBottom = 30;
-  const paddingTop = 20;
-  const paddingRight = 20;
-  const chartW = width - paddingLeft - paddingRight;
-  const chartH = height - paddingTop - paddingBottom;
+  const paddingLeft = 45;
+  const paddingBottom = 25;
+  const paddingTop = 15;
+  const paddingRight = 15;
+  const chartW = Math.max(10, width - paddingLeft - paddingRight);
+  const chartH = Math.max(10, height - paddingTop - paddingBottom);
 
   // Draw grid lines
-  ctx.strokeStyle = "#ead6c9";
+  ctx.strokeStyle = "#eae8e5";
   ctx.lineWidth = 1;
   ctx.setLineDash([4, 4]);
 
@@ -942,11 +844,11 @@ function drawRevenueChart(period = "season2024") {
     ctx.stroke();
 
     // Y Axis label
-    ctx.fillStyle = "#82746d";
+    ctx.fillStyle = "#80756f";
     ctx.font = "11px 'Plus Jakarta Sans', sans-serif";
     ctx.textAlign = "right";
     const labelVal = Math.round(maxVal - (maxVal / 4) * i);
-    ctx.fillText(`₺${(labelVal / 1000).toFixed(0)}k`, paddingLeft - 8, y + 4);
+    ctx.fillText(`₺${(labelVal / 1000).toFixed(0)}k`, paddingLeft - 6, y + 4);
   }
   ctx.setLineDash([]);
 
@@ -957,160 +859,150 @@ function drawRevenueChart(period = "season2024") {
     return { x, y, val };
   });
 
-  // Draw Gradient fill
-  const gradient = ctx.createLinearGradient(0, paddingTop, 0, height - paddingBottom);
-  gradient.addColorStop(0, "rgba(111, 78, 55, 0.35)");
-  gradient.addColorStop(1, "rgba(111, 78, 55, 0.0)");
+  // Gradient fill
+  const grad = ctx.createLinearGradient(0, paddingTop, 0, paddingTop + chartH);
+  grad.addColorStop(0, "rgba(133, 82, 50, 0.18)");
+  grad.addColorStop(1, "rgba(133, 82, 50, 0.0)");
 
   ctx.beginPath();
   ctx.moveTo(points[0].x, points[0].y);
   for (let i = 1; i < points.length; i++) {
-    ctx.lineTo(points[i].x, points[i].y);
+    const prev = points[i - 1];
+    const curr = points[i];
+    const cx = (prev.x + curr.x) / 2;
+    ctx.bezierCurveTo(cx, prev.y, cx, curr.y, curr.x, curr.y);
   }
-  ctx.lineTo(points[points.length - 1].x, height - paddingBottom);
-  ctx.lineTo(points[0].x, height - paddingBottom);
+  ctx.lineTo(points[points.length - 1].x, paddingTop + chartH);
+  ctx.lineTo(points[0].x, paddingTop + chartH);
   ctx.closePath();
-  ctx.fillStyle = gradient;
+  ctx.fillStyle = grad;
   ctx.fill();
 
-  // Draw line
+  // Draw revenue curve
   ctx.beginPath();
   ctx.moveTo(points[0].x, points[0].y);
   for (let i = 1; i < points.length; i++) {
-    ctx.lineTo(points[i].x, points[i].y);
+    const prev = points[i - 1];
+    const curr = points[i];
+    const cx = (prev.x + curr.x) / 2;
+    ctx.bezierCurveTo(cx, prev.y, cx, curr.y, curr.x, curr.y);
   }
-  ctx.strokeStyle = "#553722";
-  ctx.lineWidth = 3;
+  ctx.strokeStyle = "#855232";
+  ctx.lineWidth = 2.5;
   ctx.stroke();
 
-  // Draw points & labels
+  // Draw points & X Axis labels
   points.forEach((pt, idx) => {
-    // Circle point
     ctx.beginPath();
     ctx.arc(pt.x, pt.y, 4, 0, Math.PI * 2);
     ctx.fillStyle = "#ffffff";
     ctx.fill();
-    ctx.strokeStyle = "#3c6843";
-    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = "#855232";
+    ctx.lineWidth = 2;
     ctx.stroke();
 
-    // X Axis text
-    ctx.fillStyle = "#50453e";
-    ctx.font = "12px 'Plus Jakarta Sans', sans-serif";
+    // X Label
+    ctx.fillStyle = "#80756f";
+    ctx.font = "11px 'Plus Jakarta Sans', sans-serif";
     ctx.textAlign = "center";
-    ctx.fillText(labels[idx], pt.x, height - 8);
+    ctx.fillText(labels[idx], pt.x, height - 6);
   });
 }
 
+// --- ORDER DETAIL & PRINTABLE MODAL ---
 function openOrderDetailModal(orderId) {
-  const order = store.getOrders().find((o) => o.id === orderId);
-  if (!order) return;
-
   const modal = document.getElementById("order-detail-modal");
-  const title = document.getElementById("modal-order-title");
-  const content = document.getElementById("modal-order-content");
+  const content = document.getElementById("order-detail-content");
   if (!modal || !content) return;
 
-  if (title) title.textContent = `Sipariş #${order.id} Detayı`;
+  const orders = store.getOrders();
+  const order = orders.find((o) => o.id === orderId);
+  if (!order) return;
+
+  const custName = order.customer?.name || order.customerName || "Değerli Müşteri";
+  const phone = order.customer?.phone || order.phone || "-";
+  const address = order.customer?.address || order.address || "-";
+  const items = order.items || [];
 
   content.innerHTML = `
-    <div class="p-4 rounded-xl bg-surface-container-low border border-outline-variant/30 flex items-center justify-between">
+    <div class="grid grid-cols-2 gap-3 p-3.5 rounded-lg bg-surface-container-low text-[13px]">
       <div>
-        <div class="font-label-md text-outline">Kargo Takip No:</div>
-        <div class="font-label-lg font-bold text-on-surface font-mono text-base">${order.trackingNo}</div>
+        <span class="text-on-surface-variant block text-[11px] font-semibold uppercase">Müşteri &amp; İletişim</span>
+        <span class="font-bold text-on-surface">${custName}</span>
+        <span class="text-on-surface-variant block">${phone}</span>
+        <span class="text-on-surface-variant block text-[12px] mt-1">${address}</span>
       </div>
-      <span class="px-3 py-1 rounded-full bg-secondary-fixed text-secondary font-label-tag font-bold">${order.status}</span>
-    </div>
-
-    <div class="space-y-2 p-3 rounded-xl bg-surface-container-lowest border border-outline-variant/30 text-body-sm">
-      <div class="flex justify-between">
-        <span class="text-outline">Müşteri:</span>
-        <strong class="text-on-surface">${order.customerName}</strong>
-      </div>
-      <div class="flex justify-between">
-        <span class="text-outline">Telefon &amp; Şehir:</span>
-        <span class="text-on-surface">${order.phone} / ${order.city}</span>
-      </div>
-      <div class="flex justify-between">
-        <span class="text-outline">Açık Adres:</span>
-        <span class="text-on-surface text-right max-w-xs">${order.address}</span>
-      </div>
-      <div class="flex justify-between">
-        <span class="text-outline">Ödeme Yöntemi:</span>
-        <span class="text-primary font-semibold">${order.paymentMethod}</span>
+      <div>
+        <span class="text-on-surface-variant block text-[11px] font-semibold uppercase">Lojistik &amp; Ödeme</span>
+        <span class="font-bold text-secondary font-mono">${order.trackingNo || 'YK-XXXXXX-TR'}</span>
+        <span class="text-on-surface-variant block">${order.shippingMethod || 'Çiftlik Kargo'}</span>
+        <span class="text-on-surface block font-semibold mt-1">${order.paymentMethod || 'Kredi Kartı'}</span>
       </div>
     </div>
 
-    <div class="space-y-1.5 p-3 rounded-xl bg-surface-container-low text-body-sm">
-      <div class="font-label-md text-secondary uppercase font-bold text-xs">Mahsul Lot ve Randıman Eşleşmesi</div>
-      <div class="flex justify-between">
-        <span>Parti Kodu:</span>
-        <strong class="font-mono text-primary">${order.lotMatch || 'LOT-2024-KESAP-04'}</strong>
-      </div>
-      <div class="flex justify-between">
-        <span>İç Fındık Randımanı:</span>
-        <strong class="text-secondary">${order.yield || '%53.8'}</strong>
+    <div>
+      <h4 class="text-[13px] font-bold text-on-surface mb-2">Mahsuller</h4>
+      <div class="space-y-1.5 divide-y divide-outline-variant/10 text-[13px]">
+        ${items.map((i) => `
+          <div class="pt-1.5 flex justify-between items-center">
+            <div>
+              <span class="font-semibold text-on-surface">${i.name}</span>
+              <span class="text-outline text-[11px] ml-1">(${i.weight})</span>
+            </div>
+            <div class="font-mono font-bold text-on-surface">${i.quantity} x ${i.price.toFixed(0)} ₺ = ${(i.quantity * i.price).toFixed(0)} ₺</div>
+          </div>
+        `).join("")}
       </div>
     </div>
 
-    <div class="flex justify-between items-center pt-2 font-title-md border-t border-outline-variant/30">
-      <span class="font-bold text-on-surface">Toplam Tutar:</span>
-      <span class="font-bold text-primary text-xl">${order.total.toFixed(0)} ₺</span>
+    <div class="pt-3 border-t border-outline-variant/20 space-y-1 text-right text-[13px]">
+      <div class="text-on-surface-variant">Ara Toplam: <span class="font-mono font-semibold">${order.subtotal?.toFixed(0) || 0} ₺</span></div>
+      <div class="text-secondary">İndirimler: <span class="font-mono font-semibold">-${(order.farmDiscount || 0) + (order.couponDiscount || 0) + (order.paymentDiscount || 0)} ₺</span></div>
+      <div class="text-[16px] font-bold text-on-surface pt-1 border-t border-outline-variant/20">Genel Toplam: <span class="font-mono text-secondary">${order.total?.toFixed(0) || 0} ₺</span></div>
     </div>
   `;
 
-  // Setup printable invoice data
-  const printOrderId = document.getElementById("print-order-id");
-  const printOrderDate = document.getElementById("print-order-date");
-  const printCustomerName = document.getElementById("print-customer-name");
-  const printCustomerAddress = document.getElementById("print-customer-address");
-  const printCustomerPhone = document.getElementById("print-customer-phone");
-  const printTrackingNo = document.getElementById("print-tracking-no");
+  // Prepare print template
+  const printId = document.getElementById("print-order-id");
+  const printDate = document.getElementById("print-order-date");
+  const printName = document.getElementById("print-customer-name");
+  const printAddr = document.getElementById("print-customer-address");
+  const printPhone = document.getElementById("print-customer-phone");
+  const printTrack = document.getElementById("print-tracking-no");
   const printLot = document.getElementById("print-lot");
   const printPayment = document.getElementById("print-payment");
-  const printItemsBody = document.getElementById("print-items-body");
-  const printSubtotal = document.getElementById("print-subtotal");
-  const printTotal = document.getElementById("print-total");
+  const printBody = document.getElementById("print-items-body");
+  const printSub = document.getElementById("print-subtotal");
+  const printDisc = document.getElementById("print-discount");
+  const printTot = document.getElementById("print-total");
 
-  if (printOrderId) printOrderId.textContent = `#${order.id}`;
-  if (printOrderDate) printOrderDate.textContent = order.date;
-  if (printCustomerName) printCustomerName.textContent = order.customerName;
-  if (printCustomerAddress) printCustomerAddress.textContent = `${order.address}, ${order.city}`;
-  if (printCustomerPhone) printCustomerPhone.textContent = order.phone;
-  if (printTrackingNo) printTrackingNo.textContent = order.trackingNo;
-  if (printLot) printLot.textContent = order.lotMatch || "LOT-2024-KESAP-04";
-  if (printPayment) printPayment.textContent = order.paymentMethod;
-  if (printSubtotal) printSubtotal.textContent = `${(order.subtotal || order.total).toFixed(0)} ₺`;
-  if (printTotal) printTotal.textContent = `${order.total.toFixed(0)} ₺`;
+  if (printId) printId.textContent = order.id;
+  if (printDate) printDate.textContent = order.date;
+  if (printName) printName.textContent = custName;
+  if (printAddr) printAddr.textContent = address;
+  if (printPhone) printPhone.textContent = phone;
+  if (printTrack) printTrack.textContent = order.trackingNo || "YK-XXXXXX-TR";
+  if (printLot) printLot.textContent = order.lot || "Parti #24-11";
+  if (printPayment) printPayment.textContent = order.paymentMethod || "Kredi Kartı";
+  if (printSub) printSub.textContent = `${order.subtotal?.toFixed(0) || 0} ₺`;
+  if (printDisc) printDisc.textContent = `-${(order.farmDiscount || 0) + (order.couponDiscount || 0) + (order.paymentDiscount || 0)} ₺`;
+  if (printTot) printTot.textContent = `${order.total?.toFixed(0) || 0} ₺`;
 
-  if (printItemsBody) {
-    if (order.items && order.items.length > 0) {
-      printItemsBody.innerHTML = order.items.map((i) => `
-        <tr>
-          <td style="padding: 8px;">${i.name} (${i.weight})</td>
-          <td style="padding: 8px; text-align: center;">${i.quantity}</td>
-          <td style="padding: 8px; text-align: right;">${i.price.toFixed(0)} ₺</td>
-          <td style="padding: 8px; text-align: right;">${(i.price * i.quantity).toFixed(0)} ₺</td>
-        </tr>
-      `).join("");
-    } else {
-      printItemsBody.innerHTML = `
-        <tr>
-          <td style="padding: 8px;">${order.itemsSummary || 'Doğal Fındık Paketi'}</td>
-          <td style="padding: 8px; text-align: center;">1</td>
-          <td style="padding: 8px; text-align: right;">${order.total.toFixed(0)} ₺</td>
-          <td style="padding: 8px; text-align: right;">${order.total.toFixed(0)} ₺</td>
-        </tr>
-      `;
-    }
+  if (printBody) {
+    printBody.innerHTML = items.map((i) => `
+      <tr>
+        <td style="padding: 8px 10px;">${i.name} (${i.weight})</td>
+        <td style="padding: 8px 10px; text-align: center;">${i.quantity}</td>
+        <td style="padding: 8px 10px; text-align: right;">${i.price.toFixed(0)} ₺</td>
+        <td style="padding: 8px 10px; text-align: right;">${(i.quantity * i.price).toFixed(0)} ₺</td>
+      </tr>
+    `).join("");
   }
 
   modal.classList.remove("hidden");
 }
 
 // --- ADMIN INVENTORY CONTROLLER ---
-let activeInvTab = "all";
-
 function renderAdminInventory() {
   const products = store.getProducts();
 
@@ -1118,21 +1010,11 @@ function renderAdminInventory() {
   const activeEl = document.getElementById("inv-kpi-active");
   const lowStockEl = document.getElementById("inv-kpi-low-stock");
 
-  const inStockCount = products.filter((p) => p.stock >= 50).length;
   const lowStockCount = products.filter((p) => p.stock < 50 && p.stock > 0).length;
 
   if (totalEl) totalEl.textContent = products.length.toString();
   if (activeEl) activeEl.textContent = products.filter((p) => p.active !== false).length.toString();
   if (lowStockEl) lowStockEl.textContent = lowStockCount.toString();
-
-  // Tab counters
-  const cntAll = document.getElementById("tab-cnt-all");
-  const cntInStock = document.getElementById("tab-cnt-instock");
-  const cntLow = document.getElementById("tab-cnt-low");
-
-  if (cntAll) cntAll.textContent = products.length;
-  if (cntInStock) cntInStock.textContent = inStockCount;
-  if (cntLow) cntLow.textContent = lowStockCount;
 
   renderInventoryTable();
 }
@@ -1160,85 +1042,75 @@ function renderInventoryTable() {
     products = products.filter((p) => p.category === categoryFilter);
   }
 
-  // Status Tab
-  if (activeInvTab === "in-stock") {
-    products = products.filter((p) => p.stock >= 50);
-  } else if (activeInvTab === "low-stock") {
-    products = products.filter((p) => p.stock < 50);
+  if (products.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="8" class="py-12 text-center text-outline text-[13px]">
+          Filtrelere uygun mahsul kaydı bulunamadı.
+        </td>
+      </tr>
+    `;
+    return;
   }
 
-  tbody.innerHTML = products.map((prod) => {
-    const isLow = prod.stock < 50;
-    const stockPct = Math.min(100, Math.round((prod.stock / 500) * 100));
-    const stockBarColor = isLow ? "bg-error" : "bg-secondary";
-    const isActive = prod.active !== false;
+  tbody.innerHTML = products.map((product) => {
+    const cost = product.costPrice || (product.price * 0.55);
+    const profit = product.price - cost;
+    const margin = Math.round((profit / product.price) * 100);
+    const stockPct = Math.min(100, Math.round((product.stock / 500) * 100));
+    const stockBarColor = product.stock < 50 ? "bg-error" : product.stock < 150 ? "bg-secondary" : "bg-primary";
+    const isActive = product.active !== false;
 
     return `
-      <tr class="hover:bg-surface-container-low/50 transition-colors group">
-        <td class="py-3 px-space-md">
+      <tr class="hover:bg-surface-container-low/40 transition-colors">
+        <td class="py-3 px-4">
           <div class="flex items-center gap-space-sm">
-            <img class="w-12 h-12 rounded-lg object-cover shadow-xs bg-surface-container border border-outline-variant/30" src="${prod.image}" alt="${prod.name}"/>
-            <div class="flex flex-col min-w-0">
-              <span class="font-title-md text-[14px] text-on-surface font-semibold truncate group-hover:text-primary transition-colors">${prod.name}</span>
-              <div class="flex items-center gap-1.5 mt-0.5">
-                <span class="font-mono text-[11px] text-outline">${prod.sku}</span>
-                <span class="text-outline text-[10px]">•</span>
-                <span class="font-body-sm text-[11px] text-on-surface-variant">${prod.weights?.[0]?.label || '500g'}</span>
+            <img class="w-11 h-11 rounded-lg object-cover bg-surface-container shrink-0 border border-outline-variant/30" src="${product.image}" alt="${product.name}"/>
+            <div class="min-w-0">
+              <span class="font-bold text-on-surface block text-[13px] truncate">${product.name}</span>
+              <div class="flex items-center gap-1.5 text-[11px] text-outline">
+                <span class="font-mono">${product.sku}</span>
+                <span>•</span>
+                <span class="text-secondary font-medium">${product.lot}</span>
               </div>
             </div>
           </div>
         </td>
-        <td class="py-3 px-space-md">
-          <div class="flex flex-col">
-            <span class="font-label-md text-label-md text-on-surface font-medium">${prod.categoryName || prod.category}</span>
-            <span class="font-body-sm text-[12px] text-secondary font-medium">${prod.origin}</span>
+        <td class="py-3 px-3 text-[12px] text-on-surface-variant font-medium">
+          ${product.categoryName || product.category}
+        </td>
+        <td class="py-3 px-3 font-mono font-bold text-on-surface text-[14px]">
+          ${product.price.toFixed(0)} ₺
+        </td>
+        <td class="py-3 px-3 font-mono text-outline text-[13px]">
+          ${cost.toFixed(0)} ₺
+        </td>
+        <td class="py-3 px-3 font-mono font-bold text-secondary text-[13px]">
+          %${margin}
+        </td>
+        <td class="py-3 px-3">
+          <div class="flex items-center gap-2">
+            <div class="w-20 bg-surface-container h-1.5 rounded-full overflow-hidden">
+              <div class="${stockBarColor} h-full rounded-full" style="width: ${stockPct}%;"></div>
+            </div>
+            <span class="text-[12px] font-mono text-on-surface font-semibold">${product.stock}</span>
           </div>
         </td>
-        <td class="py-3 px-space-md">
-          <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-mono text-[11px]">
-            <span class="material-symbols-outlined text-[14px] text-secondary">verified</span>
-            ${prod.lot}
-          </span>
-        </td>
-        <td class="py-3 px-space-md font-body-sm text-on-surface-variant">
-          ${prod.costPrice.toFixed(0)} ₺
-        </td>
-        <td class="py-3 px-space-md">
-          <div class="flex items-center gap-1">
-            <div class="relative w-24">
-              <input class="inv-inline-price w-full px-2 py-1 rounded bg-surface-container font-label-lg text-primary font-bold focus:bg-surface-container-lowest focus:ring-1 focus:ring-primary outline-none transition-all text-sm border border-outline-variant/30"
-                type="number" step="1" value="${prod.price.toFixed(0)}" data-id="${prod.id}"/>
-              <span class="absolute right-1.5 top-1/2 -translate-y-1/2 text-outline text-xs font-bold">₺</span>
-            </div>
-          </div>
-        </td>
-        <td class="py-3 px-space-md">
-          <div class="flex flex-col gap-1 w-28">
-            <div class="flex justify-between items-center text-xs">
-              <span class="text-on-surface font-bold">${prod.stock} Adet</span>
-              <span class="${isLow ? 'text-error font-bold' : 'text-secondary font-semibold'}">%${stockPct}</span>
-            </div>
-            <div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
-              <div class="${stockBarColor} h-full rounded-full transition-all" style="width: ${stockPct}%"></div>
-            </div>
-          </div>
-        </td>
-        <td class="py-3 px-space-md text-center">
-          <!-- Interactive toggle switch -->
+        <td class="py-3 px-3 text-center">
           <label class="relative inline-flex items-center cursor-pointer">
-            <input type="checkbox" class="inv-toggle-active sr-only peer" data-id="${prod.id}" ${isActive ? 'checked' : ''}/>
-            <div class="w-9 h-5 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-secondary"></div>
+            <input type="checkbox" class="sr-only peer prod-active-toggle" data-id="${product.id}" ${isActive ? 'checked' : ''}>
+            <div class="w-9 h-5 bg-surface-container-high peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
           </label>
         </td>
-        <td class="py-3 px-space-md text-right">
-          <div class="flex items-center justify-end gap-1">
-            <button class="btn-inv-edit p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" data-id="${prod.id}" title="Düzenle">
-              <span class="material-symbols-outlined text-[18px]">edit</span>
-            </button>
-            <button class="btn-inv-history p-1.5 rounded-lg text-outline hover:text-primary hover:bg-surface-container transition-colors" data-id="${prod.id}" title="Fiyat Geçmişi">
+        <td class="py-3 px-4 text-right">
+          <div class="inline-flex items-center gap-1">
+            <button class="btn-price-history p-1.5 text-outline hover:text-secondary rounded hover:bg-surface-container transition-colors" data-id="${product.id}" title="Fiyat Geçmişi">
               <span class="material-symbols-outlined text-[18px]">history</span>
             </button>
-            <button class="btn-inv-delete p-1.5 rounded-lg text-outline hover:text-error hover:bg-error-container/20 transition-colors" data-id="${prod.id}" title="Ürünü Sil">
+            <button class="btn-edit-product p-1.5 text-outline hover:text-primary rounded hover:bg-surface-container transition-colors" data-id="${product.id}" title="Düzenle">
+              <span class="material-symbols-outlined text-[18px]">edit</span>
+            </button>
+            <button class="btn-delete-product p-1.5 text-outline hover:text-error rounded hover:bg-error-container/20 transition-colors" data-id="${product.id}" title="Sil">
               <span class="material-symbols-outlined text-[18px]">delete</span>
             </button>
           </div>
@@ -1247,114 +1119,94 @@ function renderInventoryTable() {
     `;
   }).join("");
 
-  // Attach inline price edit
-  tbody.querySelectorAll(".inv-inline-price").forEach((input) => {
-    input.addEventListener("change", (e) => {
-      const pId = input.getAttribute("data-id");
-      const val = parseFloat(e.target.value);
-      if (!isNaN(val) && val > 0) {
-        store.updateProductPrice(pId, val);
-      }
+  // Toggle active switch
+  tbody.querySelectorAll(".prod-active-toggle").forEach((toggle) => {
+    toggle.addEventListener("change", (e) => {
+      const id = toggle.getAttribute("data-id");
+      store.toggleProductActive(id, toggle.checked);
     });
   });
 
-  // Attach active toggle switch
-  tbody.querySelectorAll(".inv-toggle-active").forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-      const pId = checkbox.getAttribute("data-id");
-      store.toggleProductActive(pId);
-    });
-  });
-
-  // Attach edit button
-  tbody.querySelectorAll(".btn-inv-edit").forEach((btn) => {
+  // Price history modal
+  tbody.querySelectorAll(".btn-price-history").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const pId = btn.getAttribute("data-id");
-      openEditProductDrawer(pId);
+      const id = btn.getAttribute("data-id");
+      openPriceHistoryModal(id);
     });
   });
 
-  // Attach price history button
-  tbody.querySelectorAll(".btn-inv-history").forEach((btn) => {
+  // Edit product drawer
+  tbody.querySelectorAll(".btn-edit-product").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const pId = btn.getAttribute("data-id");
-      openPriceHistoryModal(pId);
+      const id = btn.getAttribute("data-id");
+      openEditProductDrawer(id);
     });
   });
 
-  // Attach delete button
-  tbody.querySelectorAll(".btn-inv-delete").forEach((btn) => {
+  // Delete product
+  tbody.querySelectorAll(".btn-delete-product").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const pId = btn.getAttribute("data-id");
-      if (confirm("Bu ürünü çiftlik kataloğundan ve envanterden kaldırmak istediğinize emin misiniz?")) {
-        store.deleteProduct(pId);
+      const id = btn.getAttribute("data-id");
+      if (confirm("Bu mahsul kaydını sistemden kaldırmak istediğinize emin misiniz?")) {
+        store.deleteProduct(id);
+        renderAdminInventory();
       }
     });
   });
 }
 
+function openPriceHistoryModal(productId) {
+  const modal = document.getElementById("price-history-modal");
+  const list = document.getElementById("price-history-list");
+  const title = document.getElementById("price-history-title");
+  if (!modal || !list) return;
+
+  const product = store.getProductById(productId);
+  if (!product) return;
+
+  if (title) title.textContent = `${product.name} • Fiyat Geçmişi`;
+
+  const history = product.priceHistory || [
+    { date: "15 Ağustos 2024", price: product.price, reason: "2024 Hasat Sezonu Fiyatı" }
+  ];
+
+  list.innerHTML = history.map((h) => `
+    <div class="flex items-center justify-between p-2.5 rounded-lg bg-surface-container-low text-[13px]">
+      <div>
+        <span class="font-semibold text-on-surface block">${h.reason}</span>
+        <span class="text-[11px] text-outline">${h.date}</span>
+      </div>
+      <span class="font-mono font-bold text-secondary">${h.price.toFixed(0)} ₺</span>
+    </div>
+  `).join("");
+
+  modal.classList.remove("hidden");
+}
+
 function openEditProductDrawer(productId) {
-  const prod = store.getProductById(productId);
-  if (!prod) return;
+  const product = store.getProductById(productId);
+  if (!product) return;
+
+  document.getElementById("edit-prod-id").value = product.id;
+  document.getElementById("drawer-heading").textContent = `Mahsulü Düzenle: ${product.name}`;
+  document.getElementById("btn-drawer-submit").textContent = "Değişiklikleri Kaydet";
+
+  document.getElementById("new-prod-name").value = product.name;
+  document.getElementById("new-prod-category").value = product.category;
+  document.getElementById("new-prod-lot").value = product.lot;
+  document.getElementById("new-prod-price").value = product.price;
+  document.getElementById("new-prod-cost").value = product.costPrice || (product.price * 0.55);
+  document.getElementById("new-prod-stock").value = product.stock;
+  document.getElementById("new-prod-desc").value = product.description;
+  document.getElementById("new-prod-image").value = product.image;
 
   const drawer = document.getElementById("add-product-drawer");
   const drawerBackdrop = document.getElementById("drawer-backdrop");
   const drawerPanel = document.getElementById("drawer-panel");
-  const heading = document.getElementById("drawer-heading");
-  const submitBtn = document.getElementById("btn-drawer-submit");
-
-  document.getElementById("edit-prod-id").value = prod.id;
-  document.getElementById("new-prod-name").value = prod.name;
-  document.getElementById("new-prod-category").value = prod.category;
-  document.getElementById("new-prod-lot").value = prod.lot;
-  document.getElementById("new-prod-price").value = prod.price;
-  document.getElementById("new-prod-cost").value = prod.costPrice;
-  document.getElementById("new-prod-stock").value = prod.stock;
-  document.getElementById("new-prod-desc").value = prod.description;
-  document.getElementById("new-prod-image").value = prod.image;
-
-  if (heading) heading.textContent = "Ürünü Düzenle: " + prod.name;
-  if (submitBtn) submitBtn.textContent = "Değişiklikleri Güncelle";
 
   drawer.classList.remove("pointer-events-none");
   drawerBackdrop.classList.remove("pointer-events-none", "opacity-0");
   drawerPanel.classList.remove("translate-x-full");
-}
-
-function openPriceHistoryModal(productId) {
-  const prod = store.getProductById(productId);
-  if (!prod) return;
-
-  const modal = document.getElementById("price-history-modal");
-  const title = document.getElementById("price-history-title");
-  const content = document.getElementById("price-history-content");
-  if (!modal || !content) return;
-
-  title.textContent = `Fiyat Geçmişi: ${prod.name}`;
-
-  const history = prod.priceHistory && prod.priceHistory.length > 0
-    ? prod.priceHistory
-    : [
-        { date: "12 Ağustos 2024", price: prod.price, reason: "Sezon Başlangıç Fiyatı" },
-        { date: "15 Ocak 2024", price: prod.price * 0.9, reason: "Önceki Sezon Sonu" }
-      ];
-
-  content.innerHTML = `
-    <div class="relative pl-6 border-l-2 border-primary/30 space-y-4">
-      ${history.map((h) => `
-        <div class="relative">
-          <span class="absolute -left-[31px] top-1 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-surface-container"></span>
-          <div class="flex items-center justify-between text-xs text-outline mb-0.5">
-            <span>${h.date}</span>
-            <span class="font-bold text-primary text-sm">${h.price.toFixed(0)} ₺</span>
-          </div>
-          <p class="font-body-sm text-[13px] text-on-surface font-medium">${h.reason}</p>
-        </div>
-      `).join("")}
-    </div>
-  `;
-
-  modal.classList.remove("hidden");
 }
 
 // --- INITIALIZE ALL EVENT LISTENERS & MODULES ---
@@ -1403,7 +1255,7 @@ function initApp() {
 
   // Reset Demo button
   document.getElementById("btn-reset-demo")?.addEventListener("click", () => {
-    if (confirm("Tüm ürünler, sepet ve siparişler ilk demo haline sıfırlansın mı?")) {
+    if (confirm("Tüccarım demo verileri ilk orijinal haline sıfırlansın mı?")) {
       store.resetToDefaults();
       location.reload();
     }
@@ -1427,23 +1279,11 @@ function initApp() {
     });
   }
 
-  // Catalog Category Pills
-  document.querySelectorAll(".cat-pill").forEach((btn) => {
+  // Catalog Category Filter Pills
+  document.querySelectorAll(".filter-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      activeCategoryFilter = btn.getAttribute("data-cat");
+      activeCategoryFilter = btn.getAttribute("data-category");
       updateCategoryPills();
-      renderCatalog();
-    });
-  });
-
-  // Catalog Weight Filters
-  document.querySelectorAll(".weight-filter-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".weight-filter-btn").forEach((b) => {
-        b.className = "weight-filter-btn px-space-sm py-1 rounded-lg bg-surface-container text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-highest transition-colors";
-      });
-      btn.className = "weight-filter-btn px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface font-label-md text-label-md shadow-xs transition-colors font-bold";
-      activeWeightFilter = btn.getAttribute("data-weight-filter");
       renderCatalog();
     });
   });
@@ -1454,159 +1294,106 @@ function initApp() {
     renderCatalog();
   });
 
-  // Haftanın Çiftlik Paketi Button
-  document.getElementById("btn-add-weekly-bundle")?.addEventListener("click", () => {
-    const bundle = store.getProductById("pak-001");
-    if (bundle) {
-      store.addToCart(bundle, "Ahşap Sandık Set", 1);
-    }
-  });
-
-  // Lab Report Modal Triggers
-  const openLabModal = () => {
-    document.getElementById("lab-report-modal")?.classList.remove("hidden");
-  };
-  document.getElementById("btn-show-lab-report")?.addEventListener("click", openLabModal);
-  document.getElementById("btn-footer-traceability")?.addEventListener("click", openLabModal);
-  document.getElementById("btn-close-lab-report")?.addEventListener("click", () => {
-    document.getElementById("lab-report-modal")?.classList.add("hidden");
-  });
-  document.getElementById("btn-close-lab-report-2")?.addEventListener("click", () => {
-    document.getElementById("lab-report-modal")?.classList.add("hidden");
+  // Quick View Close Buttons
+  document.getElementById("btn-close-quick-view")?.addEventListener("click", closeQuickView);
+  document.getElementById("quick-view-modal")?.addEventListener("click", (e) => {
+    if (e.target.id === "quick-view-modal") closeQuickView();
   });
 
   // Saved Addresses Modal Trigger
   document.getElementById("btn-open-saved-addresses")?.addEventListener("click", () => {
     renderSavedAddresses();
-    document.getElementById("saved-addresses-modal")?.classList.remove("hidden");
   });
   document.getElementById("btn-close-saved-addresses")?.addEventListener("click", () => {
     document.getElementById("saved-addresses-modal")?.classList.add("hidden");
   });
-
-  // Price History Modal Closer
-  document.getElementById("btn-close-price-history")?.addEventListener("click", () => {
-    document.getElementById("price-history-modal")?.classList.add("hidden");
+  document.getElementById("btn-close-saved-addresses-2")?.addEventListener("click", () => {
+    document.getElementById("saved-addresses-modal")?.classList.add("hidden");
   });
 
-  // Quick View Closer
-  document.getElementById("btn-close-quick-view")?.addEventListener("click", closeQuickView);
-  document.getElementById("btn-close-order-detail")?.addEventListener("click", () => {
-    document.getElementById("order-detail-modal")?.classList.add("hidden");
-  });
-  document.getElementById("btn-order-detail-close")?.addEventListener("click", () => {
-    document.getElementById("order-detail-modal")?.classList.add("hidden");
-  });
-
-  // Print Invoice Action
-  document.getElementById("btn-print-invoice")?.addEventListener("click", () => {
-    window.print();
-  });
-
-  // CHECKOUT: Payment Tabs
-  document.querySelectorAll(".payment-tab").forEach((tab) => {
+  // Payment Tabs Switcher
+  document.querySelectorAll(".pay-tab").forEach((tab) => {
     tab.addEventListener("click", () => {
-      document.querySelectorAll(".payment-tab").forEach((t) => {
-        t.className = "payment-tab py-space-sm px-space-xs md:px-space-md rounded-lg font-label-lg text-label-lg transition-all flex items-center justify-center gap-1.5 text-on-surface-variant hover:text-on-surface font-semibold";
+      document.querySelectorAll(".pay-tab").forEach((t) => {
+        t.className = "pay-tab flex-1 min-w-[140px] py-2.5 px-3 rounded text-center text-[13px] transition-all duration-200 text-on-surface-variant hover:text-on-surface";
       });
-      tab.className = "payment-tab active-tab py-space-sm px-space-xs md:px-space-md rounded-lg font-label-lg text-label-lg transition-all flex items-center justify-center gap-1.5 bg-primary text-on-primary shadow-sm font-semibold";
-      activePaymentMethod = tab.getAttribute("data-method");
+      tab.className = "pay-tab flex-1 min-w-[140px] py-2.5 px-3 rounded text-center text-[13px] transition-all duration-200 bg-surface-container-lowest text-on-surface shadow-sm font-semibold";
 
-      document.getElementById("payment-pane-card")?.classList.toggle("hidden", activePaymentMethod !== "card");
-      document.getElementById("payment-pane-transfer")?.classList.toggle("hidden", activePaymentMethod !== "transfer");
-      document.getElementById("payment-pane-cash")?.classList.toggle("hidden", activePaymentMethod !== "cash");
+      const target = tab.getAttribute("data-target");
+      document.querySelectorAll(".pay-panel").forEach((panel) => panel.classList.add("hidden"));
+      const activePanel = document.getElementById(target);
+      if (activePanel) activePanel.classList.remove("hidden");
+
+      if (target === "card-form") activePaymentMethod = "card";
+      else if (target === "wire-form") activePaymentMethod = "transfer";
+      else if (target === "cod-form") activePaymentMethod = "cash";
 
       updateCheckoutCalculations();
     });
   });
 
-  // CHECKOUT: Shipping Radio Buttons
-  document.querySelectorAll("input[name='shipping_method']").forEach((radio) => {
+  // Shipping Method Radios
+  document.querySelectorAll("input[name='shipping-method']").forEach((radio) => {
     radio.addEventListener("change", (e) => {
       activeShippingMethod = e.target.value;
-      document.querySelectorAll(".shipping-option").forEach((lbl) => {
-        const inp = lbl.querySelector("input");
-        if (inp.checked) {
-          lbl.classList.add("border-secondary");
-          lbl.classList.remove("border-transparent");
-        } else {
-          lbl.classList.remove("border-secondary");
-          lbl.classList.add("border-transparent");
-        }
-      });
       updateCheckoutCalculations();
     });
   });
 
-  // CHECKOUT: Gift Wrap Checkbox
-  document.getElementById("checkbox-gift-wrap")?.addEventListener("change", () => {
+  // Apply Coupon Button
+  document.getElementById("btn-apply-coupon")?.addEventListener("click", () => {
+    const code = document.getElementById("coupon-code")?.value;
+    store.applyCoupon(code);
     updateCheckoutCalculations();
   });
 
-  // CHECKOUT: Copy IBAN Button
-  document.getElementById("btn-copy-iban")?.addEventListener("click", () => {
-    navigator.clipboard.writeText("TR780001002134987654320199").then(() => {
-      store.notifyToast("IBAN panoya kopyalandı!", "info");
-    });
-  });
-
-  // CHECKOUT: Card Number & Expiry Auto-Formatters
-  const cardInput = document.getElementById("input-card-number");
-  const cardIcon = document.getElementById("card-brand-icon");
+  // Card formatting
+  const cardInput = document.getElementById("card-number");
+  const brandBadge = document.getElementById("card-brand-badge");
   if (cardInput) {
     cardInput.addEventListener("input", (e) => {
       let val = e.target.value.replace(/\D/g, "").substring(0, 16);
+      let formatted = val.match(/.{1,4}/g)?.join(" ") || val;
+      e.target.value = formatted;
+
       if (val.startsWith("4")) {
-        if (cardIcon) cardIcon.textContent = "credit_card";
-      } else if (val.startsWith("5")) {
-        if (cardIcon) cardIcon.textContent = "contactless";
+        if (brandBadge) brandBadge.textContent = "VISA";
+      } else if (val.startsWith("51") || val.startsWith("52") || val.startsWith("53") || val.startsWith("54") || val.startsWith("55")) {
+        if (brandBadge) brandBadge.textContent = "Mastercard";
+      } else if (val.startsWith("9792")) {
+        if (brandBadge) brandBadge.textContent = "TROY";
+      } else {
+        if (brandBadge) brandBadge.textContent = "KART";
       }
-      val = val.replace(/(.{4})/g, "$1 ").trim();
-      e.target.value = val;
     });
   }
 
-  const expInput = document.getElementById("input-card-exp");
-  if (expInput) {
-    expInput.addEventListener("input", (e) => {
+  // Card Expiry Mask
+  const expiryInput = document.getElementById("card-expiry");
+  if (expiryInput) {
+    expiryInput.addEventListener("input", (e) => {
       let val = e.target.value.replace(/\D/g, "").substring(0, 4);
-      if (val.length >= 2) {
-        val = val.substring(0, 2) + "/" + val.substring(2);
+      if (val.length >= 3) {
+        e.target.value = `${val.substring(0, 2)}/${val.substring(2)}`;
+      } else {
+        e.target.value = val;
       }
-      e.target.value = val;
     });
   }
 
-  // CHECKOUT: Coupon Apply & Remove
-  document.getElementById("btn-apply-coupon")?.addEventListener("click", () => {
-    const val = document.getElementById("coupon-input")?.value;
-    const res = store.applyCoupon(val);
-    if (res.success) {
-      document.getElementById("coupon-badge")?.classList.remove("hidden");
-      document.getElementById("coupon-badge")?.classList.add("flex");
-      document.getElementById("coupon-badge-text").textContent = `"${res.coupon.code}" uygulandı (${res.coupon.label})`;
-      updateCheckoutCalculations();
+  // Complete Order Button
+  document.getElementById("btn-checkout")?.addEventListener("click", () => {
+    if (store.getCart().length === 0) {
+      alert("Sepetiniz boş! Lütfen önce ürün ekleyin.");
+      return;
     }
-  });
 
-  document.getElementById("btn-remove-coupon")?.addEventListener("click", () => {
-    store.removeCoupon();
-    document.getElementById("coupon-badge")?.classList.add("hidden");
-    document.getElementById("coupon-badge")?.classList.remove("flex");
-    const cInput = document.getElementById("coupon-input");
-    if (cInput) cInput.value = "";
-    updateCheckoutCalculations();
-  });
-
-  // CHECKOUT: Complete Order Button
-  document.getElementById("btn-complete-order")?.addEventListener("click", () => {
-    const name = document.getElementById("input-customer-name")?.value.trim();
-    const phone = document.getElementById("input-customer-phone")?.value.trim();
-    const city = document.getElementById("input-customer-city")?.value;
-    const district = document.getElementById("input-customer-district")?.value.trim();
-    const address = document.getElementById("input-customer-address")?.value.trim();
-    const notes = document.getElementById("input-customer-notes")?.value.trim();
-    const giftWrap = document.getElementById("checkbox-gift-wrap")?.checked;
+    const name = document.getElementById("full-name")?.value.trim();
+    const phone = document.getElementById("phone-number")?.value.trim();
+    const city = document.getElementById("city-select")?.value;
+    const district = document.getElementById("district-select")?.value.trim();
+    const address = document.getElementById("detailed-address")?.value.trim();
+    const notes = document.getElementById("farm-notes")?.value.trim();
 
     if (!name || !phone || !address) {
       alert("Lütfen teslimat için ad, telefon ve adres alanlarını eksiksiz doldurun.");
@@ -1615,11 +1402,10 @@ function initApp() {
 
     try {
       const order = store.createOrder({
-        customer: { name, phone, city, district, address, email: "musteri@posta.com" },
+        customer: { name, phone, city, district, address, email: "musteri@posta.me" },
         shippingMethod: activeShippingMethod,
-        paymentMethod: activePaymentMethod === "card" ? "Kredi Kartı (3D Secure)" : activePaymentMethod === "transfer" ? "Havale / EFT (%5 İndirimli)" : "Kapıda Ödeme",
-        notes,
-        giftWrap
+        paymentMethod: activePaymentMethod === "card" ? "Kredi Kartı (256-Bit SSL)" : activePaymentMethod === "transfer" ? "Havale / EFT (%5 İndirimli)" : "Kapıda Ödeme (+20 ₺)",
+        notes
       });
 
       // Show Order Success Modal
@@ -1647,13 +1433,44 @@ function initApp() {
     navigateTo("katalog");
   });
 
+  // Order Detail Modal Close & Print
+  document.getElementById("btn-close-order-detail")?.addEventListener("click", () => {
+    document.getElementById("order-detail-modal")?.classList.add("hidden");
+  });
+  document.getElementById("btn-close-order-detail-2")?.addEventListener("click", () => {
+    document.getElementById("order-detail-modal")?.classList.add("hidden");
+  });
+  document.getElementById("btn-print-order")?.addEventListener("click", () => {
+    window.print();
+  });
+
+  // Price History Modal Close
+  document.getElementById("btn-close-price-history")?.addEventListener("click", () => {
+    document.getElementById("price-history-modal")?.classList.add("hidden");
+  });
+  document.getElementById("btn-close-price-history-2")?.addEventListener("click", () => {
+    document.getElementById("price-history-modal")?.classList.add("hidden");
+  });
+
+  // Lab Report Modal Triggers
+  const openLabModal = () => {
+    document.getElementById("lab-report-modal")?.classList.remove("hidden");
+  };
+  document.getElementById("btn-footer-traceability")?.addEventListener("click", openLabModal);
+  document.getElementById("btn-close-lab-report")?.addEventListener("click", () => {
+    document.getElementById("lab-report-modal")?.classList.add("hidden");
+  });
+  document.getElementById("btn-close-lab-report-2")?.addEventListener("click", () => {
+    document.getElementById("lab-report-modal")?.classList.add("hidden");
+  });
+
   // ADMIN ANALYTICS: Time Periods
   document.querySelectorAll(".analytics-period-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       document.querySelectorAll(".analytics-period-btn").forEach((b) => {
-        b.className = "analytics-period-btn px-3 py-1.5 rounded-md font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all";
+        b.className = "analytics-period-btn px-3 py-1.5 rounded text-[12px] text-on-surface-variant hover:text-on-surface transition-colors";
       });
-      btn.className = "analytics-period-btn px-3 py-1.5 rounded-md font-label-md text-label-md bg-primary text-on-primary shadow-xs font-semibold transition-all";
+      btn.className = "analytics-period-btn px-3 py-1.5 rounded text-[12px] bg-primary text-on-primary font-semibold shadow-sm transition-colors";
       activeAnalyticsPeriod = btn.getAttribute("data-period");
       renderAdminAnalytics();
       store.notifyToast(`Analitik görünümü "${btn.textContent}" periyoduna göre güncellendi.`, "info");
@@ -1668,39 +1485,30 @@ function initApp() {
   // ADMIN ANALYTICS: CSV Export
   document.getElementById("btn-export-csv")?.addEventListener("click", () => {
     const orders = store.getOrders();
-    let csv = "Siparis_No,Tarih,Musteri,Telefon,Sehir,Tutar,Odeme,Durum,Kargo_Takip\n";
+    let csv = "Siparis No;Tarih;Musteri;Sehir;Urunler;Tutar;Durum\n";
     orders.forEach((o) => {
-      csv += `"${o.id}","${o.date}","${o.customerName}","${o.phone}","${o.city}","${o.total} ₺","${o.paymentMethod}","${o.status}","${o.trackingNo}"\n`;
+      const name = o.customer?.name || o.customerName || "-";
+      const city = o.customer?.city || o.city || "-";
+      const summary = (o.itemsSummary || "").replace(/;/g, ",");
+      csv += `${o.id};${o.date};${name};${city};${summary};${o.total} TL;${o.status}\n`;
     });
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+    const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.setAttribute("href", url);
-    link.setAttribute("download", `Findik_Vadisi_Siparisler_${Date.now()}.csv`);
-    document.body.appendChild(link);
+    link.href = url;
+    link.download = `Tuccarim_Siparis_Raporu_${new Date().toISOString().slice(0, 10)}.csv`;
     link.click();
-    document.body.removeChild(link);
-    store.notifyToast("Sipariş verileri CSV dosyası olarak indirildi!", "success");
+    URL.revokeObjectURL(url);
+    store.notifyToast("Sipariş raporu CSV olarak indirildi.", "success");
   });
 
-  // ADMIN INVENTORY: Search & Filters
+  // ADMIN INVENTORY: Search & Filter
   document.getElementById("inv-search-input")?.addEventListener("input", renderInventoryTable);
   document.getElementById("inv-cat-filter")?.addEventListener("change", renderInventoryTable);
 
-  document.querySelectorAll(".inv-tab-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".inv-tab-btn").forEach((b) => {
-        b.className = "inv-tab-btn px-space-md py-1.5 rounded-full font-label-md text-label-md bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-all";
-      });
-      btn.className = "inv-tab-btn px-space-md py-1.5 rounded-full font-label-md text-label-md bg-primary-container text-on-primary font-bold transition-all";
-      activeInvTab = btn.getAttribute("data-status-tab");
-      renderInventoryTable();
-    });
-  });
-
   // ADMIN INVENTORY: Bulk Price Modal
   const bulkModal = document.getElementById("bulk-price-modal");
-  document.getElementById("btn-open-bulk-modal")?.addEventListener("click", () => {
+  document.getElementById("btn-open-bulk-price")?.addEventListener("click", () => {
     bulkModal?.classList.remove("hidden");
   });
   document.getElementById("btn-close-bulk-modal")?.addEventListener("click", () => {
@@ -1708,14 +1516,6 @@ function initApp() {
   });
   document.getElementById("btn-cancel-bulk-modal")?.addEventListener("click", () => {
     bulkModal?.classList.add("hidden");
-  });
-
-  // Bulk type radio toggles symbol
-  document.querySelectorAll("input[name='bulk_type']").forEach((radio) => {
-    radio.addEventListener("change", (e) => {
-      const sym = document.getElementById("bulk-symbol");
-      if (sym) sym.textContent = e.target.value === "percent" ? "%" : "₺";
-    });
   });
 
   // Bulk Form Submit
@@ -1738,7 +1538,7 @@ function initApp() {
   const openDrawer = () => {
     document.getElementById("edit-prod-id").value = "";
     document.getElementById("drawer-heading").textContent = "Yeni Mahsul Ekle";
-    document.getElementById("btn-drawer-submit").textContent = "Ürünü Kaydet & Yayınla";
+    document.getElementById("btn-drawer-submit").textContent = "Kaydet & Yayınla";
     document.getElementById("new-product-form").reset();
 
     drawer.classList.remove("pointer-events-none");
@@ -1771,10 +1571,8 @@ function initApp() {
     const image = document.getElementById("new-prod-image").value.trim();
 
     if (editId) {
-      // Update existing product
       store.updateProduct(editId, { name, category, lot, price, costPrice, stock, description, image });
     } else {
-      // Add new product
       store.addProduct({ name, category, lot, price, costPrice, stock, description, image });
     }
 

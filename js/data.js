@@ -1,28 +1,28 @@
-// Fındık Vadisi - Doğal Çiftlik & E-Ticaret Platformu
-// Başlangıç Veri Seti (Initial Dataset)
+// Tüccarım - Organik Çiftlik & E-Ticaret Platformu
+// Başlangıç Veri Seti (Tüccarım Design System)
 
 export const INITIAL_PRODUCTS = [
   {
     id: "fnd-092",
-    sku: "FND-092",
-    name: "Çifte Kavrulmuş Giresun Fındığı",
-    category: "kavrulmus",
-    categoryName: "Çifte Kavrulmuş Fındık",
-    origin: "Keşap / Giresun",
-    altitude: "450m Rakım",
-    lot: "LOT-2024-K09",
-    badge: "Yeni Mahsul",
+    sku: "TC-FND-092",
+    name: "Giresun Çifte Kavrulmuş Tombul Fındık",
+    category: "nut",
+    categoryName: "Çiğ & Kavrulmuş",
+    origin: "Keşap Vadisi / Giresun",
+    altitude: "Parsel 04 • 480m Rakım",
+    lot: "Parti #24-11",
+    badge: "Tescilli Tombul",
     badgeType: "secondary",
-    tag: "Organik Sertifikalı",
+    tag: "Coğrafi İşaretli",
     rating: 4.9,
-    reviewsCount: 128,
-    costPrice: 175.0,
-    price: 365.0,
-    oldPrice: 420.0,
+    reviewsCount: 142,
+    costPrice: 210.0,
+    price: 385.0,
+    oldPrice: 440.0,
     stock: 420,
-    unit: "Adet",
-    description: "Meşe odunu fırınında düşük ısıda yavaşça kavrulmuş, ağızda çıtır çıtır dağılan yağ oranı yüksek tombul fındık.",
-    details: "Giresun Keşap Vadisi'nin 450 metre rakımlı yamaçlarından toplanan fındıklarımız, geleneksel yöntemlerle meşe odunu ateşinde kavrulur. Hiçbir kimyasal koruyucu, tuz veya aroma verici içermez.",
+    unit: "Kavanoz",
+    description: "Geleneksel bakır tavalarda düşük ısıda yavaşça kavrulmuş, yoğun fındık aroması ve gevrek doku.",
+    details: "Giresun Keşap Vadisi'nin asırlık ocaklarından toplanan tescilli tombul fındıklarımız, meşe odunu ısısında yavaşça kavrulur. Vakum mühürlü cam kavanozda hava almadan tazeliğini korur.",
     nutritions: {
       energy: "628 kcal",
       fat: "60.8 g",
@@ -31,119 +31,115 @@ export const INITIAL_PRODUCTS = [
       fiber: "9.7 g"
     },
     weights: [
-      { label: "250g", price: 195.0 },
-      { label: "500g", price: 365.0, default: true },
-      { label: "1 kg", price: 680.0 },
-      { label: "2.5 kg", price: 1620.0 }
+      { label: "500g", price: 385.0, default: true },
+      { label: "1000g", price: 720.0 }
     ],
     priceHistory: [
-      { date: "12 Ağustos 2024", price: 365.0, reason: "Yeni Hasat Lansman Fiyatı" },
-      { date: "01 Mayıs 2024", price: 350.0, reason: "Bahar Dönemi Fiyatı" },
-      { date: "15 Ocak 2024", price: 320.0, reason: "Önceki Sezon Sonu" }
+      { date: "15 Ağustos 2024", price: 385.0, reason: "2024 Hasat Lansman Fiyatı" },
+      { date: "01 Mayıs 2024", price: 360.0, reason: "Bahar Dönemi Fiyatı" },
+      { date: "10 Ocak 2024", price: 330.0, reason: "Kış Sezonu Sonu" }
     ],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDiyGuGQg_uXH2QIu5crnSJ3xCAQ86QGURDsgjmQzmwKkjem7dXcNL9e_7JzAR6ANlt_0zi3vtWWa-NAsEHcX7DqWF0mZTshVdiLKbvEQflNiF8WeJ94WDvlxkrU3wQz_6iI6boO7nGJ2ZvL2Tc4xtBL7eDezquW3XbRckkYAmkpkjJs-qprBhnn3qNU7fzUp-BaUjKsCtcKU-R72Ifj-1hGVvqicQzGNQY9Wkab980pN-03zqN8ei34Q",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAwYIOe0nv8Sbc7aFiHRLlR7KMC-Yirr1tgOvIG37UIDSeGzWggsv6C8Znqn6XkCkWmz6COQAD4WIvK50xbiteWTKwiYMVyYmF_Yfc5JGW7bVfrIYn-bWsZpkcnUy2UvL2rHvesofUV5ORDY6DMuY-3RenY6jw_x0adh1Fj0bJZxyv_mzpvwCYp5nWV8BcgrceWX1CzSaCbwfCHyfIO74d8_ByobLLZ7gxgACLMdOme",
     active: true
   },
   {
     id: "ezm-014",
-    sku: "EZM-014",
-    name: "Kremamsı Doğal Fındık Ezmesi",
-    category: "ezme",
-    categoryName: "Taş Değirmen Ezme",
-    origin: "Tirebolu • Taş Değirmen",
-    altitude: "380m Rakım",
-    lot: "LOT-2024-TD02",
-    badge: "%100 Fındık İçi",
+    sku: "TC-EZM-014",
+    name: "Şekersiz Doğal Fındık Ezmesi",
+    category: "butter",
+    categoryName: "Taş Değirmen Ezmeler",
+    origin: "Tirebolu / Giresun",
+    altitude: "Parsel 02 • 380m Rakım",
+    lot: "Parti #24-08",
+    badge: "%100 Fındık",
     badgeType: "primary",
     tag: "Taş Değirmen",
     rating: 5.0,
-    reviewsCount: 84,
-    costPrice: 140.0,
-    price: 285.0,
-    oldPrice: 320.0,
+    reviewsCount: 98,
+    costPrice: 165.0,
+    price: 295.0,
+    oldPrice: 340.0,
     stock: 185,
-    unit: "Adet",
-    description: "Sadece kavrulmuş fındıktan taş değirmende çekilmiş, sıfır şeker, sıfır palm yağı ve sıfır koruyucu içeren saf enerji kaynağı.",
-    details: "Geleneksel granit taş değirmenlerde saatlerce yavaş devirde sürtünerek krema kıvamına getirilen ezmemiz, fındığın kendi doğal yağını salmasıyla pürüzsüzleşir.",
+    unit: "Kavanoz",
+    description: "Taş değirmende 18 saat boyunca soğuk ezilerek elde edilen pürüzsüz kıvam; ilave yağ veya şeker içermez.",
+    details: "Granit taş değirmenlerde saatlerce yavaş devirde sürtünerek krema kıvamına getirilen ezmemiz, fındığın kendi doğal yağını salmasıyla pürüzsüzleşir. Şeker, palm yağı ve emülgatör içermez.",
     nutritions: {
       energy: "645 kcal",
       fat: "62.0 g",
       protein: "16.2 g",
-      carbs: "14.1 g",
-      fiber: "10.1 g"
+      carbs: "11.0 g",
+      fiber: "8.5 g"
     },
     weights: [
-      { label: "320g", price: 285.0, default: true },
-      { label: "650g", price: 540.0 },
-      { label: "1 kg Kova", price: 790.0 }
+      { label: "320g", price: 295.0, default: true },
+      { label: "650g", price: 560.0 }
     ],
     priceHistory: [
-      { date: "15 Ağustos 2024", price: 285.0, reason: "2024 Taze Çekim Fiyatı" },
-      { date: "10 Mart 2024", price: 260.0, reason: "Sezon İçi Güncelleme" }
+      { date: "15 Ağustos 2024", price: 295.0, reason: "Yeni Sezon Çekimi" },
+      { date: "20 Mart 2024", price: 275.0, reason: "Bahar Fiyatı" }
     ],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQBXKICbkb7VszXzYSzRZRrA1YiSKvmPRQ39nx3jR-l2ysHebJbp3ziLjOps4SWo8-tgiVXlV7sU2BuAVGH1XMYGWxjbZ9H91DoVFSgDA9VGz83WxLIlNKBDesFMMByzY1Dmywoq3qIHBjBVPa-TjAM4wDd6XpG2OR5HJ_qV_nSDb5oG8FvyB9s25TivXgziYDtXB5L3USyWugm7TyqTLh9BNj0CRNKuDWXR3lL-npUWaL5op1Tjt4DQ",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBKAN_w8juKM5D5u3Iln9kaU89qH0l2dN5lk8M9k5HCmLO5NTx_kCkwI0hEIpjw0MRfo8Lrs0ZA64ntniqDrrWQ6ow0btMRNWLW5MLmJf6rY8OAB3yaYJF-3NWSrx1gyQxs6eABAr-Oa4Q1CkUEENsQ--x7tvk5enusKWIiYWrOXnNySRK8vQzRvN1wq98Ik0HQPO4WfQh0KH2zw2ZlHyO8aoXC-cbIZ7P7m93kZGE7",
     active: true
   },
   {
-    id: "cig-041",
-    sku: "CIG-041",
-    name: "Çiğ Tombul Giresun Fındığı",
-    category: "cig",
-    categoryName: "Çiğ & Naturel",
-    origin: "Espiye / Giresun",
-    altitude: "520m Rakım",
-    lot: "LOT-2024-CG01",
+    id: "cig-005",
+    sku: "TC-CIG-005",
+    name: "Doğal Güneşte Kurutulmuş Çiğ Fındık",
+    category: "nut",
+    categoryName: "Çiğ & Kavrulmuş",
+    origin: "Yağlıdere / Giresun",
+    altitude: "Parsel 06 • 520m Rakım",
+    lot: "Parti #24-03",
     badge: "Güneşte Kurutulmuş",
-    badgeType: "secondary-container",
-    tag: "İyi Tarım Sertifikalı",
+    badgeType: "secondary",
+    tag: "İşlem Görmemiş",
     rating: 4.8,
-    reviewsCount: 62,
-    costPrice: 160.0,
+    reviewsCount: 64,
+    costPrice: 195.0,
     price: 340.0,
     oldPrice: 380.0,
-    stock: 310,
-    unit: "Adet",
-    description: "İşlem görmemiş, çiğ haliyle besin değerlerini ve doğal yağını eksiksiz koruyan 13-15 mm kalibre birinci sınıf tombul fındık.",
-    details: "Harman yerinde tülbentler üzerinde Karadeniz güneşinde yavaşça kurutulmuş, nem oranı %5.5 altına düşürülmüş taze çiğ iç fındık.",
+    stock: 260,
+    unit: "Kese",
+    description: "Karadeniz harmanlarında doğal esinti ve güneş ile kurutulmuş, işlem görmemiş saf tombul fındık içi.",
+    details: "Dalından el ile toplanıp harmanlarda Karadeniz güneşiyle yavaşça nemi düşürülen çiğ fındıklarımız, canlı besin değerlerini ve enzimlerini eksiksiz muhafaza eder.",
     nutritions: {
-      energy: "620 kcal",
-      fat: "58.5 g",
-      protein: "14.8 g",
-      carbs: "17.2 g",
-      fiber: "9.2 g"
+      energy: "628 kcal",
+      fat: "60.5 g",
+      protein: "14.9 g",
+      carbs: "17.0 g",
+      fiber: "10.0 g"
     },
     weights: [
-      { label: "500g", price: 340.0, default: true },
-      { label: "1 kg", price: 640.0 },
-      { label: "5 kg Çuval", price: 2950.0 }
+      { label: "500g", price: 180.0 },
+      { label: "1000g", price: 340.0, default: true }
     ],
     priceHistory: [
-      { date: "10 Ağustos 2024", price: 340.0, reason: "İlk Mahsul Satış Fiyatı" }
+      { date: "15 Ağustos 2024", price: 340.0, reason: "Yeni Mahsul Harmanı" }
     ],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuC4UcNb6SAWQaVzrh6ZGdDW7a6vpiN8DDFkjUk57h7PG411qZ31_IKVFC9HeCPgAg8WSiRE6aBcUK_OG1v_vtpdtoOcCTFcruuZ-LETny0fUjDHpcT8ryKka9iyXmkdG_6Czp3Xn7ln7lW-Nys-udHAOs5THqLvlp_1hs7H3DVPciwhh8f6ssDumVf-flbghQIDCaIKfhWzAGlIq3Y67fEqz_ELwSNd9mED-BWb3uVY2-bydIn5fYUrLw",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDQ0_kX_E6aojbyYC2V0OhO4oVKWCpciVRax6wfLzsrWLr1N02U1U0wRpcad9hiVRV6e5LL7rM1q4lqQvifqYE2yuYDhRToMONSRupjFRQK3SiMj1jLjOw34lxybAO0lQ-ZmR4VeR3wIKCaTExJfbuydEZ8-qTZfhbn6q-cCAfp0VTXZs79Zy5bQm07Gi9WL04WvbhEGOxIFvriNbRtm8HPKM8WSF9WJwTgrGIC_DeT",
     active: true
   },
   {
-    id: "yag-008",
-    sku: "YAG-008",
-    name: "Saf Soğuk Sıkım Fındık Yağı",
-    category: "yag",
-    categoryName: "Soğuk Sıkım Yağ",
-    origin: "Keşap Çiftliği",
-    altitude: "450m Rakım",
-    lot: "LOT-2024-SS04",
-    badge: "Soğuk Sıkım",
-    badgeType: "surface-highest",
-    tag: "E Vitamini Deposu",
+    id: "yag-021",
+    sku: "TC-YAG-021",
+    name: "Soğuk Sıkım Ham Fındık Yağı",
+    category: "oil",
+    categoryName: "Soğuk Sıkım Yağlar",
+    origin: "Keşap / Giresun",
+    altitude: "Parsel 04 • 480m Rakım",
+    lot: "Parti #24-19",
+    badge: "İlk Soğuk Sıkım",
+    badgeType: "primary",
+    tag: "27°C Altı Pres",
     rating: 4.9,
-    reviewsCount: 41,
-    costPrice: 135.0,
-    price: 290.0,
-    oldPrice: 330.0,
+    reviewsCount: 52,
+    costPrice: 310.0,
+    price: 540.0,
+    oldPrice: 600.0,
     stock: 95,
-    unit: "Adet",
-    description: "Salatalar, mezeler ve gurme yemekler için 27°C altında preslenmiş, hafif aromalı şifalı yemeklik yağ.",
-    details: "Yüksek yanma derecesi (221°C) ve olağanüstü E vitamini içeriğiyle Akdeniz ve Karadeniz mutfaklarının gözdesi olan soğuk pres saf fındık yağı.",
+    unit: "Şişe",
+    description: "27°C altı hidrolik presleme usulü ile elde edilen, E vitamini ve antioksidan zengini saf gurme yağ.",
+    details: "Işık geçirmez koyu cam şişede sunulan soğuk sıkım yağımız; yüksek yanma derecesi (220°C) ve ipeksi hafif aromasıyla hem sıcak mutfakta hem salatalarda eşsizdir.",
     nutritions: {
       energy: "884 kcal",
       fat: "100.0 g",
@@ -152,37 +148,36 @@ export const INITIAL_PRODUCTS = [
       fiber: "0.0 g"
     },
     weights: [
-      { label: "250 ml", price: 290.0, default: true },
-      { label: "500 ml", price: 530.0 },
-      { label: "1 Litre", price: 980.0 }
+      { label: "250ml", price: 290.0 },
+      { label: "500ml", price: 540.0, default: true }
     ],
     priceHistory: [
-      { date: "18 Ağustos 2024", price: 290.0, reason: "Yeni Sezon Soğuk Sıkım" }
+      { date: "15 Ağustos 2024", price: 540.0, reason: "İlk Damıtma Hasat Fiyatı" }
     ],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB7wg03NoC-hQ3cJ_ghVqqg0JOPEZ4c2YbNCig4WxcO_l-wO-3HKiJ3Z9wXXsntPm1jLSwSgAVofrep7DCDOSAvFZFdD3DlJBpVBQ8iAjoIE4GVD-vyDHtZVrMqeBtF0SPDd64qQJzhmdqjcp2DQwRmlStm8_mlZuW5OPR0-Y8oiRkaI5WxeueeiL0oK7VjRKWWTLdM9yQyG6FUo9aOlRbAF5YHIHriBHddOKc9aMdKFQcJi_h5CZ8vvA",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAxN_lAIwOaivxUa07pO5STxhpMFBiBxfbNU3ixpbs_yQUv-HUgAjLrirWJ0f3iXBHJaju8AkP_sjhvOZxJydU0ajJvIzZRPsEiCzZTCXobtS4PVGHUd4DjEdwNyUTYDpRHcn5EcR3a7hkA7rjRv7OnC3oI0DB_t9dUwEDhHMmBSurIIfUhfhBAgfM7DnKEUCbAPUwjml20hd01lePJY9SVkZ0BrFmJGobx6xl_NWUs",
     active: true
   },
   {
-    id: "bal-019",
-    sku: "BAL-019",
+    id: "bal-033",
+    sku: "TC-BAL-033",
     name: "Karadeniz Yayla Çiçek Balı",
-    category: "bal",
-    categoryName: "Köy Balları",
-    origin: "Kümbet Yaylası (1800m)",
-    altitude: "1800m Rakım",
-    lot: "LOT-2024-YB08",
-    badge: "Yayla Balı",
-    badgeType: "tertiary-container",
+    category: "honey",
+    categoryName: "Yayla Balı",
+    origin: "Kümbet Yaylası / Giresun",
+    altitude: "1850m Rakım",
+    lot: "Parti #24-02",
+    badge: "1850m Rakım",
+    badgeType: "secondary",
     tag: "Ham & Katkısız",
-    rating: 4.9,
-    reviewsCount: 56,
-    costPrice: 220.0,
+    rating: 5.0,
+    reviewsCount: 71,
+    costPrice: 260.0,
     price: 460.0,
-    oldPrice: 520.0,
-    stock: 64,
-    unit: "Adet",
-    description: "Isıl işlem görmemiş, yabani dağ kekiği ve orman çiçeklerinin florasından sağılmış saf ham bal.",
-    details: "Kümbet ve Bektaş yaylalarının el değmemiş zirvelerinde kafkas arılarımız tarafından üretilmiştir. Polen analizi ve prolin değeri tescillidir.",
+    oldPrice: 510.0,
+    stock: 42,
+    unit: "Kavanoz",
+    description: "Kümbet ve Bektaş yaylalarının endemik kır çiçeklerinden arıların süzdüğü, ısıl işlem görmemiş ham bal.",
+    details: "Yüksek rakımlı Karadeniz yaylalarında yerleşim ve tarım ilaçlarından kilometrelerce uzakta üretilen polen ve propolis zengini saf ham bal.",
     nutritions: {
       energy: "304 kcal",
       fat: "0.0 g",
@@ -195,333 +190,288 @@ export const INITIAL_PRODUCTS = [
       { label: "850g", price: 820.0 }
     ],
     priceHistory: [
-      { date: "05 Eylül 2024", price: 460.0, reason: "Yayla Hasadı Sağımı" }
+      { date: "15 Ağustos 2024", price: 460.0, reason: "Yayla Sağım Sezonu" }
     ],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAUAtXJmRgIHP5-tx0l_CZg98ITTVpSr87tqxlqSxe_sd5n4G6CNRZsrrpssX05tYljS1aJT3k1W28ewfd8wPKIueI3t2LQNMlewmB1jeVKfkomgrIaH_tf5fAAQn4GbuYhKBoyOeugOFBXRjcMN5mNYQkKF25oNnE2Z52GSOZVz-moRij1Fxn-x0pOUZgUmkZSSD-NxoRDBXfqJjxRrSkIPVopYFHNnu7D3zzN9TQZhPIzgc_cZiahZg",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBdQ22WuJqkvhBLw1adQXb4u0r4GItQJPA--GmIkYZ-D4Wqhogy4pCEjAVwOxEg5k9fPN7AZGoKOS00UEDyuQjm0ykXUvEYBf36hlmFMngB5DfSmUGyQg4C55Z2rWXdMN4Wu-W0I8doWVyU1NV3Xn6hLiYzLqsErMXIvW8XMPFCd4JhquRQSfP6MVaYAB41WYnuyQmA421nLBoTc-dSUFPR_7o71yMS2G37OTnWpi-v",
     active: true
   },
   {
-    id: "bal-027",
-    sku: "BAL-027",
-    name: "Organik Karadeniz Kestane Balı",
-    category: "bal",
-    categoryName: "Köy Balları",
-    origin: "Dereli Dağ Köyü",
-    altitude: "1100m Rakım",
-    lot: "LOT-2024-KB03",
-    badge: "Orman Balı",
-    badgeType: "tertiary",
-    tag: "Koyu Amber Şifalı",
-    rating: 5.0,
-    reviewsCount: 78,
-    costPrice: 240.0,
-    price: 490.0,
-    oldPrice: 560.0,
-    stock: 42,
-    unit: "Adet",
-    description: "Karadeniz kestane ormanlarının çiçeklerinden derlenen, yüksek antioksidan ve mineral değerli sertifikalı kestane balı.",
-    details: "Boğazı tatlı bir acılıkla yakan hakiki kestane balı. Bağışıklık dostu fenolik bileşenler açısından zengindir.",
+    id: "un-008",
+    sku: "TC-UN-008",
+    name: "Taş Değirmen İnce Fındık Unu",
+    category: "butter",
+    categoryName: "Taş Değirmen Ezmeler",
+    origin: "Tirebolu / Giresun",
+    altitude: "Parsel 02 • 380m Rakım",
+    lot: "Parti #24-15",
+    badge: "Glutensiz • Saf",
+    badgeType: "primary",
+    tag: "İnce Çekim",
+    rating: 4.8,
+    reviewsCount: 38,
+    costPrice: 105.0,
+    price: 190.0,
+    oldPrice: 220.0,
+    stock: 140,
+    unit: "Paket",
+    description: "Düşük ısıda öğütülmüş, yağı dengeli, pasta ve gurme tarifler için ideal ipeksi tombul fındık unu.",
+    details: "Taş değirmende ince elekten geçirilmiş fındık unumuz, ketojenik ve glutensiz beslenenler için en saf ve doğal un alternatifidir.",
     nutritions: {
-      energy: "310 kcal",
-      fat: "0.0 g",
-      protein: "0.4 g",
-      carbs: "80.5 g",
-      fiber: "0.0 g"
+      energy: "610 kcal",
+      fat: "55.0 g",
+      protein: "16.5 g",
+      carbs: "18.0 g",
+      fiber: "9.0 g"
     },
     weights: [
-      { label: "450g", price: 490.0, default: true },
-      { label: "850g", price: 890.0 }
+      { label: "400g", price: 190.0, default: true },
+      { label: "1000g", price: 420.0 }
     ],
     priceHistory: [
-      { date: "01 Eylül 2024", price: 490.0, reason: "Kestane Balı Sağımı" }
+      { date: "15 Ağustos 2024", price: 190.0, reason: "Yeni Sezon Öğütümü" }
     ],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDedlIzf8hz5UNgj7TyrODrRaqaqrMooHZL_wJWC5J0FvlHujVd3_ldAkMxGseuJgSznMIANzutmZtX2t_dDoQos4WLvU_xYOblPy4O1MgcbZVEvdRTlyq_prYaJrJPHuIvsq2e92LdzsUGrYktNBtUi5itYz9rqPFbVm3k4BoSVFXD4RC88i_7AlSbdQjphIisBF7GoDmsNX08ZRz1s__0NTs9OLvNrpjziv0u90D-0WtvEmc8mNWdpg",
-    active: true
-  },
-  {
-    id: "pek-005",
-    sku: "PEK-005",
-    name: "Köy Usulü Beyaz Dut Pekmezi",
-    category: "pekmez",
-    categoryName: "Köy Pekmezi",
-    origin: "Şebinkarahisar Köyü",
-    altitude: "1250m Rakım",
-    lot: "LOT-2024-DP07",
-    badge: "Kazan Kaynatması",
-    badgeType: "surface-highest",
-    tag: "Geleneksel Tarif",
-    rating: 4.7,
-    reviewsCount: 33,
-    costPrice: 95.0,
-    price: 210.0,
-    oldPrice: 240.0,
-    stock: 120,
-    unit: "Adet",
-    description: "Odun ateşinde bakır kazanlarda kaynatılmış, ilave şeker içermeyen yoğun kıvamlı geleneksel dut pekmezi.",
-    details: "Yüksek demir ve kalsiyum deposu. Sabah kahvaltılarında veya tahinle birleştiğinde mükemmel bir doğal enerji kaynağı.",
-    nutritions: {
-      energy: "290 kcal",
-      fat: "0.1 g",
-      protein: "1.4 g",
-      carbs: "70.5 g",
-      fiber: "1.8 g"
-    },
-    weights: [
-      { label: "400g", price: 210.0, default: true },
-      { label: "800g", price: 380.0 }
-    ],
-    priceHistory: [
-      { date: "20 Temmuz 2024", price: 210.0, reason: "Dut Pekmezi Kaynatımı" }
-    ],
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuB7t0NPl6U9CAz2aDOLJy5Cy74j7j1Im60p67LlYYGMBQNTMV1777HEbqUQgk2vl0PgSHAfS37pncwRCEBLJxTIwMhDSQXKaB4CHbRnAXl4Si3nVh4URguWujK6ncpVhl3cLS3FqocAF_NzYOD--PRLvjavz2_HyQ2UhYgFM2gytz_9LEoDSyx9YVAEcDQHPftqG4VsE5hRps2trUpHgMaxW3qUMsuzI-fgsZR4FsM1hL-RlEK2qNEDPw",
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBAgVmUdz4jwzGZS0wLXuqm86fv6FssjQLvY3dkDBmH7l470CGVN7M8LUzbpfTr-fT46hifB5yRNiwtfWBXg632QmvT1BCFH4cE1FlXrrnOvY-7gEcRpgT6_3ZIEfs2p1BNGs5C4KDirmNyZkx0ektohyGp1oHOlLq-2kMSobuPkBEhvX2RdY_R7MoDarybSUhb7bM1-WvoP9aqZcuXLMDF8CDBZT_960M5ZFKrRWYG",
     active: true
   },
   {
     id: "pak-001",
-    sku: "PAK-001",
-    name: "Vadiden Sofraya Gurme Tadım Paketi",
-    category: "paket",
-    categoryName: "Hediyelik Sandıklar",
-    origin: "Giresun Keşap Çiftliği",
+    sku: "TC-PAK-001",
+    name: "Gurme Ahşap Sandık Hasat Koleksiyonu",
+    category: "set",
+    categoryName: "Hasat Koleksiyonu",
+    origin: "Keşap Vadisi / Giresun",
     altitude: "Özel Koleksiyon",
-    lot: "LOT-2024-PK01",
-    badge: "Haftanın Çiftlik Paketi",
+    lot: "Parti #24-GURME",
+    badge: "Özel Hediye Seti",
     badgeType: "secondary",
-    tag: "Avantajlı Fiyat",
+    tag: "Sınırlı Üretim",
     rating: 5.0,
-    reviewsCount: 92,
-    costPrice: 420.0,
-    price: 849.0,
-    oldPrice: 1040.0,
-    stock: 50,
-    unit: "Kutu",
-    description: "500g Çifte Kavrulmuş Fındık + 320g Şekersiz Fındık Ezmesi + 250ml Soğuk Sıkım Fındık Yağı + Ahşap Muhafaza Sandığı.",
-    details: "Çiftliğimizin en sevilen 3 ana lezzetini el yapımı ahşap sandık ve keten bez keselerle sevdiklerinize hediye edin.",
+    reviewsCount: 56,
+    costPrice: 540.0,
+    price: 920.0,
+    oldPrice: 1050.0,
+    stock: 65,
+    unit: "Sandık",
+    description: "Kavrulmuş fındık (500g), taş değirmen fındık ezmesi (320g), soğuk sıkım fındık yağı (250ml) ve organik bal (450g) içeren lüks ahşap sandık seti.",
+    details: "Çiftliğimizin en seçkin 4 mahsulünü özel kestane ağacından el yapımı ahşap sandık içinde, hasat sertifikası ve balmumu mühürle sunuyoruz.",
     nutritions: {
-      energy: "Karma Paket",
-      fat: "Doğal Yağlar",
-      protein: "Yüksek",
-      carbs: "Dengeli",
-      fiber: "Bol Lifli"
+      energy: "Zengin Gurme Seçki",
+      fat: "Doğal yağlar",
+      protein: "Bitkisel protein",
+      carbs: "Doğal karbonhidrat",
+      fiber: "Yüksek lif"
     },
     weights: [
-      { label: "Ahşap Sandık Set", price: 849.0, default: true }
+      { label: "Ahşap Sandık Set", price: 920.0, default: true }
     ],
     priceHistory: [
-      { date: "01 Eylül 2024", price: 849.0, reason: "Özel Hasat İndirimi" }
+      { date: "15 Ağustos 2024", price: 920.0, reason: "Sezon Koleksiyonu" }
     ],
     image: "https://lh3.googleusercontent.com/aida-public/AB6AXuCGmFjEcZqLw2F9u0ZCanL3cwuHaiAh6OqaqUw4sTRFh-v6CiAml2bNo1i_JfON1RAvtpB9fugLlFMTEZngBzUC8Hmc5Ogn9_O8Y458tQAvwI5WpcSmICnZRSxBEQTpFOm5zBrO7VUfQrN8MT7S0U2xiePBrJnOcguHopjDSjpaDxV7lAMTknVvXVV5jsO0gAjU_-un6E7tdvW4Xml_eTwaiHYuVlNa-dBEYW5Whwd8SfddubEGR11KnQ",
     active: true
   }
 ];
 
+// Başlangıç Sepeti (Initial Cart)
 export const INITIAL_CART = [
   {
     productId: "fnd-092",
-    sku: "FND-092",
-    name: "Giresun Tomurcuk Çifte Kavrulmuş Fındık",
-    weight: "1.000 gr",
-    price: 640.0,
+    sku: "TC-FND-092",
+    name: "Giresun Çifte Kavrulmuş Tombul Fındık",
+    weight: "500g",
+    price: 385.0,
     quantity: 1,
-    origin: "Keşap / Giresun",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDWyrlavD5JBF9rKhgoelIR7Akz3xlzJ2kSRe32b9sMF4hUzIxypCgatDcoxH791VQTS0eEe20VA0yTrkPTUTJssbgn4no2tkwEErX_gZxukHH6eT79cm1HCajS-UQCsbyTi0EOIXfTNLA_VuCIlED6wfIiXKMckIq9Zx7XpMZMyLe2Y0B95ACNBYMsrMmP1rfWWFoI4TiBPvSLKc-WrBWj5v-twz4M7f3xpkAunFr57RsDhJekQh4flw"
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAwYIOe0nv8Sbc7aFiHRLlR7KMC-Yirr1tgOvIG37UIDSeGzWggsv6C8Znqn6XkCkWmz6COQAD4WIvK50xbiteWTKwiYMVyYmF_Yfc5JGW7bVfrIYn-bWsZpkcnUy2UvL2rHvesofUV5ORDY6DMuY-3RenY6jw_x0adh1Fj0bJZxyv_mzpvwCYp5nWV8BcgrceWX1CzSaCbwfCHyfIO74d8_ByobLLZ7gxgACLMdOme",
+    lot: "Parti #24-11",
+    origin: "Keşap / Giresun"
   },
   {
     productId: "ezm-014",
-    sku: "EZM-014",
-    name: "Kremamsı Doğal Fındık Ezmesi",
-    weight: "650 gr",
-    price: 560.0,
-    quantity: 1,
-    origin: "Tirebolu / Taş Değirmen",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAQBXKICbkb7VszXzYSzRZRrA1YiSKvmPRQ39nx3jR-l2ysHebJbp3ziLjOps4SWo8-tgiVXlV7sU2BuAVGH1XMYGWxjbZ9H91DoVFSgDA9VGz83WxLIlNKBDesFMMByzY1Dmywoq3qIHBjBVPa-TjAM4wDd6XpG2OR5HJ_qV_nSDb5oG8FvyB9s25TivXgziYDtXB5L3USyWugm7TyqTLh9BNj0CRNKuDWXR3lL-npUWaL5op1Tjt4DQ"
+    sku: "TC-EZM-014",
+    name: "Şekersiz Doğal Fındık Ezmesi",
+    weight: "320g",
+    price: 295.0,
+    quantity: 2,
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBKAN_w8juKM5D5u3Iln9kaU89qH0l2dN5lk8M9k5HCmLO5NTx_kCkwI0hEIpjw0MRfo8Lrs0ZA64ntniqDrrWQ6ow0btMRNWLW5MLmJf6rY8OAB3yaYJF-3NWSrx1gyQxs6eABAr-Oa4Q1CkUEENsQ--x7tvk5enusKWIiYWrOXnNySRK8vQzRvN1wq98Ik0HQPO4WfQh0KH2zw2ZlHyO8aoXC-cbIZ7P7m93kZGE7",
+    lot: "Parti #24-08",
+    origin: "Tirebolu / Giresun"
   },
   {
-    productId: "bal-027",
-    sku: "BAL-027",
-    name: "Organik Karadeniz Kestane Balı",
-    weight: "450 gr",
-    price: 490.0,
+    productId: "yag-021",
+    sku: "TC-YAG-021",
+    name: "Soğuk Sıkım Ham Fındık Yağı",
+    weight: "500ml",
+    price: 540.0,
     quantity: 1,
-    origin: "Yüksek Rakım Orman",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDedlIzf8hz5UNgj7TyrODrRaqaqrMooHZL_wJWC5J0FvlHujVd3_ldAkMxGseuJgSznMIANzutmZtX2t_dDoQos4WLvU_xYOblPy4O1MgcbZVEvdRTlyq_prYaJrJPHuIvsq2e92LdzsUGrYktNBtUi5itYz9rqPFbVm3k4BoSVFXD4RC88i_7AlSbdQjphIisBF7GoDmsNX08ZRz1s__0NTs9OLvNrpjziv0u90D-0WtvEmc8mNWdpg"
+    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAxN_lAIwOaivxUa07pO5STxhpMFBiBxfbNU3ixpbs_yQUv-HUgAjLrirWJ0f3iXBHJaju8AkP_sjhvOZxJydU0ajJvIzZRPsEiCzZTCXobtS4PVGHUd4DjEdwNyUTYDpRHcn5EcR3a7hkA7rjRv7OnC3oI0DB_t9dUwEDhHMmBSurIIfUhfhBAgfM7DnKEUCbAPUwjml20hd01lePJY9SVkZ0BrFmJGobx6xl_NWUs",
+    lot: "Parti #24-19",
+    origin: "Keşap / Giresun"
   }
 ];
 
-export const INITIAL_ORDERS = [
-  {
-    id: "ORD-9842",
-    date: "27 Ekim 2026, 14:32",
-    customerName: "Elif Çiftçi",
-    email: "elif.ciftci@vadiposta.com",
-    phone: "0532 890 44 21",
-    city: "İstanbul",
-    district: "Kadıköy",
-    address: "Caferağa Mah. Sakızgülü Sok. No: 18 D: 4, Kadıköy / İstanbul",
-    itemsSummary: "1x Fındık 1kg, 1x Ezme 650g, 1x Kestane Balı 450g",
-    itemCount: 3,
-    subtotal: 1690.0,
-    shippingFee: 0,
-    farmDiscount: 50.0,
-    couponDiscount: 0,
-    total: 1640.0,
-    paymentMethod: "Kredi Kartı (3D Secure)",
-    status: "Kargoya Verildi",
-    trackingNo: "YK-78921849102-TR",
-    lotMatch: "LOT-2024-KESAP-04",
-    yield: "%53.8"
-  },
-  {
-    id: "ORD-9839",
-    date: "27 Ekim 2026, 11:15",
-    customerName: "Ahmet Kaya",
-    email: "ahmet.kaya@email.com",
-    phone: "0544 321 98 76",
-    city: "Ankara",
-    district: "Çankaya",
-    address: "Gaziosmanpaşa Mah. Arjantin Cad. No: 12/6",
-    itemsSummary: "2x Çifte Kavrulmuş Fındık 500g, 1x Fındık Yağı 500ml",
-    itemCount: 3,
-    subtotal: 1260.0,
-    shippingFee: 0,
-    farmDiscount: 50.0,
-    couponDiscount: 100.0,
-    total: 1110.0,
-    paymentMethod: "Havale / EFT",
-    status: "Hazırlanıyor",
-    trackingNo: "ARAS-612093418-TR",
-    lotMatch: "LOT-2024-TD02",
-    yield: "%54.2"
-  },
-  {
-    id: "ORD-9831",
-    date: "26 Ekim 2026, 18:40",
-    customerName: "Zeynep Demir",
-    email: "zeynep.demir@gmail.com",
-    phone: "0555 789 12 34",
-    city: "İzmir",
-    district: "Karşıyaka",
-    address: "Bostanlı Mah. Cemal Gürsel Cad. 142/B",
-    itemsSummary: "1x Vadiden Sofraya Gurme Tadım Paketi",
-    itemCount: 1,
-    subtotal: 849.0,
-    shippingFee: 0,
-    farmDiscount: 50.0,
-    couponDiscount: 0,
-    total: 799.0,
-    paymentMethod: "Kredi Kartı",
-    status: "Teslim Edildi",
-    trackingNo: "YK-45189201991-TR",
-    lotMatch: "LOT-2024-PK01",
-    yield: "%55.0"
-  },
-  {
-    id: "ORD-9824",
-    date: "26 Ekim 2026, 13:05",
-    customerName: "Mehmet Öztürk",
-    email: "mehmet.ozturk@firmamail.com",
-    phone: "0533 111 22 33",
-    city: "Bursa",
-    district: "Nilüfer",
-    address: "İhsaniye Mah. Barış Cad. No: 44",
-    itemsSummary: "4x Doğal Fındık Ezmesi 320g, 2x Yayla Balı 450g",
-    itemCount: 6,
-    subtotal: 2060.0,
-    shippingFee: 0,
-    farmDiscount: 50.0,
-    couponDiscount: 200.0,
-    total: 1810.0,
-    paymentMethod: "Kapıda Ödeme",
-    status: "Teslim Edildi",
-    trackingNo: "SURAT-891048123-TR",
-    lotMatch: "LOT-2024-YB08",
-    yield: "%54.0"
-  }
-];
-
+// Geçerli Kupon Kodları (Promo Coupons)
 export const VALID_COUPONS = {
-  HASAT2024: { code: "HASAT2024", discountPercent: 15, label: "%15 Yeni Hasat İndirimi" },
-  FINDIK10: { code: "FINDIK10", discountPercent: 10, label: "%10 Köy Dayanışma İndirimi" },
-  GURME75: { code: "GURME75", discountFixed: 75, label: "75 ₺ Gurme Sepet İndirimi" }
+  YENIHASAT2024: { code: "YENIHASAT2024", type: "percent", value: 15, desc: "%15 Yeni Hasat İndirimi" },
+  HASAT2024: { code: "HASAT2024", type: "percent", value: 15, desc: "%15 Hasat İndirimi" },
+  FINDIK10: { code: "FINDIK10", type: "fixed", value: 50, desc: "50 ₺ Çiftlik Hoş Geldin İndirimi" },
+  GURME75: { code: "GURME75", type: "fixed", value: 75, desc: "75 ₺ Gurme Mahsul Desteği" }
 };
 
+// Kayıtlı Demo Adresleri (Saved Addresses)
 export const SAVED_ADDRESSES = [
   {
     id: "addr-1",
-    title: "Ev Adresim (Moda)",
-    name: "Elif Çiftçi",
-    phone: "532 890 44 21",
-    city: "İstanbul",
-    district: "Kadıköy / Moda Mah.",
-    address: "Caferağa Mah. Sakızgülü Sok. No: 18 Daire: 4, Kadıköy",
-    notes: "Zile basmayın lütfen, kapıya asınız."
+    title: "Ev Adresim (Kadıköy)",
+    fullName: "Ahmet Yılmaz",
+    phone: "0 (532) 714 88 92",
+    city: "istanbul",
+    district: "Kadıköy / Moda",
+    detailedAddress: "Caferağa Mah. Sakızgülü Sk. No: 18 Daire: 4, Kadıköy / İstanbul",
+    isDefault: true
   },
   {
     id: "addr-2",
-    title: "Yazlık & Köy Evi",
-    name: "Elif Çiftçi",
-    phone: "532 890 44 21",
-    city: "Giresun",
-    district: "Keşap / Fındıklı Köyü",
-    address: "Fındıklı Köyü Yukarı Mevkii No: 24, Keşap / Giresun",
-    notes: "Köy muhtarlığı yanı."
+    title: "Ofis (Maslak)",
+    fullName: "Ahmet Yılmaz",
+    phone: "0 (532) 714 88 92",
+    city: "istanbul",
+    district: "Sarıyer / Maslak",
+    detailedAddress: "Büyükdere Cad. No: 245 USO Center K:8 D:32, Maslak / İstanbul",
+    isDefault: false
   },
   {
     id: "addr-3",
-    title: "Ofis / İşyeri",
-    name: "Elif Çiftçi",
-    phone: "532 890 44 21",
-    city: "İstanbul",
-    district: "Şişli / Levent",
-    address: "Büyükdere Cad. No: 195 K: 8, Levent / Şişli",
-    notes: "Hafta içi 09:00 - 18:00 arası danışmaya teslim."
+    title: "Yazlık (Bodrum)",
+    fullName: "Ahmet Yılmaz",
+    phone: "0 (532) 714 88 92",
+    city: "muğla",
+    district: "Bodrum / Bitez",
+    detailedAddress: "Bitez Mah. Çökertme Cad. No: 12, Bodrum / Muğla",
+    isDefault: false
   }
 ];
 
+// Başlangıç Sipariş Kayıtları (Initial Orders)
+export const INITIAL_ORDERS = [
+  {
+    id: "TC-88412",
+    date: "28 Ekim 2024, 14:10",
+    customer: {
+      name: "Ahmet Yılmaz",
+      phone: "0 (532) 714 88 92",
+      city: "İstanbul",
+      district: "Kadıköy",
+      address: "Caferağa Mah. Sakızgülü Sk. No: 18 D: 4, Kadıköy / İstanbul",
+      email: "ahmet.yilmaz@posta.me"
+    },
+    items: [
+      { name: "Giresun Çifte Kavrulmuş Tombul Fındık", weight: "500g", quantity: 1, price: 385.0, lot: "Parti #24-11" },
+      { name: "Şekersiz Doğal Fındık Ezmesi", weight: "320g", quantity: 2, price: 295.0, lot: "Parti #24-08" },
+      { name: "Soğuk Sıkım Ham Fındık Yağı", weight: "500ml", quantity: 1, price: 540.0, lot: "Parti #24-19" }
+    ],
+    subtotal: 1515.0,
+    shippingFee: 0.0,
+    farmDiscount: 45.0,
+    couponDiscount: 0.0,
+    total: 1470.0,
+    paymentMethod: "Kredi Kartı (256-Bit SSL)",
+    shippingMethod: "Çiftlik Özel Kargo (Yurtiçi)",
+    status: "Hazırlanıyor",
+    trackingNo: "YK-884120-TR",
+    notes: "Ahşap sandık içine organik saman koruma eklensin, teşekkürler.",
+    lot: "Parti #24-11 / KŞ-114"
+  },
+  {
+    id: "TC-88405",
+    date: "27 Ekim 2024, 11:45",
+    customer: {
+      name: "Selin Aksoy",
+      phone: "0 (544) 312 90 14",
+      city: "Ankara",
+      district: "Çankaya",
+      address: "Gaziosmanpaşa Mah. Arjantin Cad. No: 9 D: 2, Çankaya / Ankara",
+      email: "selin.aksoy@posta.me"
+    },
+    items: [
+      { name: "Gurme Ahşap Sandık Hasat Koleksiyonu", weight: "Set", quantity: 1, price: 920.0, lot: "Parti #24-GURME" }
+    ],
+    subtotal: 920.0,
+    shippingFee: 0.0,
+    farmDiscount: 45.0,
+    couponDiscount: 0.0,
+    total: 875.0,
+    paymentMethod: "Havale / EFT (%5 İndirimli)",
+    shippingMethod: "Hızlı Özel Sevkiyat (Hava Kargo)",
+    status: "Kargoya Verildi",
+    trackingNo: "YK-884050-TR",
+    notes: "Hediye kartına 'Sevgilerle' yazılabilirse çok sevinirim.",
+    lot: "Parti #24-GURME"
+  },
+  {
+    id: "TC-88392",
+    date: "26 Ekim 2024, 09:20",
+    customer: {
+      name: "Burak Karadeniz",
+      phone: "0 (533) 489 12 77",
+      city: "İzmir",
+      district: "Urla",
+      address: "İskele Mah. Mithatpaşa Cad. No: 44, Urla / İzmir",
+      email: "burak.k@posta.me"
+    },
+    items: [
+      { name: "Doğal Güneşte Kurutulmuş Çiğ Fındık", weight: "1000g", quantity: 2, price: 340.0, lot: "Parti #24-03" },
+      { name: "Karadeniz Yayla Çiçek Balı", weight: "450g", quantity: 1, price: 460.0, lot: "Parti #24-02" }
+    ],
+    subtotal: 1140.0,
+    shippingFee: 0.0,
+    farmDiscount: 45.0,
+    couponDiscount: 150.0,
+    total: 945.0,
+    paymentMethod: "Kredi Kartı (256-Bit SSL)",
+    shippingMethod: "Çiftlik Özel Kargo",
+    status: "Teslim Edildi",
+    trackingNo: "YK-883920-TR",
+    notes: "",
+    lot: "Parti #24-03"
+  }
+];
+
+// Analitik Periyot Veri Seti (Analytics Periods)
 export const ANALYTICS_PERIOD_DATA = {
   today: {
-    revenue: 8450,
-    ordersCount: 14,
-    avgOrder: 603,
+    revenue: 1470,
+    ordersCount: 4,
+    avgOrder: 367,
+    growthText: "+%12,4 dünkü performansa kıyasla",
     labels: ["09:00", "11:00", "13:00", "15:00", "17:00", "19:00", "21:00"],
-    revenueData: [680, 1420, 1950, 2800, 4200, 6400, 8450],
-    maxVal: 10000,
-    growthText: "+%12.4 dünden bugüne"
+    revenueData: [280, 520, 890, 1150, 1320, 1470, 1470],
+    maxVal: 2000
   },
-  "7days": {
-    revenue: 38900,
-    ordersCount: 68,
-    avgOrder: 572,
+  "7d": {
+    revenue: 42850,
+    ordersCount: 88,
+    avgOrder: 486,
+    growthText: "+%14,2 önceki haftaya kıyasla",
     labels: ["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"],
-    revenueData: [18400, 24200, 21800, 29600, 34500, 42100, 38900],
-    maxVal: 50000,
-    growthText: "+%15.2 geçen haftaya göre"
+    revenueData: [4200, 5800, 6100, 5400, 7900, 6800, 6650],
+    maxVal: 10000
   },
   month: {
-    revenue: 142300,
-    ordersCount: 240,
-    avgOrder: 592,
-    labels: ["1. Hafta", "2. Hafta", "3. Hafta", "4. Hafta"],
-    revenueData: [31200, 38500, 42100, 30500],
-    maxVal: 50000,
-    growthText: "+%21.0 geçen aya göre"
-  },
-  year: {
-    revenue: 940000,
-    ordersCount: 1580,
-    avgOrder: 594,
-    labels: ["Oca", "Mar", "May", "Tem", "Ağu", "Eki"],
-    revenueData: [45000, 62000, 78000, 110000, 184500, 142300],
-    maxVal: 200000,
-    growthText: "+%34.5 geçen yıla göre"
-  },
-  season2024: {
     revenue: 184520,
-    ordersCount: 312,
-    avgOrder: 591,
-    labels: ["Ağustos (Hasat)", "Eylül (Kavurma)", "Ekim (Güncel)"],
-    revenueData: [58200, 71400, 54920],
-    maxVal: 80000,
-    growthText: "+%18.4 2023 sezonuna göre"
+    ordersCount: 428,
+    avgOrder: 431,
+    growthText: "+%18,4 geçen aya kıyasla",
+    labels: ["1. Hafta", "2. Hafta", "3. Hafta", "4. Hafta"],
+    revenueData: [38500, 44200, 48900, 52920],
+    maxVal: 60000
+  },
+  harvest: {
+    revenue: 624800,
+    ordersCount: 1412,
+    avgOrder: 442,
+    growthText: "+%24,6 2023 sezonuna kıyasla",
+    labels: ["Ağu '24", "Eyl '24", "Eki '24", "Kas '24 (Tahmin)"],
+    revenueData: [142000, 218000, 264800, 290000],
+    maxVal: 350000
   }
 };
