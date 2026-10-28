@@ -2,10 +2,10 @@
   "name": "findik-vadisi-organik-e-ticaret",
   "version": "1.0.0",
   "description": "Fındık Vadisi & Doğal Çiftlik - Giresun Taş Değirmen E-Ticaret ve İşletme Yönetim Platformu",
-  "main": "server.js",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node dev-server.js",
+    "dev": "node dev-server.js",
+    "build": "echo 'Static build ready'"
   },
   "keywords": [
     "e-commerce",
